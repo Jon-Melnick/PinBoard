@@ -1,22 +1,21 @@
 # View Wireframes
 
-## New User
-![new-user]
+## New User/new-session/splash-page
+![Splash-index-page]
 
-## New Session
-![new-session]
+## New User/Demo page
+![Signup-demo]
 
-## NotesIndex / NoteIndexItem / NoteForm
-![notes]
+## Team Pinboard
+![Team-PinBoard]
 
-## NotebooksIndex / NotebookIndexItem
-![notebooks]
+## Team Pinboard inteface selections
+![PinBoard-interface]
 
-## NotebookForm
-![notebook-form]
-
-[new-user]: ./wireframes/new_user.png
-[new-session]: ./wireframes/new_session.png
-[notes]: ./wireframes/root_notes.png
-[notebooks]: ./wireframes/root_notebooks.png
-[notebook-form]: ./wireframes/notebook_form.png
+[Splash-index-page]: ./wireframes/Splash-index-page.png
+[Signup-demo]: ./wireframes/Signup-demo.png
+[Team-PinBoard]: ./wireframes/Team-PinBoard.png
+[PinBoard-interface]: ./wireframes/Team-PinBoard-TeamSelected.png
+[PinBoard-interface]: ./wireframes/Team-PinBoard-NewPin.png
+[PinBoard-interface]: ./wireframes/Team-PinBoard-TeamSelected.png
+[PinBoard-interface]: ./wireframes/Team-PinBoard-TeamSelected.png

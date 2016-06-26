@@ -1,4 +1,4 @@
-# FresherNote
+# PinBoard
 
 [Heroku link][heroku] **Note:** This should be a link to your production site
 
@@ -6,27 +6,31 @@
 
 ## Minimum Viable Product
 
-FresherNote is a web application inspired by Evernote that will be build using Ruby on Rails and React.js.  By the end of Week 9, this app will, at a minimum, satisfy the following criteria:
+PinBoard is a web application that allows teams to build a board that has an interactive element with it to be able to pin notes/comments/ideas/pictures and has a drag and drop interaction. This project is built using Ruby on Rails and React.
+
+By the end of Week 9, this app will, at a minimum, satisfy the following criteria:
 
 - [ ] Hosting on Heroku
 - [ ] New account creation, login, and guest/demo login
-- [ ] A production README, replacing this README (**NB**: check out the [sample production README](docs/production_readme.md) -- you'll write this later)
-- [ ] Notes
-  - [ ] Smooth, bug-free navigation
+- [ ] A production README, replacing this README
+- [ ] Pins
+  - [ ] Multiple styles
+  - [ ] Interactive drag/drop/bring to front
+  - [ ] Range from text to pictures and videos
   - [ ] Adequate seed data to demonstrate the site's features
+- [ ] PinBoards for organizing pins
+  - [ ] Teams invites and creation
+  - [ ] Creation of new pins by clicking a black spot of the board
+  - [ ] Can see team members and interact with each others pins
+  - [ ] Smooth, bug-free interaction
   - [ ] Adequate CSS styling
-- [ ] Notebooks for organizing notes
-  - [ ] Smooth, bug-free navigation
   - [ ] Adequate seed data to demonstrate the site's features
-  - [ ] Adequate CSS styling
-- [ ] Tags for notes
-  - [ ] Smooth, bug-free navigation
-  - [ ] Adequate seed data to demonstrate the site's features
-  - [ ] Adequate CSS styling
-- [ ] Rich Text Editing of notes
-  - [ ] Smooth, bug-free navigation
-  - [ ] Adequate seed data to demonstrate the site's features
-  - [ ] Adequate CSS styling
+- [ ] Tags for pins
+  - [ ] Allows sorting of the board to see the pins you want
+  - [ ] Can update tags as needed
+- [ ] Users interaction and interface
+  - [ ] Have a settings page and a profile pic upload
+  - [ ] Can interact with users and build friends and teams
 
 ## Design Docs
 * [View Wireframes][views]
@@ -52,76 +56,78 @@ FresherNote is a web application inspired by Evernote that will be build using R
 - [ ] authentication
 - [ ] user signup/signin pages
 - [ ] blank landing page after signin
+- [ ] user profile page
+- [ ] add to heroku
 
-### Phase 2: Notes Model, API, and basic APIUtil (1.5 days, W1 Th 12pm)
+### Phase 2: Pins Model (text based), API, and basic APIUtil (1.5 days, W1 Th 12pm)
 
-**Objective:** Notes can be created, read, edited and destroyed through
+**Objective:** Pins can be created, read, edited and destroyed through
 the API.
 
-- [ ] create `Note` model
+- [ ] create `Pin` model
 - [ ] seed the database with a small amount of test data
-- [ ] CRUD API for notes (`NotesController`)
-- [ ] jBuilder views for notes
+- [ ] CRUD API for pins (`PinsController`)
+- [ ] jBuilder views for pins
 - [ ] setup Webpack & Flux scaffold
 - [ ] setup `APIUtil` to interact with the API
 - [ ] test out API interaction in the console.
 
 ### Phase 3: Flux Architecture and Router (1.5 days, W1 F 6pm)
 
-**Objective:** Notes can be created, read, edited and destroyed with the
+**Objective:** Pins can be created, read, edited and destroyed with the
 user interface.
 
 - [ ] setup the flux loop with skeleton files
 - [ ] setup React Router
-- implement each note component, building out the flux loop as needed.
-  - [ ] `NotesIndex`
-  - [ ] `NoteIndexItem`
-  - [ ] `NoteForm`
-- [ ] save Notes to the DB when the form loses focus or is left idle
-  after editing.
+- implement each pin component, building out the flux loop as needed.
+  - [ ] `PinsIndex`
+  - [ ] `PinIndexItem`
+  - [ ] `PinForm`
+- [ ] save Pins to the DB
 
 ### Phase 4: Start Styling (0.5 days, W2 M 12pm)
 
-**Objective:** Existing pages (including signup/signin) will look good.
+**Objective:** Existing pages (including signup/signin) will get styled, along with a home splash page for new users or returning users.
 
+- [ ] create a splash home page to signup/signin
 - [ ] create a basic style guide
 - [ ] position elements on the page
 - [ ] add basic colors & styles
 
-### Phase 5: Notebooks (1 day, W2 Tu 12pm)
+### Phase 5: Board (1 day, W2 Tu 12pm)
 
-**Objective:** Notes belong to Notebooks, and can be viewed by notebook.
+**Objective:** Pins belong to Board, and can be viewed by board.
 
-- [ ] create `Notebook` model
+- [ ] create `Board` model
 - build out API, Flux loop, and components for:
-  - [ ] Notebook CRUD
-  - [ ] adding notes requires a notebook
-  - [ ] moving notes to a different notebook
-  - [ ] viewing notes by notebook
+  - [ ] Board CRUD
+  - [ ] adding pins requires a board
+  - [ ] moving pins to a different location on the board will persist with a refresh or the next login
+  - [ ] viewing pins by board
 - Use CSS to style new views
 
-Phase 3 adds organization to the Notes. Notes belong to a Notebook,
+Phase 3 adds organization to the Pins. Pins belong to a Board,
 which has its own `Index` view.
 
 ### Phase 6: Tags (1 days, W2 Th 12pm)
 
-**Objective:** Notes can be tagged with multiple tags, and tags are searchable.
+**Objective:** Pins can be tagged with multiple tags, and tags are searchable.
 
 - [ ] create `Tag` model and join table
 - build out API, Flux loop, and components for:
-  - [ ] fetching tags for notebook
-  - [ ] adding tags to notebook
-  - [ ] creating tags while adding to notebooks
-  - [ ] searching notebooks by tag
+  - [ ] fetching tags for pins
+  - [ ] adding tags to pins
+  - [ ] creating tags while adding pins to boards
+  - [ ] searching notebooks for pin(s) by tag
 - [ ] Style new elements
 
-### Phase 7: Allow Complex Styling in Notes (0.5 days, W2 Th 6pm)
+### Phase 7: Create a friends and a team atmosphere (0.5 days, W2 Th 6pm)
 
-**objective:** Enable complex styling of notes.
+**objective:** Enable teams to create a board and all have access to it.
 
-- [ ] Integrate `react-quill` (based on Quill.js).
-- [ ] Use Rails helpers to sanitize HTML before rendering.
-- [ ] Style the new Quill elements.
+- [ ] Integrate team boards
+- [ ] Allow some users to have team manager abilities
+- [ ] Each team member will have a different color/avatar
 
 ### Phase 8: Styling Cleanup and Seeding (1 day, W2 F 6pm)
 
@@ -132,11 +138,10 @@ which has its own `Index` view.
 - [ ] Add modals, transitions, and other styling flourishes.
 
 ### Bonus Features (TBD)
-- [ ] Search through notes for blocks of text
-- [ ] Pagination / infinite scroll for Notes Index
-- [ ] Set reminders on notes
-- [ ] Changelogs for Notes
-- [ ] Multiple sessions
+- [ ] Members can have private boards for themselves
+- [ ] increased searching on pins
+- [ ] advanced notification setting
+- [ ] Better user preferences
 
 [phase-one]: docs/phases/phase1.md
 [phase-two]: docs/phases/phase2.md
