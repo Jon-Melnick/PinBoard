@@ -2,31 +2,31 @@
 
 **Bolded** components are associated with routes.
 
-(:exclamation: Remember, the bolded components are created by their
-associated routes, so the nesting of your bolded components must
-_**exactly**_ match the nesting of your routes.)
 
 * **App**
-  * NotebooksIndex
+  * LoginPage
+    * NewUser/Session Form
+    * Information about app
+  * **User profile and boards**
+  * **BoardIndex**
+    * BoardForm (Add team members, fill out details, so on...)
     * Search
-    * NotebookIndexItem
-    * NotebookForm
-  * **NotesIndex**
-    * NoteForm
-    * NoteIndexItem
-    * **NoteDetail**
-      * NoteTags
-      * NoteEditArea
+    * Settings
+    * Team Members
+    * BoardIndexItem
+  * **PinsIndex**
+    * PinForm
+    * PinIndexItem
+    * **PinDetail**
+      * PinTags
 
 
 ## Routes
 
 * **component:** `App` **path:** `/`
-  * **component:** `NotesIndex` **path:** index
-  * **component:** `NotesIndex` **path:** `notebooks/:notebookId`
-    * **component:** `NoteDetail` **path:** `notes/:noteId`
-  * **component:** `NotesIndex` **path:** none
-    * **component:** `NoteDetail` **path:** `notes/:noteId`
-
-For Routes that have no `notebookId`, `NotesIndex` will render all
-notes.
+  * **component:** `LoginPage` **path:** index
+    * **component:** `NewUserForm` **path:** user/new
+  * **component:** `ProfileContent` **path:** user
+  * **component:** `BoardIndex` **path:** board
+    * **component:** `PinsIndex` **path:** `board/:boardId`
+      * **component:** `PinDetail` **path:** `pin/:noteId`

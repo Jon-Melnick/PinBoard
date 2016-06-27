@@ -20,34 +20,29 @@
 
 ## JSON API
 
-### Notes
+### Pins
 
-- `GET /api/notes`
-  - Notes index/search
-  - accepts `tag_name` query param to list notes by tag
-  - accepts pagination params (if I get there)
-- `POST /api/notes`
-- `GET /api/notes/:id`
-- `PATCH /api/notes/:id`
-- `DELETE /api/notes/:id`
+- `GET /api/pins`
+  - Pins index/search
+- `POST /api/pins`
+- `GET /api/pins/:id`
+- `PATCH /api/pins/:id`
+- `DELETE /api/pins/:id`
 
-### Notebooks
+### Board
 
-- `GET /api/notebooks`
-- `POST /api/notebooks`
-- `GET /api/notebooks/:id`
-- `PATCH /api/notebooks/:id`
-- `DELETE /api/notebooks/:id`
-- `GET /api/notebooks/:id/notes`
-  - index of all notes for a notebook
-  - accepts pagination params (if I get there)
+- `GET /api/boards`
+- `POST /api/boards`
+- `GET /api/boards/:id`
+- `PATCH /api/boards/:id`
+- `DELETE /api/boards/:id`
+- `GET /api/boards/:id/pins`
+  - index of all pins for a board
 
 ### Tags
 
-- A note's tags will be included in the note show template
+- A pin's tags will be included in the pin information panel
 - `GET /api/tags`
-  - includes query param for typeahead suggestions
-- `POST /api/notes/:note_id/tags`: add tag to note by name
-  - if note doesn't already exist, it will be created
-- `DELETE /api/notes/:note_id/tags/:tag_name`: remove tag from note by
+- `POST /api/pins/:pin_id/tags`: add tag to pin by name
+- `DELETE /api/pins/:pin_id/tags/:tag_name`: remove tag from pin by
   name
