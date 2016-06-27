@@ -12,108 +12,108 @@ because once you start implementing your flux loops, that's precisely
 what you'll need to do.
 
 
-## Note Cycles
+## Pin Cycles
 
-### Notes API Request Actions
+### Pins API Request Actions
 
-* `fetchAllNotes`
-  0. invoked from `NotesIndex` `didMount`/`willReceiveProps`
-  0. `GET /api/notes` is called.
-  0. `receiveAllNotes` is set as the callback.
+* `fetchAllPins`
+  0. invoked from `PinsIndex` `didMount`/`willReceiveProps`
+  0. `GET /api/pins` is called.
+  0. `receiveAllPins` is set as the callback.
 
-* `createNote`
-  0. invoked from new note button `onClick`
-  0. `POST /api/notes` is called.
-  0. `receiveSingleNote` is set as the callback.
+* `createPin`
+  0. invoked from new pin button `onClick`
+  0. `POST /api/pins` is called.
+  0. `receiveSinglePin` is set as the callback.
 
-* `fetchSingleNote`
-  0. invoked from `NoteDetail` `didMount`/`willReceiveProps`
-  0. `GET /api/notes/:id` is called.
-  0. `receiveSingleNote` is set as the callback.
+* `fetchSinglePin`
+  0. invoked from `PinDetail` `didMount`/`willReceiveProps`
+  0. `GET /api/pins/:id` is called.
+  0. `receiveSinglePin` is set as the callback.
 
-* `updateNote`
-  0. invoked from `NoteForm` `onSubmit`
-  0. `POST /api/notes` is called.
-  0. `receiveSingleNote` is set as the callback.
+* `updatePin`
+  0. invoked from `PinForm` `onSubmit`
+  0. `POST /api/pins` is called.
+  0. `receiveSinglePin` is set as the callback.
 
-* `destroyNote`
-  0. invoked from delete note button `onClick`
-  0. `DELETE /api/notes/:id` is called.
-  0. `removeNote` is set as the callback.
+* `destroyPin`
+  0. invoked from delete pin button `onClick`
+  0. `DELETE /api/pins/:id` is called.
+  0. `removePin` is set as the callback.
 
-### Notes API Response Actions
+### Pins API Response Actions
 
-* `receiveAllNotes`
+* `receiveAllPins`
   0. invoked from an API callback.
-  0. `Note` store updates `_notes` and emits change.
+  0. `Pin` store updates `_pins` and emits change.
 
-* `receiveSingleNote`
+* `receiveSinglePin`
   0. invoked from an API callback.
-  0. `Note` store updates `_notes[id]` and emits change.
+  0. `Pin` store updates `_pins[id]` and emits change.
 
-* `removeNote`
+* `removePin`
   0. invoked from an API callback.
-  0. `Note` store removes `_notes[id]` and emits change.
+  0. `Pin` store removes `_pins[id]` and emits change.
 
 ### Store Listeners
 
-* `NotesIndex` component listens to `Note` store.
-* `NoteDetail` component listens to `Note` store.
+* `PinsIndex` component listens to `Pin` store.
+* `PinDetail` component listens to `Pin` store.
 
 
-## Notebook Cycles
+## Board Cycles
 
-### Notebooks API Request Actions
+### Boards API Request Actions
 
-* `fetchAllNotebooks`
-  0. invoked from `NotebooksIndex` `didMount`/`willReceiveProps`
-  0. `GET /api/notebooks` is called.
-  0. `receiveAllNotebooks` is set as the callback.
+* `fetchAllBoards`
+  0. invoked from `BoardsIndex` `didMount`/`willReceiveProps`
+  0. `GET /api/boards` is called.
+  0. `receiveAllBoards` is set as the callback.
 
-* `createNotebook`
-  0. invoked from new notebook button `onClick`
-  0. `POST /api/notebooks` is called.
-  0. `receiveSingleNotebook` is set as the callback.
+* `createBoard`
+  0. invoked from new board button `onClick`
+  0. `POST /api/boards` is called.
+  0. `receiveSingleBoard` is set as the callback.
 
-* `fetchSingleNotebook`
-  0. invoked from `NotebookDetail` `didMount`/`willReceiveProps`
-  0. `GET /api/notebooks/:id` is called.
-  0. `receiveSingleNotebook` is set as the callback.
+* `fetchSingleBoard`
+  0. invoked from `BoardDetail` `didMount`/`willReceiveProps`
+  0. `GET /api/boards/:id` is called.
+  0. `receiveSingleBoard` is set as the callback.
 
-* `updateNotebook`
-  0. invoked from `NotebookForm` `onSubmit`
-  0. `POST /api/notebooks` is called.
-  0. `receiveSingleNotebook` is set as the callback.
+* `updateBoard`
+  0. invoked from `BoardForm` `onSubmit`
+  0. `POST /api/boards` is called.
+  0. `receiveSingleBoard` is set as the callback.
 
-* `destroyNotebook`
-  0. invoked from delete notebook button `onClick`
-  0. `DELETE /api/notebooks/:id` is called.
-  0. `removeNotebook` is set as the callback.
+* `destroyBoard`
+  0. invoked from delete board button `onClick`
+  0. `DELETE /api/boards/:id` is called.
+  0. `removeBoard` is set as the callback.
 
-### Notebooks API Response Actions
+### Boards API Response Actions
 
-* `receiveAllNotebooks`
+* `receiveAllBoards`
   0. invoked from an API callback.
-  0. `Notebook` store updates `_notebooks` and emits change.
+  0. `Board` store updates `_boards` and emits change.
 
-* `receiveSingleNotebook`
+* `receiveSingleBoard`
   0. invoked from an API callback.
-  0. `Notebook` store updates `_notebooks[id]` and emits change.
+  0. `Board` store updates `_boards[id]` and emits change.
 
-* `removeNotebook`
+* `removeBoard`
   0. invoked from an API callback.
-  0. `Notebook` store removes `_notebooks[id]` and emits change.
+  0. `Board` store removes `_boards[id]` and emits change.
 
 ### Store Listeners
 
-* `NotebooksIndex` component listens to `Notebook` store.
+* `BoardsIndex` component listens to `Board` store.
 
 
 ## SearchSuggestion Cycles
 
 * `fetchSearchSuggestions`
-  0. invoked from `NoteSearchBar` `onChange` when there is text
-  0. `GET /api/notes` is called with `text` param.
+  0. invoked from `PinSearchSelections` `onClick`
+  0. `GET /api/pins` is called with `value`.
   0. `receiveSearchSuggestions` is set as the callback.
 
 * `receiveSearchSuggestions`
@@ -121,9 +121,5 @@ what you'll need to do.
   0. `SearchSuggestion` store updates `_suggestions` and emits change.
 
 * `removeSearchSuggestions`
-  0. invoked from `NoteSearchBar` `onChange` when empty
+  0. invoked from `PinSearchSelections` `onClick` when 'all' clicked
   0. `SearchSuggestion` store resets `_suggestions` and emits change.
-
-### Store Listeners
-
-* `SearchBarSuggestions` component listens to `SearchSuggestion` store.
