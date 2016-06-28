@@ -6,10 +6,14 @@
 * **App**
   * LoginPage
     * NewUser/Session Form
-    * Information about app
+      * NewUser/Information about app
+  * NavBar
   * **User profile and boards**
-  * **BoardIndex**
+    * ProfileInfo
+    * Detail/preferences
+    * All Boards attached to user
     * BoardForm (Add team members, fill out details, so on...)
+  * **BoardIndex**
     * Search
     * Settings
     * Team Members
@@ -27,6 +31,7 @@
   * **component:** `LoginPage` **path:** index
     * **component:** `NewUserForm` **path:** user/new
   * **component:** `ProfileContent` **path:** user
+    * **component:** `BoardForm` **path:** user
   * **component:** `BoardIndex` **path:** board
     * **component:** `PinsIndex` **path:** `board/:boardId`
       * **component:** `PinDetail` **path:** `pin/:noteId`

@@ -1,38 +1,47 @@
-# Phase 2: Flux Architecture and Note CRUD (2 days)
+# Phase 3: Boards (2 days)
 
 ## Rails
 ### Models
+* Board
+
 
 ### Controllers
+* Api::BoardsController (create, destroy, index, show, update)
 
 ### Views
+* board/index.json.jbuilder
+* board/show.json.jbuilder
+* tags/show.json.jbuilder
 
 ## Flux
 ### Views (React Components)
-* NotesIndex
-  - NotesIndexItem
-* NoteForm
+* BoardsIndex
+  - BoardIndexItem
+* BoardForm (new)
+* BoardMenu
 
 ### Stores
-* Note
+* Board
 
 ### Actions
-* ApiActions.receiveAllNotes -> triggered by ApiUtil
-* ApiActions.receiveSingleNote
-* ApiActions.deleteNote
-* NoteActions.fetchAllNotes -> triggers ApiUtil
-* NoteActions.fetchSingleNote 
-* NoteActions.createNote
-* NoteActions.editNote 
-* NoteActions.destroyNote
+* ApiActions.receiveAllBoards -> triggered by ApiUtil
+* ApiActions.receiveSingleBoard
+* ApiActions.deleteBoard
+* BoardActions.fetchAllBoards -> triggers ApiUtil
+* BoardActions.fetchSingleBoard
+* BoardActions.createBoard
+* BoardActions.editBoard
+* BoardActions.destroyBoard
 
 ### ApiUtil
-* ApiUtil.fetchAllNotes
-* ApiUtil.fetchSingleNote
-* ApiUtil.createNote
-* ApiUtil.editNote
-* ApiUtil.destroyNote
+* ApiUtil.fetchAllBoards
+* ApiUtil.fetchSingleBoard
+* ApiUtil.createBoard
+* ApiUtil.editBoard
+* ApiUtil.destroyBoard
+
+### Style Board components
+* Board having a background
+* Board has a visible BoardMenu on the rightside
 
 ## Gems/Libraries
-* Flux Dispatcher (npm)
-* Twitter Bootstrap

@@ -1,18 +1,13 @@
 # Phase 4: Allow Complex Styling in Notes (1 day)
 
 ## Rails
-### Models
+### Seed Pins and Boards
 
-### Controllers
+### Toolbar
 
-### Views
+## React
+### Style Toolbar
 
-## Flux
-### Views (React Components)
-
-### Stores
-
-### Actions
+### Team Member forms
 
 ## Gems/Libraries
-* react-quill (npm)
