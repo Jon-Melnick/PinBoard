@@ -1,40 +1,18 @@
-# Phase 5: Reminders and Garbage Collection
+# Phase 3: Notebooks and Tags (2 days)
 
 ## Rails
 ### Models
-* Reminder
+* Tag
+* Tagging
 
 ### Controllers
-* Api::RemindersController (create, destroy, index, show, update)
+* Api::TagController (create, destroy, index, show, update)
 
 ### Views
-* reminders/index.json.jbuilder
+* tags/show.json.jbuilder
 
 ## Flux
 ### Views (React Components)
-* RemindersIndex
-  - ReminderIndexItem
-* ReminderShow
-* ReminderForm
-
-### Stores
-* Reminder
-
-### Actions
-* ApiActions.receiveAllReminders -> triggered by ApiUtil
-* ApiActions.receiveSingleReminder
-* ApiActions.deleteReminder
-* ReminderActions.fetchAllReminders -> triggers ApiUtil
-* ReminderActions.fetchSingleReminder
-* ReminderActions.createReminder
-* ReminderActions.updateReminder
-* ReminderActions.destroyReminder
-
-### ApiUtil
-* ApiUtil.fetchAllReminders
-* ApiUtil.fetchSingleReminder
-* ApiUtil.createReminder
-* ApiUtil.updateReminder
-* ApiUtil.destroyReminder
+* SearchIndex (pins by tags)
 
 ## Gems/Libraries

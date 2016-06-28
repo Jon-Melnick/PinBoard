@@ -38,7 +38,6 @@ name        | string    | not null
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-name        | string    | not null
 pin_id      | integer   | not null, foreign key (references pins), indexed, unique [tag_id]
 tag_id      | integer   | not null, foreign key (references tags), indexed
 

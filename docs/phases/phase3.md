@@ -1,44 +1,42 @@
-# Phase 3: Notebooks and Tags (2 days)
+# Phase 2: Flux Architecture and Pin CRUD (2 days)
 
 ## Rails
 ### Models
-* Notebook
-* Tag
-* Tagging
 
 ### Controllers
-* Api::NotebooksController (create, destroy, index, show, update)
 
 ### Views
-* notebooks/index.json.jbuilder
-* notebooks/show.json.jbuilder
-* tags/show.json.jbuilder
 
 ## Flux
 ### Views (React Components)
-* NotebooksIndex
-  - NotebookIndexItem
-* NotebookForm
-* SearchIndex
+* PinsIndex
+  - PinsIndexItem
+* PinForm
 
 ### Stores
-* Notebook
+* Pin
 
 ### Actions
-* ApiActions.receiveAllNotebooks -> triggered by ApiUtil
-* ApiActions.receiveSingleNotebook
-* ApiActions.deleteNotebook
-* NotebookActions.fetchAllNotebooks -> triggers ApiUtil
-* NotebookActions.fetchSingleNotebook
-* NotebookActions.createNotebook
-* NotebookActions.editNotebook
-* NotebookActions.destroyNotebook
+* ApiActions.receiveAllPins -> triggered by ApiUtil
+* ApiActions.receiveSinglePin
+* ApiActions.deletePin
+* PinActions.fetchAllPins -> triggers ApiUtil
+* PinActions.fetchSinglePin
+* PinActions.createPin
+* PinActions.editPin
+* PinActions.destroyPin
 
 ### ApiUtil
-* ApiUtil.fetchAllNotebooks
-* ApiUtil.fetchSingleNotebook
-* ApiUtil.createNotebook
-* ApiUtil.editNotebook
-* ApiUtil.destroyNotebook
+* ApiUtil.fetchAllPins
+* ApiUtil.fetchSinglePin
+* ApiUtil.createPin
+* ApiUtil.editPin
+* ApiUtil.destroyPin
+
+### Style Pin Components
+* be sure to have pins drag and persist location
+* allow pins to be brought to the front
 
 ## Gems/Libraries
+* Flux Dispatcher (npm)
+* react-draggable (npm) (for pins)

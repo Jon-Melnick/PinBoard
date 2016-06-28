@@ -55,8 +55,7 @@ By the end of Week 9, this app will, at a minimum, satisfy the following criteri
 - [ ] create `User` model
 - [ ] authentication
 - [ ] user signup/signin pages
-- [ ] blank landing page after signin
-- [ ] user profile page
+- [ ] user profile page after signin
 - [ ] add to heroku
 
 ### Phase 2: Pins Model (text based), API, and basic APIUtil (1.5 days, W1 Th 12pm)
