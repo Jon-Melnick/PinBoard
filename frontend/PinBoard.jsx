@@ -30,11 +30,11 @@ const App = React.createClass({
 
 const routes = (
   <Router history={ hashHistory }>
-    <IndexRoute component={ Login } />
     <Route path="login" component={ Login } />
     <Route path="/signup" component={ Signup } />
     <Route path="/" component={ App }>
-      <Route path="/profile" component={ Profile } onEnter={_ensureLoggedIn}/>
+      <IndexRoute component={ Profile } />
+      <Route path="/profile" component={ Profile } onEnter={ _ensureLoggedIn }/>
       <Route path="/empty" component={ Empty } />
     </Route>
   </Router>
@@ -42,6 +42,7 @@ const routes = (
 
 
 function _ensureLoggedIn(nextState, replace) {
+  console.log(SessionStore.isUserLoggedIn())
     if (!SessionStore.isUserLoggedIn()) {
       replace('/login');
     }
