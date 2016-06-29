@@ -4,9 +4,10 @@ module.exports = {
     $.ajax({
       url: 'api/users',
       method: "POST",
-      data: {user: user},
+      data: {user},
       success: function(newUser){
-         console.log(newUser)
+        debugger
+         callback(newUser)
       }
     });
   },
@@ -17,18 +18,17 @@ module.exports = {
       method: "POST",
       data: {email_address: user.email_address, password: user.password},
       success: function(user){
-         console.log(user)
+         callback(user)
       }
     });
   },
 
-  signout(user, callback){
+  signout(callback){
     $.ajax({
       url: 'api/session',
       method: "DELETE",
-      date: {email_address: user.email_address, password: user.password},
-      success: function(user){
-         console.log(user)
+      success: function(){
+         callback()
       }
     });
   }
