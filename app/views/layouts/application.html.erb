@@ -7,6 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <script id="bootstrap-current-user" type="text/javascript">
+    <% if current_user %>
+    	window.currentUser = <%= current_user.to_json.html_safe %>
+    <% end %>
+  </script>
 
 <%= yield %>
 
