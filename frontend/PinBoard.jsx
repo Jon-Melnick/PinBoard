@@ -30,10 +30,10 @@ const App = React.createClass({
 
 const routes = (
   <Router history={ hashHistory }>
+    <IndexRoute component={ Login } />
     <Route path="login" component={ Login } />
     <Route path="/signup" component={ Signup } />
     <Route path="/" component={ App }>
-      <IndexRoute component={ Profile } />
       <Route path="/profile" component={ Profile } onEnter={_ensureLoggedIn}/>
       <Route path="/empty" component={ Empty } />
     </Route>
