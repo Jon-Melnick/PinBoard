@@ -1,0 +1,46 @@
+/** {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: inherit;
+  font: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  color: inherit;
+  background: transparent;
+}*/
+
+.login-box{
+  width: 250px;
+  border: 1px black solid;
+  height: 200px;
+}
+
+.splash {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-image: url("https://0.s3.envato.com/files/97176584/seamless_pinboard_texture_2_screenshot.jpg");
+  background-size: cover;
+}
+
+.log-in-form {
+  width: 30em;
+  margin: auto;
+  margin-top: 15em;
+  text-align: center;
+  font-size: 14px;
+}
+
+.yellow-postit {
+  height: 300px;
+  background-image: url('http://images.wikia.com/inciclopedia/images/9/94/Post-It.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.blue-postit {
+  width: 400px;
+  background-image: url('http://paper-backgrounds.com/textureimages/2012/08/Post-It-Note-with-Push-Pin-500x354.png');
+}
