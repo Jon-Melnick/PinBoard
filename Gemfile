@@ -23,7 +23,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'bcrypt'
 gem "paperclip"
+gem 'avatar_magick'
 gem 'figaro'
+gem 'cloudinary'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

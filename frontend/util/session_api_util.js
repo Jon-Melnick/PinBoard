@@ -6,7 +6,6 @@ module.exports = {
       method: "POST",
       data: {user},
       success: function(newUser){
-        debugger
          callback(newUser)
       }
     });
@@ -23,12 +22,13 @@ module.exports = {
     });
   },
 
-  signout(callback){
+  signout(callback, cb){
     $.ajax({
       url: 'api/session',
       method: "DELETE",
       success: function(){
-         callback()
+         callback();
+         cb();
       }
     });
   }
