@@ -24,7 +24,7 @@ const LoginForm = React.createClass({
 
   redirectIfLoggedIn() {
     if (SessionStore.isUserLoggedIn()) {
-      hashHistory.push("/empty");
+      hashHistory.push("/profile");
     }
   },
 
@@ -49,33 +49,43 @@ const LoginForm = React.createClass({
 
 	render() {
 		return (
+      <div className='splash'>
+        <div className='splash-logo'>My PinBoard</div>
+        <div className='splash-logins'>
         <div className='login-box'>
           <form className='login'>
 
-            <h1>Log In</h1>
-              <label>Email: </label>
+            <h1>Sign In</h1>
+
                 <input type="text"
                        value={this.state.username}
                        onChange={this.update("email_address")}
-                       className="login-input" />
+                       className="login-input"
+                       placeholder="email"/>
 
               <br/>
 
-              <label>Password: </label>
+
                 <input type="password"
                        value={this.state.password}
                        onChange={this.update("password")}
-                       className="login-input" />
+                       className="login-input"
+                       placeholder="password"/>
              <br/>
 
-             <button onClick={this.handleSubmit}>Login</button>
+             <button onClick={this.handleSubmit}>Sign In</button>
           </form>
 
-          <div>
-            <p>Need an account? Sign in!</p>
-            <button onClick={this.signUp}>Sign Up</button>
-          </div>
         </div>
+        <div className="login-box">
+          <h1>New User</h1>
+          <button onClick={this.signUp}>Sign Up</button>
+          <br></br>
+          <button onClick={this.signUp}>Demo</button>
+        </div>
+        </div>
+        <div className='splash-details'>details for the site</div>
+      </div>
 		);
 	}
 });

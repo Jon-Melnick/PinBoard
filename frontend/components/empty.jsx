@@ -6,7 +6,11 @@ const SessionActions = require('../actions/session_actions'),
 const Empty = React.createClass({
 
   handleClick(){
-    SessionActions.logout()
+    SessionActions.logout(this.redirect)
+  },
+
+  redirect(){
+    hashHistory.push('/login')
   },
 
   render(){

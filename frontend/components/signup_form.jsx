@@ -1,5 +1,6 @@
 const React = require('react'),
       Link = require('react-router').Link,
+      WhyJoin = require('./why_join_signup'),
       hashHistory = require('react-router').hashHistory,
       SessionActions = require('../actions/session_actions'),
       SessionStore = require('../stores/session_store');
@@ -26,7 +27,7 @@ const SignupForm = React.createClass({
 
   redirectIfLoggedIn() {
     if (SessionStore.isUserLoggedIn()) {
-      hashHistory.push("/empty");
+      hashHistory.push("/profile");
     }
   },
 
@@ -48,9 +49,13 @@ const SignupForm = React.createClass({
 
 	render() {
 		return (
-          <form className='signup'>
 
-            <h1>Log In</h1>
+        <div className="signup-page">
+          <div className='signup-form-bg'>
+
+          <form className='signup-form'>
+
+            <h1>Sign Up</h1>
               <label>Email: </label>
                 <input type="text"
                        value={this.state.username}
@@ -80,8 +85,11 @@ const SignupForm = React.createClass({
                          className="login-input" />
                <br/>
 
-             <button onClick={this.handleSubmit}>Login</button>
+             <button onClick={this.handleSubmit} className='button'>Create Account</button>
           </form>
+        </div>
+        <WhyJoin/>
+      </div>
 		);
 	}
 });

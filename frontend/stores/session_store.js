@@ -18,7 +18,7 @@ const _logout = function(){
 };
 
 SessionsStore.isUserLoggedIn = function(){
-  return !!_currentUser.id;
+    return _currentUser === undefined ? false : !!_currentUser.id;
 };
 
 SessionsStore.currentUser = function() {

@@ -11,7 +11,7 @@ module.exports = {
     SessionApi.login(formData, this.receiveCurrentUser)
   },
 
-  logout(){
+  logout(cb){
     SessionApi.signout(this.receiveCurrentUser, cb)
   },
 
