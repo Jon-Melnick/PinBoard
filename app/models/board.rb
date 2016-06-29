@@ -6,4 +6,6 @@ class Board < ActiveRecord::Base
     primary_key: :id,
     class_name: 'User'
 
+  # has_many :team_members
+
 end

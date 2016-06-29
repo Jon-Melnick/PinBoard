@@ -21,7 +21,7 @@ creator_id  | integer   | not null, foreign key (references users), indexed
 title       | string    | not null
 description | string    |
 
-## boardNusers
+## teams
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
