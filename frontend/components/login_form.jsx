@@ -29,7 +29,6 @@ const LoginForm = React.createClass({
   },
 
 	handleSubmit(e) {
-		e.preventDefault();
 
 		const formData = {
 			email_address: this.state.email_address,
@@ -47,6 +46,26 @@ const LoginForm = React.createClass({
     return (e) => this.setState({[property]: e.target.value});
   },
 
+  _demo(){
+    this.setState({ email_address: "", password: "" });
+    const email = "Demo";
+    const password= "password";
+    let emailCount = 0;
+    let passwordCount = 0;
+    let interval = setInterval(()=>{
+      if (emailCount < 4) {
+        this.setState({email_address: `${this.state.email_address}` + email[emailCount]});
+        emailCount ++;
+      } else if (passwordCount < 8) {
+        this.setState({password: `${this.state.password}` + password[passwordCount]});
+        passwordCount ++;
+      } else {
+        this.handleSubmit();
+        clearInterval(interval);
+      }
+    }, 100);
+  },
+
 	render() {
 		return (
       <div className='splash'>
@@ -58,7 +77,7 @@ const LoginForm = React.createClass({
             <h1>Sign In</h1>
 
                 <input type="text"
-                       value={this.state.username}
+                       value={this.state.email_address}
                        onChange={this.update("email_address")}
                        className="login-input"
                        placeholder="email"/>
@@ -81,7 +100,7 @@ const LoginForm = React.createClass({
           <h1>New User</h1>
           <button onClick={this.signUp}>Sign Up</button>
           <br></br>
-          <button onClick={this.signUp}>Demo</button>
+          <button onClick={this._demo}>Demo</button>
         </div>
         </div>
         <div className='splash-details'>details for the site</div>

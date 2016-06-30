@@ -114,6 +114,7 @@ body {
 	justify-content: center;
 }
 
+
 .signup-form-bg{
 	background-image: url('http://orig05.deviantart.net/36fd/f/2012/128/b/5/i_made_a_piece_of_paper__lol__by_derbywind213-d4yyjt0.png');
 	background-repeat: no-repeat;
@@ -152,8 +153,12 @@ body {
 
 .why-join{
 	width: 40%;
-	height: 80%;
-	background-color: rgba(255, 0, 0, 0.5);
+	height: 100%;
+	background-image: url('sidebar.png');
+	/*background-color: white;*/
+	background-size: contain;
+	background-repeat: no-repeat;
+
 }
 
 .button {
@@ -217,6 +222,7 @@ body {
 
 .nav-profile {
 	float: right;
+	position: relative;
 }
 
 .nav-profile:hover {
@@ -231,6 +237,7 @@ body {
 	position: absolute;
 	right: 0px;
 	top: 50px;
+	z-index: 9999;
 }
 
 .menu li:hover {
@@ -285,6 +292,7 @@ body {
 	text-align: center;
 	font-size: 30px;
 	margin: 20px;
+	display: flex;
 }
 
 
@@ -302,15 +310,17 @@ body {
 
 
 .profile-details{
-	margin-left: 5%;
+	margin: 20px;
 	float: left;
-	width: 40%;
+	width: 500px;
+	/*width: 40%;*/
 	height: 500px;
 	border: 1px black solid;
+
 }
 
 .profile-info {
-	float: right;
+	float: left;
 	height: 100px;
 	margin: 30px 10px;
 	padding: 10px;
@@ -318,9 +328,10 @@ body {
 }
 
 .profile-boards {
-	margin-left: 5%;
+	margin: 20px;
 	float: left;
-	width: 40%;
+	width: 500px;
+	/*width: 40%;*/
 	height: 500px;
 	border: 1px black solid;
 }
@@ -339,4 +350,57 @@ body {
 	width: 90%;
 	height: 30%;
 	border: 1px black solid;
+}
+
+.board-thumb {
+	width: 100px;
+	height: 100px;
+	float: left;
+	border: 1px solid black;
+	margin: 10px;
+	padding: 5px;
+}
+
+.board-home{
+	height: 800px;
+	background-image: url('http://ieslaorden.es/wp-content/uploads/2011/07/corcho.jpg');
+	background-size: contain;
+	/*background-repeat: no-repeat;*/
+	width: 100%;
+	position: relative;
+}
+
+.board-nav{
+	height: 400px;
+	width: 50px;
+	background-color: #C7D0D5;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	border-bottom-left-radius: 20px;
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	padding-top: 30px;
+}
+
+.board-nav li{
+	margin-bottom: 20px;
+	position: relative;
+}
+
+.board-nav-menu {
+	position: absolute;
+	height: 100%;
+	min-width: 200px;
+	right: 45px;
+	background-color: orange;
+	white-space: nowrap;
+	padding: 10px;
+}
+
+.nav-box {
+	width: 100%;
+	border: 1px solid black;
+	background-color: blue;
 }

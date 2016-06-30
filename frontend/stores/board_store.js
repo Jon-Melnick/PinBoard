@@ -22,6 +22,10 @@ function resetBoards (boards){
   });
 };
 
+BoardsStore.find = function (id){
+  return _boards[id]
+}
+
 BoardsStore.__onDispatch = function(payload){
   switch (payload.actionType) {
     case BoardConstants.BOARDS_RECEIVED:
