@@ -3,12 +3,26 @@ const BoardApi = require('../util/board_api_util'),
       dispatcher = require('../dispatcher/dispatcher');
 
 module.exports = {
-  fetchAllBoards = function(){
+
+  fetchAllBoards(){
     BoardApi.fetchAllBoards(this.receiveAllBoards)
   },
 
-  fetchBoard = function (id) {
+  fetchBoard(id) {
     BoardApi.fetchBoard(id, this.receiveBoard)
+  },
+
+  receiveAllBoards(boards){
+    dispatcher.dispatch({
+      actionType: BoardConstants.BOARDS_RECEIVED,
+      boards: boards
+    });
+  },
+
+  receiveBoard(board){
+    dispatcher.dispatch({
+      actionType: BoardConstants.BOARD_RECEIVED,
+      board: board
+    });
   }
-  
 }

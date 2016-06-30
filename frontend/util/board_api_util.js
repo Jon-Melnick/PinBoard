@@ -1,10 +1,10 @@
 module.exports = {
-  fetchAllBoards(cb){
+  fetchAllBoards(callback){
     $.ajax({
       url: 'api/boards',
       method: "GET",
-      success: function(boards){
-         console.log(boards)
+      success: (boards) => {
+         callback(boards)
       }
     })
   },
