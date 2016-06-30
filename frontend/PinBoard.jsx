@@ -14,7 +14,9 @@ const Login = require('./components/login_form'),
       NavBar = require('./components/navbar/navbar'),
       Empty = require('./components/empty');
 window.SessionApi = require('./util/session_api_util');
+window.BoardActions = require('./actions/board_actions');
 window.SessionsStore = require('./stores/session_store');
+window.BoardsStore = require('./stores/board_store');
 
 
 const App = React.createClass({
