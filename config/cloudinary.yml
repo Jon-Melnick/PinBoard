@@ -1,0 +1,9 @@
+development:
+  cloud_name: "arkean"
+  api_key: "414293981595687"
+  api_secret: "G5eb4Ntq74vFpWKHk4a2qOlS89Q"
+
+production:
+  cloud_name: "arkean"
+  api_key: "414293981595687"
+  api_secret: "G5eb4Ntq74vFpWKHk4a2qOlS89Q"

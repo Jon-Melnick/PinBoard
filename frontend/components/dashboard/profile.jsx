@@ -24,9 +24,8 @@ const Profile = React.createClass({
   render(){
     return (
       <div className='profile'>
-        <h1>Profile</h1>
-        <ProfileDetail user={this.state.user} />
-        <ProfileBoards />
+          <ProfileDetail user={this.state.user} />
+          <ProfileBoards />
       </div>
     )
   }

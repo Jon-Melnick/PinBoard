@@ -12,9 +12,13 @@ const Login = require('./components/login_form'),
       SessionsActions = require('./actions/session_actions'),
       Profile = require('./components/dashboard/profile'),
       NavBar = require('./components/navbar/navbar'),
-      Empty = require('./components/empty');
+      Empty = require('./components/empty'),
+      BoardIndex = require('./components/board/board');
+
 window.SessionApi = require('./util/session_api_util');
 window.BoardActions = require('./actions/board_actions');
+window.UsersActions = require('./actions/users_actions');
+window.UsersStore = require('./stores/users_store');
 window.SessionsStore = require('./stores/session_store');
 window.BoardsStore = require('./stores/board_store');
 
@@ -37,7 +41,9 @@ const routes = (
     <Route path="/" component={ App }>
       <IndexRoute component={ Profile } onEnter={ _ensureLoggedIn }/>
       <Route path="/profile" component={ Profile } onEnter={ _ensureLoggedIn }/>
+      <Route path="/boards/:boardId" component={ BoardIndex } />
       <Route path="/empty" component={ Empty } />
+
     </Route>
   </Router>
 )

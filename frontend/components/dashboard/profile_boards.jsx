@@ -1,5 +1,6 @@
 const React = require('react'),
       BoardAction = require('../../actions/board_actions'),
+      BoardThumb = require('./board_thumbnails'),
       BoardStore = require('../../stores/board_store');
 
 const ProfileBoards = React.createClass({
@@ -21,17 +22,16 @@ const ProfileBoards = React.createClass({
   },
 
   render(){
-    let board = <p>you currently have no boards</p>
+    let board = <li className='board-thumb'>you currently have no boards</li>
     if (this.state.boards.length > 0) {
-      console.log(this.state.board)
       board = this.state.boards.map((board) => {
-        return <div key={board.id}>{board.title}</div>;
+        return <BoardThumb key={board.id} board={board}/>
       })
     }
     return(
       <div className='profile-boards'>
         <h1>These are your boards: </h1>
-        <div className='profile-boards-team'><h1>{board}</h1></div>
+        <div className='profile-boards-team'><ul>{board}</ul></div>
         <div className='profile-boards-private'><h1>Private Boards</h1></div>
       </div>
     )

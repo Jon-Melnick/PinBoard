@@ -7,12 +7,10 @@
     "doc": "docs",
     "test": "test"
   },
-
   "engines": {
-  "node": "5.9.1",
-  "npm": "3.7.3"
+    "node": "5.9.1",
+    "npm": "3.7.3"
   },
-
   "scripts": {
     "postinstall": "./node_modules/.bin/webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -36,6 +34,7 @@
     "flux": "^2.1.1",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
+    "react-icons": "^2.1.0",
     "react-router": "^2.5.1",
     "webpack": "^1.13.1"
   }

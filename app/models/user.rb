@@ -8,8 +8,25 @@ class User < ActiveRecord::Base
 
   attr_reader :password
 
-  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
-  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+  # extend Dragonfly::Model
+  # include Avatarable
+
+  # dragonfly_accessor :photo
+
+  # def avatar
+  #   image = Dragonfly.app.generate(:initial_avatar, avatar_text)
+  # end
+
+  # has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  # validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
+  attr_accessor :avatar
+
+  mount_uploader :avatar, AvatarUploader
+
+  def avatar_text
+    first_name.chr
+  end
 
   def full_name
     if first_name && last_name
