@@ -6,6 +6,5 @@ class CreateBoards < ActiveRecord::Migration
       t.text :description
       t.timestamps null: false
     end
-    add_index :boards, :creator_id, unique: true
   end
 end
