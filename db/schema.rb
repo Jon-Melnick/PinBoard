@@ -24,8 +24,6 @@ ActiveRecord::Schema.define(version: 20160629221321) do
     t.datetime "updated_at",                       null: false
   end
 
-  add_index "boards", ["creator_id"], name: "index_boards_on_creator_id", unique: true, using: :btree
-
   create_table "teams", force: :cascade do |t|
     t.integer  "team_member_id", null: false
     t.integer  "board_id",       null: false

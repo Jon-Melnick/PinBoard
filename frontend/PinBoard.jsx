@@ -42,7 +42,6 @@ const routes = (
 
 
 function _ensureLoggedIn(nextState, replace) {
-  console.log(SessionStore.isUserLoggedIn())
     if (!SessionStore.isUserLoggedIn()) {
       replace('/login');
     }
