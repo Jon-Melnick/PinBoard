@@ -1,0 +1,4 @@
+module.exports = {
+  PINS_RECEIVED: 'PINS_RECEIVED',
+  PIN_RECEIVED: 'PIN_RECEIVED'
+}

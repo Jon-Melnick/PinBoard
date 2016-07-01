@@ -24,7 +24,7 @@ const Profile = React.createClass({
   render(){
     return (
       <div className='profile'>
-          <ProfileDetail user={this.state.user} />
+          <ProfileDetail user={this.state.user}/>
           <ProfileBoards />
       </div>
     )

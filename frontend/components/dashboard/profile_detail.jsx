@@ -4,6 +4,10 @@ const React = require('react');
 const ProfileDetail = React.createClass({
 
   render(){
+    var style = {
+      background: `green`,
+    };
+    
     return (
       <div className='profile-details'>
         <div className='profile-pic'><p>Profile Photo</p></div>

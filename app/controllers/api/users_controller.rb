@@ -12,6 +12,7 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login(@user)
+      UserPreference.create!(user_id: @user.id, color: UserPreference.color)
       render 'api/users/show'
     else
       @errors = @user.errors
