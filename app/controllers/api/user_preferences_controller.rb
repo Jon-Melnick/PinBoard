@@ -11,7 +11,7 @@ class Api::UserPreferencesController < ApplicationController
   end
 
   def update
-    @user_preferences = UserPreference.find_by(user_id: params[:pref][:user_id])
+    @user_preferences = UserPreference.find_by(user_id: params[:preference][:user_id])
     if @user_preferences.update_attributes(pref_params)
       render json: @user_preferences
     else
@@ -26,7 +26,7 @@ class Api::UserPreferencesController < ApplicationController
   private
 
   def pref_params
-    params.require(:pref)permit(:user_id, :color)
+    params.require(:preference)permit(:user_id, :color)
   end
 
 end
