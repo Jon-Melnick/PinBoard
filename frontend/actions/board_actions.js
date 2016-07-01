@@ -12,6 +12,10 @@ module.exports = {
     BoardApi.fetchBoard(id, this.receiveBoard)
   },
 
+  createBoard(board){
+    BoardApi.createBoard(board, this.receiveBoard)
+  },
+
   receiveAllBoards(boards){
     dispatcher.dispatch({
       actionType: BoardConstants.BOARDS_RECEIVED,

@@ -22,6 +22,10 @@ function resetBoards (boards){
   });
 };
 
+ function setBoard (board) {
+  _boards[board.id] = board;
+};
+
 BoardsStore.find = function (id){
   return _boards[id]
 }
@@ -32,7 +36,7 @@ BoardsStore.__onDispatch = function(payload){
       resetBoards(payload.boards);
       break;
     case BoardConstants.BOARD_RECEIVED:
-      updateBoard(payload.board)
+      setBoard(payload.board)
       break;
   };
   BoardsStore.__emitChange();

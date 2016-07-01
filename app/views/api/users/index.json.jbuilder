@@ -6,4 +6,5 @@ json.array! @users do |user|
   json.full_name user.full_name
   json.avatar_text user.avatar_text
   json.avatar user.avatar
+  json.preference user.preference
 end

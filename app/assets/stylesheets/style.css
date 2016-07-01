@@ -362,11 +362,11 @@ body {
 }
 
 .board-home{
-	height: 800px;
+	height: 700px;
 	background-image: url('http://ieslaorden.es/wp-content/uploads/2011/07/corcho.jpg');
 	background-size: contain;
-	/*background-repeat: no-repeat;*/
-	width: 100%;
+	background-repeat:repeat-x;
+	min-width: 100%;
 	position: relative;
 }
 
@@ -403,4 +403,32 @@ body {
 	width: 100%;
 	border: 1px solid black;
 	background-color: blue;
+}
+
+.board-form {
+	height: 300px;
+	width: 300px;
+	position: absolute;
+	background-color: blue;
+}
+
+
+.pin {
+  background-image: url(https://openclipart.org/image/800px/svg_to_png/131797/1302375938.png);
+  background-size: contain;
+  position: absolute;
+  height: 150px;
+  width: 150px;
+  z-index: 0;
+}
+
+.tack {
+	height: 30px;
+	width: 30px;
+	position: absolute;
+	left: 60px;
+}
+
+.tack:hover {
+	cursor: pointer;
 }

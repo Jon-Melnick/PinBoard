@@ -4,6 +4,7 @@ const React = require('react'),
       Router = ReactRouter.Router,
       Route = ReactRouter.Route,
       IndexRoute = ReactRouter.IndexRoute,
+      Modal = require('react-modal'),
       hashHistory = require('react-router').hashHistory;
 
 const Login = require('./components/login_form'),
@@ -12,15 +13,9 @@ const Login = require('./components/login_form'),
       SessionsActions = require('./actions/session_actions'),
       Profile = require('./components/dashboard/profile'),
       NavBar = require('./components/navbar/navbar'),
-      Empty = require('./components/empty'),
+      NewBoard = require('./components/dashboard/board_form'),
       BoardIndex = require('./components/board/board');
 
-window.SessionApi = require('./util/session_api_util');
-window.BoardActions = require('./actions/board_actions');
-window.UsersActions = require('./actions/users_actions');
-window.UsersStore = require('./stores/users_store');
-window.SessionsStore = require('./stores/session_store');
-window.BoardsStore = require('./stores/board_store');
 
 
 const App = React.createClass({
@@ -40,9 +35,10 @@ const routes = (
     <Route path="/signup" component={ Signup } />
     <Route path="/" component={ App }>
       <IndexRoute component={ Profile } onEnter={ _ensureLoggedIn }/>
-      <Route path="/profile" component={ Profile } onEnter={ _ensureLoggedIn }/>
+      <Route path="/profile" component={ Profile } onEnter={ _ensureLoggedIn }>
+        <Route path="/profile/newboard" component={NewBoard}/>
+      </Route>
       <Route path="/boards/:boardId" component={ BoardIndex } />
-      <Route path="/empty" component={ Empty } />
 
     </Route>
   </Router>
@@ -59,6 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (window.currentUser) {
     SessionsActions.receiveCurrentUser(window.currentUser);
   }
-
+  Modal.setAppElement(document.body);
   ReactDOM.render(routes, document.getElementById('content'))
 });

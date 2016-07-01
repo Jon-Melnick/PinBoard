@@ -24,6 +24,11 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
 
+  has_one :preference, #method_name, ends with s
+    primary_key: :id, #typically id
+    foreign_key: :user_id, #column_name_id
+    class_name: 'UserPreference' #class_name ex. (String)
+
   def avatar_text
     first_name.chr
   end
