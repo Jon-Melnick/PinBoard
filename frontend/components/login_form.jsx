@@ -70,7 +70,6 @@ const LoginForm = React.createClass({
 		return (
       <div className='splash'>
         <div className='splash-logo'>My PinBoard</div>
-        <div className='splash-logins'>
         <div className='login-box'>
           <form className='login'>
 
@@ -93,15 +92,11 @@ const LoginForm = React.createClass({
              <br/>
 
              <button onClick={this.handleSubmit}>Sign In</button>
+             <button onClick={this.signUp}>Sign Up</button>
+             <br></br>
+             <button onClick={this._demo}>Demo</button>
           </form>
 
-        </div>
-        <div className="login-box">
-          <h1>New User</h1>
-          <button onClick={this.signUp}>Sign Up</button>
-          <br></br>
-          <button onClick={this._demo}>Demo</button>
-        </div>
         </div>
         <div className='splash-details'>details for the site</div>
       </div>

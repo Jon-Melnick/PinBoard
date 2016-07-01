@@ -3,6 +3,7 @@ const React = require('react'),
       BoardThumb = require('./board_thumbnails'),
       hashHistory = require('react-router').hashHistory,
       BoardForm = require('./board_form'),
+      BoardFormModal = require('./new_board_modal'),
       Modal = require('react-modal'),
       BoardStore = require('../../stores/board_store');
 
@@ -22,6 +23,7 @@ const ProfileBoards = React.createClass({
 
   onChange(){
     this.setState({boards: BoardStore.all()});
+    console.log({boards: BoardStore.all()})
   },
 
   boardForm(){
@@ -46,8 +48,9 @@ const ProfileBoards = React.createClass({
         <Modal
           isOpen={this.state.modalOpen}
           onRequestClose={this.onModalClose}
+          style={BoardFormModal}
           >
-          <BoardForm onModalClose={this.onModalClose}/>
+          <BoardForm onModalClose={this.onModalClose} user={this.props.user}/>
         </Modal>
         <h1>These are your boards: </h1>
         <div className='profile-boards-team'><ul>{boards}{board}</ul></div>

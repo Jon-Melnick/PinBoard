@@ -29,6 +29,15 @@ class User < ActiveRecord::Base
     foreign_key: :user_id, #column_name_id
     class_name: 'UserPreference' #class_name ex. (String)
 
+  has_many :team_boards, #method_name, ends with s
+    primary_key: :id, #typically id
+    foreign_key: :team_member_id, #column_name_id
+    class_name: 'Team' #class_name ex. (String)
+
+  has_many :boards, #method name
+    through: :team_boards,
+    source: :board
+
   def avatar_text
     first_name.chr
   end

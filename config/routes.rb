@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy, :show]
     resources :boards, only: [:create, :destroy, :show, :index]
     resources :pins, only: [:create, :destroy, :show, :index, :update]
+    resources :teams, only: [:create, :show, :update, :index]
   end
 
   # Avatar routes

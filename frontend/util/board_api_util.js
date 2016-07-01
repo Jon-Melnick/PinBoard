@@ -19,11 +19,12 @@ module.exports = {
     })
   },
 
-  createBoard(board, cb){
+  createBoard(board, team, cb){
     $.ajax({
       url: `api/boards`,
       method: "POST",
-      data: {board: board},
+      data: {board: board,
+             team},
       success: function(newBoard){
          cb(newBoard)
       }

@@ -1,7 +1,7 @@
 class Api::BoardsController < ApplicationController
 
   def index
-    @boards = Board.all.where(creator_id: current_user.id)
+    @boards = current_user.boards
   end
 
   def show
@@ -12,6 +12,9 @@ class Api::BoardsController < ApplicationController
     @board = Board.new(board_params)
     @board.creator_id = current_user.id
     if @board.save
+      team_params.each do |member_id|
+        Team.create!(board_id: @board.id, team_member_id: member_id)
+      end
       render json: @board
     else
       @errors = @errors.errors
@@ -32,6 +35,9 @@ class Api::BoardsController < ApplicationController
 
   private
   def board_params
-    params.require(:board).permit(:title, :description)
+    params.require(:board).permit(:title, :description, :team)
+  end
+  def team_params
+    params[:team][:team]
   end
 end
