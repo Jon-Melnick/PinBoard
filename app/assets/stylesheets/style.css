@@ -167,7 +167,7 @@ body {
 .why-join{
 	width: 40%;
 	height: 100%;
-	background-image: url('sidebar.png');
+	background-image: url('http://res.cloudinary.com/arkean/image/upload/v1467410718/sidebar_huvd7c.png');
 	/*background-color: white;*/
 	background-size: contain;
 	background-repeat: no-repeat;
@@ -267,7 +267,7 @@ body {
 	height: 100%;
 	width: 100%;
 	position: absolute;
-	background-image: url("Fotolia3.jpg");
+	background-image: url("http://res.cloudinary.com/arkean/image/upload/v1467410717/Fotolia3_j6hi84.jpg");
 	background-size: auto;
 	background-position: center;
 	display: flex;
@@ -437,7 +437,7 @@ body {
 /*https://openclipart.org/image/800px/svg_to_png/131797/1302375938.png*/
 
 .pin {
-  background-image: url('postitnote.png');
+  background-image: url('http://res.cloudinary.com/arkean/image/upload/v1467410718/postitnote_isohbk.png');
   background-size: contain;
 	background-repeat: no-repeat;
   position: absolute;
