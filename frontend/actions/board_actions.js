@@ -12,8 +12,8 @@ module.exports = {
     BoardApi.fetchBoard(id, this.receiveBoard)
   },
 
-  createBoard(board){
-    BoardApi.createBoard(board, this.receiveBoard)
+  createBoard(board, team){
+    BoardApi.createBoard(board, team, this.receiveBoard)
   },
 
   receiveAllBoards(boards){

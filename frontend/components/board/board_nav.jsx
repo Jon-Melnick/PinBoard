@@ -1,4 +1,6 @@
-const React = require('react');
+const React = require('react'),
+      Modal = require('react-modal'),
+      PinForm = require('../pins/pin_form');
 
 import Team from 'react-icons/lib/ti/group';
 import NewNote from 'react-icons/lib/fa/sticky-note-o';
@@ -13,7 +15,8 @@ const SettingsMenu = require('./menu/settings');
 
 const closeAll = {team: false,
                   search: false,
-                  settings: false}
+                  settings: false,
+                  modalOpen: false}
 
 const BoardNav = React.createClass({
   getInitialState(){
@@ -27,7 +30,11 @@ const BoardNav = React.createClass({
 
   newPin(){
     this.setState(closeAll)
-    this.setState({team: this.state.team === false ? true : false})
+    this.setState({modalOpen: true})
+  },
+
+  onModalClose(){
+    this.setState({modalOpen: false})
   },
 
   toggleSearch(){
@@ -42,15 +49,22 @@ const BoardNav = React.createClass({
 
   render(){
     let menu;
-
-
     return (
       <div className='board-nav'>
         {menu}
+        <Modal
+          isOpen={this.state.modalOpen}
+          onRequestClose={this.onModalClose}
+          >
+          <PinForm onModalClose={this.onModalClose} boardId={this.props.boardId}/>
+        </Modal>
         <ul>
           <li id="team" onClick={this.toggleTeam}>{this.state.team ? <TeamMenu /> : menu}<Team size={40} color='red' /></li>
+
           <li onClick={this.newPin}><NewNote size={40} color='red'/></li>
+
           <li id="search" onClick={this.toggleSearch}>{this.state.search ? <SearchMenu /> : menu}<Search size={40} color='red'/></li>
+
           <li id="settings" onClick={this.toggleSettings}>{this.state.settings ? <SettingsMenu /> : menu}<Settings size={40} color='red'/></li>
         </ul>
       </div>

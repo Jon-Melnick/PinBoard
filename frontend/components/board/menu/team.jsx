@@ -2,6 +2,7 @@ const React = require('react');
 
 
 const TeamMenu = React.createClass({
+
   render(){
     return(
       <div className='board-nav-menu'>

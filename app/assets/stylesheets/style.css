@@ -59,9 +59,14 @@ body {
 	height: 30%;
 	font-family: 'Indie Flower', cursive;
 	font-style: italic;
-	color: #f5f5f5;
+	color: #C7D0D5;
 	text-shadow: 1px 1px black;
-	line-height: 300px;
+	text-align: center;
+	width: 600px;
+	line-height: 250px;
+	/*background-image: url('tornPaperSquare.png');*/
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .splash-logins {
@@ -79,10 +84,11 @@ body {
 
 .login-box{
   width: 250px;
-  border: 1px black solid;
-  height: 200px;
-  background-color: white;
+  /*border: 1px black solid;*/
+  /*height: 200px;*/
+  /*background-color: white;*/
   text-align: center;
+	justify-content: flex-end;
   margin: 0px 5%;
 }
 
@@ -94,11 +100,18 @@ body {
 
 .login-box input {
   margin-top: 10px;
+	border-style: none;
+	background-color: transparent;
+	border-bottom: 1px solid;
+	width: 180px;
+	font-size: larger;
 }
 
 .login-box button {
   margin-top: 20px;
 }
+
+.login-box input:focus { outline: none; }
 
 
 /* signup page */
@@ -251,15 +264,16 @@ body {
 
 
 .splash {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  background-image: url("http://ieslaorden.es/wp-content/uploads/2011/07/corcho.jpg");
-  background-size: cover;
-  display: flex;
-  align-items: center;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	background-image: url("Fotolia3.jpg");
+	background-size: auto;
+	background-position: center;
+	display: flex;
+	align-items: center;
 	flex-direction: column;
-  justify-content:space-around;
+	justify-content:space-around;
 }
 
 .log-in-form {
@@ -359,6 +373,15 @@ body {
 	border: 1px solid black;
 	margin: 10px;
 	padding: 5px;
+	background-image: url('http://ieslaorden.es/wp-content/uploads/2011/07/corcho.jpg');
+	background-size: cover;
+	background-position: right;
+	text-align: center;
+	text-decoration: underline;
+}
+
+.board-thumb:hover{
+	cursor: pointer;
 }
 
 .board-home{
@@ -407,15 +430,16 @@ body {
 
 .board-form {
 	height: 300px;
-	width: 300px;
-	position: absolute;
-	background-color: blue;
+	width: 400px;
 }
 
 
+/*https://openclipart.org/image/800px/svg_to_png/131797/1302375938.png*/
+
 .pin {
-  background-image: url(https://openclipart.org/image/800px/svg_to_png/131797/1302375938.png);
+  background-image: url('postitnote.png');
   background-size: contain;
+	background-repeat: no-repeat;
   position: absolute;
   height: 150px;
   width: 150px;

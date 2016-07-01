@@ -35,7 +35,6 @@ const BoardIndex = React.createClass({
   },
 
   render(){
-    console.log(this.state.pins);
     let pins;
     if (this.state.pins.length > 0) {
       pins = this.state.pins.map((pin)=> {
@@ -44,7 +43,7 @@ const BoardIndex = React.createClass({
     return (
       <div className='board-home'>
         {pins}
-        <BoardNav />
+        <BoardNav boardId={this.state.boardId} board={this.state.board}/>
       </div>
 
     )
