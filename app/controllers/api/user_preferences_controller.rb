@@ -26,7 +26,7 @@ class Api::UserPreferencesController < ApplicationController
   private
 
   def pref_params
-    params.require(:preference)permit(:user_id, :color)
+    params.require(:preference).permit(:user_id, :color)
   end
 
 end
