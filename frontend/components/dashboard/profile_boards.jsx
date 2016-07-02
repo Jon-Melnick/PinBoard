@@ -23,7 +23,6 @@ const ProfileBoards = React.createClass({
 
   onChange(){
     this.setState({boards: BoardStore.all()});
-    console.log({boards: BoardStore.all()})
   },
 
   boardForm(){
@@ -37,10 +36,18 @@ const ProfileBoards = React.createClass({
 
   render(){
     let boards;
-    let board = <li className='board-thumb' onClick={this.boardForm}>creat new board</li>
+    let team_boards;
+    let board = <li className='board-thumb' onClick={this.boardForm}>create new board</li>
     if (this.state.boards.length > 0) {
       boards = this.state.boards.map((board) => {
-        return <BoardThumb key={board.id} board={board}/>
+        if (board.team_members.length === 1) {
+          return <BoardThumb key={board.id} board={board}/>
+        }
+      })
+      team_boards = this.state.boards.map((board) => {
+        if (board.team_members.length > 1) {
+          return <BoardThumb key={board.id} board={board}/>
+        }
       })
     }
     return(
@@ -53,8 +60,8 @@ const ProfileBoards = React.createClass({
           <BoardForm onModalClose={this.onModalClose} user={this.props.user}/>
         </Modal>
         <h1>These are your boards: </h1>
-        <div className='profile-boards-team'><ul>{boards}{board}</ul></div>
-        <div className='profile-boards-private'><h1>Private Boards</h1></div>
+        <div className='profile-boards-team'><ul><h1>Team Boards</h1>{team_boards}{board}</ul></div>
+        <div className='profile-boards-private'><h1>Private Boards</h1><ul>{boards}</ul></div>
       </div>
     )
   }

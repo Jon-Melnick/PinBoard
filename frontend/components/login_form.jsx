@@ -46,7 +46,8 @@ const LoginForm = React.createClass({
     return (e) => this.setState({[property]: e.target.value});
   },
 
-  _demo(){
+  _demo(e){
+    e.preventDefault();
     this.setState({ email_address: "", password: "" });
     const email = "Demo";
     const password= "password";
@@ -92,9 +93,11 @@ const LoginForm = React.createClass({
              <br/>
 
              <button onClick={this.handleSubmit}>Sign In</button>
-             <button onClick={this.signUp}>Sign Up</button>
+             <br></br>
+             <span className='small-text'> or click on something below</span>
              <br></br>
              <button onClick={this._demo}>Demo</button>
+             <button onClick={this.signUp}>Sign Up</button>
           </form>
 
         </div>

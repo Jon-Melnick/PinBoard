@@ -17,6 +17,8 @@ var React = require('react'),
 
 
     render: function () {
+			console.log(this.props.pin)
+			console.log(this.props.users)
       return (
 				<Draggable
         handle=".handle"
@@ -26,7 +28,9 @@ var React = require('react'),
         onStop={this.handleStop, this.wtf}>
         <div className="pin" onDoubleClick={this.changeZ}>
           <div className="handle tack"></div><br/>
-          <div>{this.props.pin.title}</div>
+					<div>{this.props.pin.title}</div>
+          <div>{this.props.pin.body}</div>
+
         </div>
       </Draggable>
       );
