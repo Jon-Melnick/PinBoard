@@ -5,10 +5,14 @@ const TeamMenu = React.createClass({
 
   render(){
     return(
-      <div className='board-nav-menu'>
-        <h1>Team Members</h1>
 
-      </div>
+        <ul className='board-nav-menu'>
+          <li><h1>Team Members</h1></li>
+          {this.props.team.map((member => {
+            return <li key={member.id}>{member.name}</li>
+          }))}
+        </ul>
+
     )
   }
 })

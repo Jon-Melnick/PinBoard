@@ -32,12 +32,18 @@ const BoardForm = React.createClass({
   },
 
   handleInvite(e){
-    let selected = document.getElementById('inviting')
+    let selected = document.getElementById('inviting');
     let id = selected.options[selected.selectedIndex].value;
+    console.log(id);
+    if (id === '') {
+      return;
+    }
     this.state.team.push(id);
     name = selected.options[selected.selectedIndex].text;
     this.setState({invitees: this.state.invitees += `, ${name}`,
                    inviting: ''})
+    selected.options[selected.selectedIndex].setAttribute('disabled', 'disabled')
+    selected.options[0].setAttribute('selected', 'selected')
   },
 
   render(){
@@ -64,7 +70,7 @@ const BoardForm = React.createClass({
         <label>Invite someone!</label>
         <br></br>
         <select id='inviting'>
-          <option> --- </option>
+          <option value=''> --- </option>
           {options}
         </select>
         <button onClick={this.handleInvite}>Invite!</button>

@@ -43,7 +43,7 @@ const BoardIndex = React.createClass({
     return (
       <div className='board-home'>
         {pins}
-        <BoardNav boardId={this.state.boardId} board={this.state.board}/>
+        <BoardNav boardId={this.state.boardId} board={this.state.board} team={this.state.board.team_members}/>
       </div>
 
     )

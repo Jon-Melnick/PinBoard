@@ -45,7 +45,9 @@ table {
 	border-spacing: 0;
 }
 
-
+.small-text{
+	font-size: small;
+}
 
 /* other stuff */
 body {
@@ -84,12 +86,9 @@ body {
 
 .login-box{
   width: 250px;
-  /*border: 1px black solid;*/
-  /*height: 200px;*/
-  /*background-color: white;*/
   text-align: center;
 	justify-content: flex-end;
-  margin: 0px 5%;
+  margin: 30px 7%;
 }
 
 .login-box h1 {
@@ -103,8 +102,9 @@ body {
 	border-style: none;
 	background-color: transparent;
 	border-bottom: 1px solid;
-	width: 180px;
+	width: 250px;
 	font-size: larger;
+	text-align: center;
 }
 
 .login-box button {
@@ -112,7 +112,9 @@ body {
 }
 
 .login-box input:focus { outline: none; }
-
+.login-box input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px rgba(0, 0, 0, 0) inset;
+}
 
 /* signup page */
 
@@ -346,7 +348,7 @@ body {
 	float: left;
 	width: 500px;
 	/*width: 40%;*/
-	height: 500px;
+	/*height: 500px;*/
 	border: 1px black solid;
 }
 
@@ -415,12 +417,22 @@ body {
 .board-nav-menu {
 	position: absolute;
 	height: 100%;
-	min-width: 200px;
+	width: 200px;
 	right: 45px;
 	background-color: orange;
 	white-space: nowrap;
 	padding: 10px;
 }
+
+.board-nav-menu:first-child li {
+	margin-bottom: 10px;
+}
+
+.board-nav-menu li:hover{
+	background-color: red;
+}
+
+.board-nav-menu
 
 .nav-box {
 	width: 100%;

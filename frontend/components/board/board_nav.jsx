@@ -59,7 +59,7 @@ const BoardNav = React.createClass({
           <PinForm onModalClose={this.onModalClose} boardId={this.props.boardId}/>
         </Modal>
         <ul>
-          <li id="team" onClick={this.toggleTeam}>{this.state.team ? <TeamMenu /> : menu}<Team size={40} color='red' /></li>
+          <li id="team" onClick={this.toggleTeam}>{this.state.team ? <TeamMenu team={this.props.team}/> : menu}<Team size={40} color='red' /></li>
 
           <li onClick={this.newPin}><NewNote size={40} color='red'/></li>
 
