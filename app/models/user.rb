@@ -8,33 +8,17 @@ class User < ActiveRecord::Base
 
   attr_reader :password
 
-  # extend Dragonfly::Model
-  # include Avatarable
+  has_one :preference,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: 'UserPreference'
 
-  # dragonfly_accessor :photo
+  has_many :team_boards,
+    primary_key: :id,
+    foreign_key: :team_member_id,
+    class_name: 'Team'
 
-  # def avatar
-  #   image = Dragonfly.app.generate(:initial_avatar, avatar_text)
-  # end
-
-  # has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
-  # validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
-
-  attr_accessor :avatar
-
-  mount_uploader :avatar, AvatarUploader
-
-  has_one :preference, #method_name, ends with s
-    primary_key: :id, #typically id
-    foreign_key: :user_id, #column_name_id
-    class_name: 'UserPreference' #class_name ex. (String)
-
-  has_many :team_boards, #method_name, ends with s
-    primary_key: :id, #typically id
-    foreign_key: :team_member_id, #column_name_id
-    class_name: 'Team' #class_name ex. (String)
-
-  has_many :boards, #method name
+  has_many :boards, 
     through: :team_boards,
     source: :board
 

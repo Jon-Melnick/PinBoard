@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20160630232927) do
     t.text     "body"
     t.integer  "posX",       default: 100
     t.integer  "posY",       default: 100
-    t.integer  "zIndex",     default: 1
+    t.integer  "zIndex",     default: 5
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20160630232927) do
 
   create_table "user_preferences", force: :cascade do |t|
     t.integer  "user_id",    null: false
-    t.string   "color"
+    t.string   "user_color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -59,18 +59,15 @@ ActiveRecord::Schema.define(version: 20160630232927) do
   add_index "user_preferences", ["user_id"], name: "index_user_preferences_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "first_name",          null: false
-    t.string   "last_name",           null: false
-    t.string   "session_token",       null: false
-    t.string   "password_digest",     null: false
-    t.string   "email_address",       null: false
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
-    t.string   "avatar"
+    t.string   "first_name",      null: false
+    t.string   "last_name",       null: false
+    t.string   "session_token",   null: false
+    t.string   "password_digest", null: false
+    t.string   "email_address",   null: false
+    t.string   "user_pic_url"
+    t.string   "user_initials"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   add_index "users", ["email_address"], name: "index_users_on_email_address", unique: true, using: :btree

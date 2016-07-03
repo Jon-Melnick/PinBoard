@@ -7,10 +7,9 @@ const ProfileDetail = React.createClass({
     var style = {
       background: `green`,
     };
-
     return (
       <div className='profile-details'>
-        <ProfilePic />
+        <ProfilePic user={this.props.user}/>
         <ul className='profile-info'>
           <li>{this.props.user.email_address}</li>
           <li>{this.props.user.first_name}</li>

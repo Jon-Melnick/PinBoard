@@ -35,8 +35,7 @@ const routes = (
     <Route path="/signup" component={ Signup } />
     <Route path="/" component={ App }>
       <IndexRoute component={ Profile } onEnter={ _ensureLoggedIn }/>
-      <Route path="/profile" component={ Profile } onEnter={ _ensureLoggedIn }>
-        <Route path="/profile/newboard" component={NewBoard}/>
+      <Route path="/profile/:userId" component={ Profile } onEnter={ _ensureLoggedIn }>
       </Route>
       <Route path="/boards/:boardId" component={ BoardIndex } />
 

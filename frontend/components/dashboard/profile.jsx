@@ -8,12 +8,12 @@ const React = require('react'),
 
 const Profile = React.createClass({
   getInitialState(){
-    return ({user: SessionStore.currentUser()})
+    return ({currentUser: SessionStore.currentUser(),
+             user: {}})
   },
 
   componentDidMount(){
-    this.listener = SessionStore.addListener(this.onChange);
-    this.listener2 = UserStore.addListener(this.onChange);
+    this.listener = UserStore.addListener(this.onChange);
     UserActions.fetchAllUsers();
   },
 
@@ -22,13 +22,13 @@ const Profile = React.createClass({
   },
 
   onChange: function() {
-    this.setState({currentUser: SessionStore.currentUser()});
+    this.setState({user: UserStore.find(this.state.currentUser.id)});
   },
 
   render(){
     return (
       <div className='profile'>
-          <ProfileDetail user={this.state.user}/>
+          <ProfileDetail user={this.state.user} />
           <ProfileBoards user={this.state.user}/>
       </div>
     )

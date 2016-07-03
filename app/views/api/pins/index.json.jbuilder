@@ -7,4 +7,7 @@ json.array! @pins do |pin|
   json.posX pin.posX
   json.posY pin.posY
   json.zIndex pin.zIndex
+  json.author pin.author
+  json.author_name pin.author.full_name
+  json.board pin.board
 end

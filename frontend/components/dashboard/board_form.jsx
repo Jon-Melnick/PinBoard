@@ -19,7 +19,8 @@ const BoardForm = React.createClass({
     this.setState(state);
   },
 
-  handleSubmit(){
+  handleSubmit(e){
+    e.preventDefault();
     const formData = {
 			title: this.state.title,
 			description: this.state.description
@@ -32,9 +33,9 @@ const BoardForm = React.createClass({
   },
 
   handleInvite(e){
+    e.preventDefault();
     let selected = document.getElementById('inviting');
     let id = selected.options[selected.selectedIndex].value;
-    console.log(id);
     if (id === '') {
       return;
     }

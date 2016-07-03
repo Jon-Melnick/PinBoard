@@ -12,7 +12,7 @@ class Api::PinsController < ApplicationController
     @pin = Pin.new(pin_params)
     @pin.user_id = current_user.id
     if @pin.save
-      render json: @pin
+      render :show
     else
       @errors = @errors.errors
       render json: @errors, status: 422
@@ -23,7 +23,7 @@ class Api::PinsController < ApplicationController
     @pin = Pin.find(params[:id])
     if @pin
       @pin.update(pin_params)
-      render json: @pin
+      render :show
     else
       @errors = @errors.errors
       render json: @errors, status: 422

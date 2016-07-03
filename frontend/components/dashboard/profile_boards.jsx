@@ -9,7 +9,7 @@ const React = require('react'),
 
 const ProfileBoards = React.createClass({
   getInitialState(){
-    return({boards: BoardStore.all(), modalOpen: false})
+    return({boards: BoardStore.all(), modalOpen: false, boardDisplay: 'Team Boards'})
   },
 
   componentDidMount(){
@@ -33,25 +33,31 @@ const ProfileBoards = React.createClass({
     this.setState({modalOpen: false})
   },
 
-
-  render(){
-    let boards;
-    let team_boards;
-    let board = <li className='board-thumb' onClick={this.boardForm}>create new board</li>
+  getBoards(){
     if (this.state.boards.length > 0) {
-      boards = this.state.boards.map((board) => {
+      this.boards = this.state.boards.map((board) => {
         if (board.team_members.length === 1) {
           return <BoardThumb key={board.id} board={board}/>
         }
       })
-      team_boards = this.state.boards.map((board) => {
+      this.team_boards = this.state.boards.map((board) => {
         if (board.team_members.length > 1) {
           return <BoardThumb key={board.id} board={board}/>
         }
       })
     }
+  },
+
+  switchTab(e){
+    let tab = e.target.textContent;
+    this.setState({boardDisplay: tab})
+  },
+
+  render(){
+    let board = <li className='board-thumb' onClick={this.boardForm}>create new board</li>
+    this.getBoards();
     return(
-      <div className='profile-boards'>
+      <div className='profile-boards group'>
         <Modal
           isOpen={this.state.modalOpen}
           onRequestClose={this.onModalClose}
@@ -59,9 +65,11 @@ const ProfileBoards = React.createClass({
           >
           <BoardForm onModalClose={this.onModalClose} user={this.props.user}/>
         </Modal>
-        <h1>These are your boards: </h1>
-        <div className='profile-boards-team'><ul><h1>Team Boards</h1>{team_boards}{board}</ul></div>
-        <div className='profile-boards-private'><h1>Private Boards</h1><ul>{boards}</ul></div>
+
+        <div className='profile-boards-tabs tab-selected' onClick={this.switchTab} id='teams'><p>Team Boards</p></div>
+        <div className='profile-boards-tabs' onClick={this.switchTab} id='private'><p>Private Boards</p></div>
+
+        <div className='profile-boards-holder'><ul>{board}{this.state.boardDisplay === 'Team Boards' ? this.team_boards : this.boards}</ul></div>
       </div>
     )
   }

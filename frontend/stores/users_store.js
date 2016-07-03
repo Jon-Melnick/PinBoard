@@ -22,6 +22,10 @@ function resetUsers(users){
   });
 };
 
+function updateUser(user){
+  _users[user.id] = user
+};
+
 UsersStore.find = function(id) {
   return _users[id]
 };
@@ -30,7 +34,11 @@ UsersStore.__onDispatch = function(payload){
   switch (payload.actionType) {
     case UsersConstants.USERS_RECEIVED:
       resetUsers(payload.users);
-      UsersStore.__emitChange;
+      UsersStore.__emitChange();
+      break;
+    case UsersConstants.USER_RECEIVED:
+      updateUser(payload.user);
+      UsersStore.__emitChange();
       break;
   };
 }

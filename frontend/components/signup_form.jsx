@@ -27,7 +27,7 @@ const SignupForm = React.createClass({
 
   redirectIfLoggedIn() {
     if (SessionStore.isUserLoggedIn()) {
-      hashHistory.push("/profile");
+      hashHistory.push(`/profile/${SessionStore.currentUser().id}`);
     }
   },
 

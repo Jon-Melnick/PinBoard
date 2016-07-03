@@ -1,1 +1,1 @@
-json.extract! user_preferences, :user_id, :color
+json.extract! user_preferences, :user_id, :user_color
