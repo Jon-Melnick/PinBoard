@@ -28,6 +28,6 @@ user3 = {first_name: "Jayson",
 User.create!(user1)
 User.create!(user2)
 User.create!(user3)
-UserPreference.create!(user_id: 1)
-UserPreference.create!(user_id: 2)
-UserPreference.create!(user_id: 3)
+UserPreference.create!(user_id: 1, user_color: 'red')
+UserPreference.create!(user_id: 2, user_color: 'blue'
+UserPreference.create!(user_id: 3, user_color: 'green')
