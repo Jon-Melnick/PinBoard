@@ -13,7 +13,7 @@ class Api::UsersController < ApplicationController
     @user.user_initials = @user.first_name[0] + @user.last_name[0]
     if @user.save
       login(@user)
-      UserPreference.create!(user_id: @user.id, color: UserPreference.color)
+      UserPreference.create!(user_id: @user.id, user_color: UserPreference.color)
       render 'api/users/show'
     else
       @errors = @user.errors
