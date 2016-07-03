@@ -7,7 +7,7 @@ class CreatePins < ActiveRecord::Migration
       t.text :body
       t.integer :posX, :default => 100
       t.integer :posY, :default => 100
-      t.integer :zIndex, :default => 1
+      t.integer :zIndex, :default => 5
 
       t.timestamps null: false
     end

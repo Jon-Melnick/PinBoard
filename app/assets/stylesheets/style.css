@@ -312,25 +312,33 @@ body {
 }
 
 
-.profile-pic{
+.profile-image{
 	margin: 20px;
 	float: left;
 	width: 150px;
 	height: 150px;
-	border: 1px black solid;
+	border: 5px black solid;
 	border-radius: 50%;
 	text-align: center;
 	vertical-align: middle;
 	line-height: 150px;
+	font-size: 50px;
+	cursor: pointer;
+}
+
+.profile-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
 }
 
 
 .profile-details{
-	margin: 20px;
-	float: left;
-	width: 500px;
+	margin: 20px auto;
+	/*float: left;*/
+	width: 90%;
 	/*width: 40%;*/
-	height: 500px;
+	height: 200px;
 	border: 1px black solid;
 
 }
@@ -340,33 +348,48 @@ body {
 	height: 100px;
 	margin: 30px 10px;
 	padding: 10px;
-	border: 1px solid black;
+	/*border: 1px solid black;*/
 }
 
 .profile-boards {
-	margin: 20px;
-	float: left;
-	width: 500px;
+	margin: 20px auto;
+	float: center;
+	width: 90%;
 	/*width: 40%;*/
 	/*height: 500px;*/
-	border: 1px black solid;
+	/*border: 1px black solid;*/
 }
 
-.profile-boards-team{
-	margin: 5%;
+.profile-boards-holder{
 	float: left;
-	width: 90%;
+	width: 100%;
 	height: 30%;
 	border: 1px black solid;
 }
 
-.profile-boards-private{
-	margin: 5%;
+.profile-boards-tabs {
+	cursor: pointer;
 	float: left;
-	width: 90%;
-	height: 30%;
-	border: 1px black solid;
+	border: 1px solid black;
+	width: 120px;
+	height: 40px;
+	border-top-right-radius: 50%;
+	border-top-left-radius: 50%;
+	position: relative;
+	margin: auto;
+	background-color: #C7e0e5;
 }
+
+.profile-boards-tabs p{
+	position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.tab-selected{
+	background-color: #C7d0d5;
+}
+
 
 .board-thumb {
 	width: 100px;
@@ -431,8 +454,6 @@ body {
 .board-nav-menu li:hover{
 	background-color: red;
 }
-
-.board-nav-menu
 
 .nav-box {
 	width: 100%;

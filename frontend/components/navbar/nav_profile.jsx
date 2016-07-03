@@ -6,11 +6,12 @@ const React = require('react'),
 
 const NavProfile = React.createClass({
   getInitialState(){
-    return ({menu: false})
+    return ({menu: false, user: SessionStore.currentUser()})
   },
 
   _goToProfile(){
-    hashHistory.push('/profile');
+    hashHistory.push(`/profile/${this.state.user.id}`);
+    this._toggleMenu();
   },
 
   _signOut(){

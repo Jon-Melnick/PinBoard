@@ -40,6 +40,7 @@ const BoardIndex = React.createClass({
       pins = this.state.pins.map((pin)=> {
         return <PinItem key={pin.id} className="pin" pin={pin} bound='parent'></PinItem>})
     }
+    
     return (
       <div className='board-home'>
         {pins}

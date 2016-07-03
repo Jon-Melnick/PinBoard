@@ -12,6 +12,10 @@ module.exports = {
     UsersApi.fetchUser(id, this.receiveUser)
   },
 
+  updateUser(user) {
+    UsersApi.updateUser(user, this.receiveUser)
+  },
+
   receiveAllUsers(users){
     dispatcher.dispatch({
       actionType: UsersConstants.USERS_RECEIVED,

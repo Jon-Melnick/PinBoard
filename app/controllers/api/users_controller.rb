@@ -10,6 +10,7 @@ class Api::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.user_initials = @user.first_name[0] + @user.last_name[0]
     if @user.save
       login(@user)
       UserPreference.create!(user_id: @user.id, color: UserPreference.color)
@@ -33,6 +34,6 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :first_name, :last_name, :email_address, :password)
+    params.require(:user).permit(:username, :first_name, :last_name, :email_address, :password, :user_pic_url)
   end
 end
