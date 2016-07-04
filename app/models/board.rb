@@ -14,4 +14,12 @@ class Board < ActiveRecord::Base
   has_many :team_members, #method name
     through: :team,
     source: :member
+
+  def team_ids
+    team_ids = []
+    self.team_members.each do |member|
+      team_ids << member.id
+    end
+    return team_ids
+  end
 end

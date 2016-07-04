@@ -9,12 +9,16 @@ const React = require('react'),
 
 const ProfileBoards = React.createClass({
   getInitialState(){
-    return({boards: BoardStore.all(), modalOpen: false, boardDisplay: 'Team Boards'})
+    return({boards: BoardStore.all(), modalOpen: false, boardDisplay: 'Team Boards', user: this.props.user});
   },
 
   componentDidMount(){
     this.listener = BoardStore.addListener(this.onChange);
     BoardAction.fetchAllBoards();
+  },
+
+  componentWillReceiveProps(props){
+    this.setState({user: props.user});
   },
 
   componentWillUnmount(){
@@ -49,13 +53,15 @@ const ProfileBoards = React.createClass({
   },
 
   switchTab(e){
-    let tab = e.target.textContent;
-    this.setState({boardDisplay: tab})
+    this.setState({boardDisplay: e.target.textContent})
   },
 
   render(){
     let board = <li className='board-thumb' onClick={this.boardForm}>create new board</li>
     this.getBoards();
+    let teamTab = this.state.boardDisplay === 'Team Boards' ? 'profile-boards-tabs tab-selected' : 'profile-boards-tabs';
+
+    let privateTab = this.state.boardDisplay === 'Private Boards' ? 'profile-boards-tabs tab-selected' : 'profile-boards-tabs'
     return(
       <div className='profile-boards group'>
         <Modal
@@ -66,8 +72,8 @@ const ProfileBoards = React.createClass({
           <BoardForm onModalClose={this.onModalClose} user={this.props.user}/>
         </Modal>
 
-        <div className='profile-boards-tabs tab-selected' onClick={this.switchTab} id='teams'><p>Team Boards</p></div>
-        <div className='profile-boards-tabs' onClick={this.switchTab} id='private'><p>Private Boards</p></div>
+        <div className={teamTab} onClick={this.switchTab} id='teams'><p>Team Boards</p></div>
+        <div className={privateTab} onClick={this.switchTab} id='private'><p>Private Boards</p></div>
 
         <div className='profile-boards-holder'><ul>{board}{this.state.boardDisplay === 'Team Boards' ? this.team_boards : this.boards}</ul></div>
       </div>

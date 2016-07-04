@@ -22,14 +22,22 @@ const Profile = React.createClass({
   },
 
   onChange: function() {
-    this.setState({user: UserStore.find(this.state.currentUser.id)});
+    this.setState({user: UserStore.find(this.props.params.userId)});
+  },
+
+  componentWillReceiveProps(props){
+    this.setState({user: UserStore.find(props.params.userId)})
   },
 
   render(){
+    let Boards;
+    if (this.state.user.id === this.state.currentUser.id) {
+      Boards = <ProfileBoards user={this.state.user}/>
+    }
     return (
       <div className='profile'>
           <ProfileDetail user={this.state.user} />
-          <ProfileBoards user={this.state.user}/>
+          {Boards}
       </div>
     )
   }
