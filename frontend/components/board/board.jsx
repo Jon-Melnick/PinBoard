@@ -5,6 +5,8 @@ const React = require('react'),
       PinStore = require('../../stores/pin_store'),
       BoardAction = require('../../actions/board_actions'),
       BoardsStore = require('../../stores/board_store');
+      import Draggable, {DraggableCore} from 'react-draggable';
+
 
 const BoardIndex = React.createClass({
   getInitialState(){
@@ -38,14 +40,17 @@ const BoardIndex = React.createClass({
     let pins;
     if (this.state.pins.length > 0) {
       pins = this.state.pins.map((pin)=> {
-        return <PinItem key={pin.id} className="pin" pin={pin} bound='parent'></PinItem>})
+        return <PinItem key={pin.id} className="pin" pin={pin}></PinItem>})
     }
-    
+
     return (
-      <div className='board-home'>
+      <div className="board-home">
         {pins}
-        <BoardNav boardId={this.state.boardId} board={this.state.board} team={this.state.board.team_members}/>
+        <BoardNav boardId={this.state.boardId}
+                  board={this.state.board}
+                  team={this.state.board.team_members}/>
       </div>
+
 
     )
   }

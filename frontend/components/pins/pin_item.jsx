@@ -22,6 +22,7 @@ var React = require('react'),
         handle=".handle"
         defaultPosition={{x: this.props.pin.posX, y: this.props.pin.posY}}
         zIndex={1}
+				bounds='parent'
         onStart={this.handleStart}
         onStop={this.handleStop, this.wtf}>
         <div className="pin" onDoubleClick={this.changeZ}>
