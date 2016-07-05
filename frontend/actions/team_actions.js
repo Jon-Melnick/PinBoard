@@ -3,8 +3,8 @@ const TeamApi = require('../util/team_api_util'),
       dispatcher = require('../dispatcher/dispatcher');
 
 module.exports = {
-  createTeam(team){
-    TeamApi.createTeam(team, this.receiveTeam)
+  createTeam(board_id, member_id){
+    TeamApi.createTeam(board_id, member_id, this.receiveTeam)
   },
 
   receiveTeam(team){

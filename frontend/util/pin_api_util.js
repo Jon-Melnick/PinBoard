@@ -42,15 +42,26 @@ module.exports = {
     });
   },
 
-  updatePin(pin, cb){
+  updatePin(pin, cb) {
     $.ajax({
-      url: `api/pins/${pin.id}`,
-      method: "PATCH",
-      data: {pin: pin},
-      success: function(updatedPin){
-         console.log(updatedPin)
+      method: 'PATCH',
+      url: 'api/pins/'+ pin.id,
+      data: { pin: pin},
+      success: (newPin) => {
+        cb(newPin);
       }
-    })
+    });
+  },
+
+  updateZ(pin, z, cb) {
+    $.ajax({
+      method: 'PATCH',
+      url: 'api/pins/'+ pin.id,
+      data: { pin: {zIndex: z}},
+      success: (newPin) => {
+        cb(newPin);
+      }
+    });
   },
 
   deletePin(pin, cb){

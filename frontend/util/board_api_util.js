@@ -31,13 +31,14 @@ module.exports = {
     })
   },
 
-  updateBoard(board, cb){
+  updateBoard(board, cb, team){
     $.ajax({
       url: `api/boards/${board.id}`,
       method: "PATCH",
-      data: board,
+      data: {board: board,
+             team},
       success: function(updatedBoard){
-         console.log(updatedBoard)
+         cb(updatedBoard)
       }
     })
   },

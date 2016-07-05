@@ -2,19 +2,38 @@ var React = require('react'),
 		PinAction = require('../../actions/pin_actions');
 		import Draggable, {DraggableCore} from 'react-draggable';
 
+		import Edit from 'react-icons/lib/ti/pencil';
+		import Zoom from 'react-icons/lib/md/zoom-in';
+
+
 
   var PinItem = React.createClass({
+		getInitialState(){
+			return({mouseOver: 'none'})
+		},
 
-		wtf: function(e){
+		updatePos: function(e){
 			let $parent = $(e.target.parentElement);
 			let pos = $parent.position();
 			PinAction.updatePos(this.props.pin, pos.left, pos.top);
 		},
 
 		changeZ(){
-			console.log(this.props.pin.id);
+			PinAction.updateZ(this.props.pin, (this.props.currentZ + 1));
+			this.props.updateZ();
 		},
 
+		mouseEnter(){
+			this.setState({mouseOver: 'block'})
+		},
+
+		mouseLeave(){
+			this.setState({mouseOver: 'none'})
+		},
+
+		handleModal(){
+			this.props.openModal(this.props.pin);
+		},
 
     render: function () {
       return (
@@ -24,13 +43,16 @@ var React = require('react'),
         zIndex={1}
 				bounds='parent'
         onStart={this.handleStart}
-        onStop={this.handleStop, this.wtf}>
-        <div className="pin" onDoubleClick={this.changeZ}>
+        onStop={this.handleStop, this.updatePos}>
+        <div className="pin" onDoubleClick={this.changeZ} onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave} style={{'zIndex': `${this.props.pin.zIndex}`}}>
           <div className="handle tack"></div><br/>
 					<div>{this.props.pin.title}</div>
-						<div>{this.props.pin.body}</div>
-          <div>{this.props.pin.author_name}</div>
-
+					<div className='pin-body'>{this.props.pin.body}</div>
+          <div className='pin-author'>{this.props.pin.author_name}</div>
+					<ul className='pin-tool'>
+						<li style={{'display': this.state.mouseOver}}><Zoom /></li>
+						<li style={{'display': this.state.mouseOver}} value={this.props.pin.id} onClick={this.handleModal}><Edit/></li>
+					</ul>
         </div>
       </Draggable>
       );

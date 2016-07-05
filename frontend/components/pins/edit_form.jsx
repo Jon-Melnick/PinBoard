@@ -1,9 +1,9 @@
 const React = require('react'),
       PinActions = require('../../actions/pin_actions');
 
-const PinForm = React.createClass({
+const PinEdit = React.createClass({
   getInitialState(){
-    return({title: "", body: ""})
+    return({title: this.props.pin.title, body: this.props.pin.body})
   },
 
   updateState(e){
@@ -12,13 +12,15 @@ const PinForm = React.createClass({
     this.setState(state);
   },
 
-  handleSubmit(){
+  handleSubmit(e){
+    e.preventDefault()
     const formData = {
 			title: this.state.title,
 			body: this.state.body,
-      board_id: this.props.boardId
+      id: this.props.pin.id
 		};
-    PinActions.createPin(formData);
+    console.log(this.props.pin.id)
+    PinActions.updatePin(formData);
     this.props.onModalClose();
   },
 
@@ -31,10 +33,10 @@ const PinForm = React.createClass({
         <label>Body: </label>
         <input type="text" value={this.state.body} onChange={this.updateState} id='body'/>
           <br></br><br></br>
-        <button onClick={this.handleSubmit}>Create Pin</button>
+        <button onClick={this.handleSubmit}>Edit Pin</button>
       </form>
     )
   }
 });
 
-module.exports = PinForm;
+module.exports = PinEdit;

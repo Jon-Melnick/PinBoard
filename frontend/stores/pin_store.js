@@ -6,6 +6,7 @@ const Store = require('flux/utils').Store,
 const PinsStore = new Store(dispatcher);
 
 let _pins = {};
+let _z = 0;
 
 PinsStore.all = function (){
   let pins = [];
@@ -17,9 +18,17 @@ PinsStore.all = function (){
 
 function resetPins (pins){
   _pins = {};
+  _z = 0;
   pins.forEach(pin =>{
     _pins[pin.id] = pin;
+    if (pin.zIndex > _z) {
+      _z = pin.zIndex;
+    };
   });
+};
+
+PinsStore.getZ = function (){
+  return _z;
 };
 
  function setPin (pin) {
