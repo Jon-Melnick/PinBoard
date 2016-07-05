@@ -73,6 +73,10 @@ const BoardNav = React.createClass({
     this.setState({board: props.board})
   },
 
+  closeAllMenus(){
+    this.setState(closeAll)
+  },
+
   render(){
     let menu;
     let color = '#C7D0D5'
@@ -91,13 +95,13 @@ const BoardNav = React.createClass({
           <PinForm onModalClose={this.onModalClose} boardId={this.props.boardId}/>
         </Modal>
         <ul>
-          <li id="team" onClick={this.toggleTeam}>{this.state.team ? <TeamMenu team={this.props.team} color={color} users={UserStore.all()} board={board}/> : menu}<Team size={40} color={color} /></li>
+          <li id="team" onClick={this.toggleTeam} closeM={this.closeAllMenus}>{this.state.team ? <TeamMenu team={this.props.team} color={color} users={UserStore.all()} board={board}/> : menu}<Team size={40} color={color} /></li>
 
           <li onClick={this.newPin}><NewNote size={40} color={color}/></li>
 
-          <li id="search" onClick={this.toggleSearch}>{this.state.search ? <SearchMenu color={color}/> : menu}<Search size={40} color={color}/></li>
+          <li id="search" onClick={this.toggleSearch}>{this.state.search ? <SearchMenu color={color} closeM={this.closeAllMenus}/> : menu}<Search size={40} color={color}/></li>
 
-          <li id="settings" onClick={this.toggleSettings}>{this.state.settings ? <SettingsMenu color={color}/> : menu}<Settings size={40} color={color}/></li>
+          <li id="settings" onClick={this.toggleSettings}>{this.state.settings ? <SettingsMenu color={color} closeM={this.closeAllMenus}/> : menu}<Settings size={40} color={color}/></li>
         </ul>
       </div>
     )
