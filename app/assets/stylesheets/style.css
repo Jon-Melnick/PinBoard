@@ -18,8 +18,9 @@ time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
+	font-family: 'Indie Flower', cursive;
 	vertical-align: baseline;
-  font-family: 'Open Sans', sans-serif;
+  /*font-family: 'Open Sans', sans-serif;*/
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -53,6 +54,7 @@ table {
 body {
 	background: #f5f5f5;
 	min-width: 700px;
+	font-family: 'Indie Flower', cursive;
 }
 
 /*splash and login*/
@@ -144,11 +146,12 @@ body {
 
 .signup-form{
 	margin-top: 24%;
-	margin-left: 30%;
+	margin-left: 28%;
 }
 
 .signup-form label {
 	line-height: 35px;
+	font-size: 25px;
 }
 
 .signup-form input {
@@ -239,6 +242,7 @@ body {
 .nav-profile {
 	float: right;
 	position: relative;
+	font-size: 20px;
 }
 
 .nav-profile:hover {
@@ -248,12 +252,16 @@ body {
 .menu{
 	display: block;
 	background: #C7D0D5;
-	width: 100px;
+	width: 150px;
 	border: 1px solid black;
 	position: absolute;
 	right: 0px;
 	top: 40px;
-	z-index: 9999;
+	z-index: 9997;
+}
+
+.menu li {
+	padding-left: 10px;
 }
 
 .menu li:hover {
@@ -421,6 +429,7 @@ body {
 	text-align: center;
 	text-decoration: underline;
 	line-height: 40px;
+	position: relative;
 }
 
 .board-thumb:hover{
@@ -469,6 +478,7 @@ body {
 	flex-flow: column;
 	align-items: center;
 	padding-top: 30px;
+	z-index: 9996;
 }
 
 .board-nav > ul > li{
@@ -486,6 +496,7 @@ body {
 	white-space: nowrap;
 	/*padding: 10px;*/
 	text-indent: 10px;
+	z-index: 9996;
 }
 
 .board-nav-menu li {
@@ -502,9 +513,26 @@ body {
 	background-color: blue;
 }
 
-.board-form {
+.new-form {
 	height: 300px;
 	width: 400px;
+}
+
+.new-form label {
+	float: left;
+	font-size: 20px;
+}
+
+.new-form > input, .new-form > select, .new-form > textarea, .new-form > button, .new-form > p{
+	float: right;
+}
+
+.new-form input {
+	width: 255px;
+}
+
+.new-form textarea {
+    resize: none;
 }
 
 
@@ -517,9 +545,29 @@ body {
   position: absolute;
   height: 150px;
   width: 150px;
-  z-index: 0;
-	margin: 1px;
+	margin: 10px;
 	padding: 10px;
+}
+
+.pin-body {
+	position: absolute;
+	left: 15px;
+	top: 50px;
+	width: 70%;
+}
+
+.pin-author{
+	position: absolute;
+	bottom: 28px;
+	left: 30px;
+}
+
+.pin-tool{
+	display: inline-flex;
+	position: absolute;
+	bottom: 15px;
+	right: 30px;
+	cursor: pointer;
 }
 
 .tack {

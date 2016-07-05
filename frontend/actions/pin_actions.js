@@ -16,8 +16,16 @@ module.exports = {
     PinApi.createPin(pin, this.receivePin)
   },
 
+  updatePin(pin){
+    PinApi.updatePin(pin, this.receivePin)
+  },
+
   updatePos(pin, x, y){
     PinApi.updatePos(pin, x, y, this.receivePin)
+  },
+
+  updateZ(pin, z){
+    PinApi.updateZ(pin, z, this.receivePin)
   },
 
   receiveAllPins(pins){

@@ -26,6 +26,9 @@ class Api::BoardsController < ApplicationController
     @board = Board.find(params[:id])
     if @board
       @board.update(board_params)
+      team_params.each do |member_id|
+        Team.create!(board_id: @board.id, team_member_id: member_id)
+      end
       render :show
     else
       @errors = @errors.errors

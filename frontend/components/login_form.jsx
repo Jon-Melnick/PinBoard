@@ -93,15 +93,16 @@ const LoginForm = React.createClass({
              <br/>
 
              <button onClick={this.handleSubmit}>Sign In</button>
-             <br></br>
-             <span className='small-text'> or click on something below</span>
-             <br></br>
              <button onClick={this._demo}>Demo</button>
+               <br></br>
+               <br></br>
+             <span className='small-text'>- or sign up below -</span>
+             <br></br>
              <button onClick={this.signUp}>Sign Up</button>
           </form>
 
         </div>
-        <div className='splash-details'>details for the site</div>
+        <div className='splash-details'></div>
       </div>
 		);
 	}

@@ -41,12 +41,12 @@ const ProfileBoards = React.createClass({
     if (this.state.boards.length > 0) {
       this.boards = this.state.boards.map((board) => {
         if (board.team_members.length === 1) {
-          return <BoardThumb key={board.id} board={board}/>
+          return <BoardThumb key={board.id} board={board} user={this.state.user}/>
         }
       })
       this.team_boards = this.state.boards.map((board) => {
         if (board.team_members.length > 1) {
-          return <BoardThumb key={board.id} board={board}/>
+          return <BoardThumb key={board.id} board={board} user={this.state.user}/>
         }
       })
     }

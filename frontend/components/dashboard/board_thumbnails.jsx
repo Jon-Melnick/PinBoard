@@ -9,9 +9,13 @@ const BoardThumb = React.createClass({
     hashHistory.push(`/boards/${this.props.board.id}`);
   },
 
+  detailsPane(){
+    return <div>this.props.board.description</div>
+  },
+
   render(){
     return (
-      <li className='board-thumb' onClick={this.goToBoard}>{this.props.board.title}</li>
+      <li className='board-thumb' onClick={this.goToBoard} onMouseOver={this.detailsPane}>{this.props.board.title}</li>
     )
   }
 });
