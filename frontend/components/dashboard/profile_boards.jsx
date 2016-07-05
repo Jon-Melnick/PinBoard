@@ -49,6 +49,9 @@ const ProfileBoards = React.createClass({
           return <BoardThumb key={board.id} board={board} user={this.state.user}/>
         }
       })
+    } else {
+      this.team_boards = <div style={{'fontSize': '60px'}}> you currently have no boards </div>
+      this.boards = <div style={{'fontSize': '60px'}}> you currently have no boards </div>
     }
   },
 
