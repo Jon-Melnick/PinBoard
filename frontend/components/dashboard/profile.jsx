@@ -1,6 +1,7 @@
 const React = require('react'),
       ProfileDetail = require('./profile_detail'),
       ProfileBoards = require('./profile_boards'),
+      ProfileTabs = require('./profile_tabs'),
       UserStore = require('../../stores/users_store'),
       UserActions = require('../../actions/users_actions'),
       SessionStore = require('../../stores/session_store');
@@ -35,7 +36,7 @@ const Profile = React.createClass({
       Boards = <ProfileBoards user={this.state.user}/>
     }
     return (
-      <div className='profile'>
+      <div className='profile profile-bg'>
           <ProfileDetail user={this.state.user} />
           {Boards}
       </div>

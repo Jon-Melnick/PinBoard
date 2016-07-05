@@ -38,8 +38,8 @@ const NavProfile = React.createClass({
       }
     return (
       <div>
-        <div className='nav-profile' onClick={this._toggleMenu}>{SessionStore.currentUser().first_name}</div>
-        {menu}
+        <div className='nav-profile' onClick={this._toggleMenu}>{SessionStore.currentUser().first_name}{menu}</div>
+
       </div>
     )
   }

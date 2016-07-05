@@ -8,9 +8,11 @@ const NavBar = React.createClass({
 
   render(){
     return (
-      <div className="navbar group">
-        <h1>My PinBoard</h1>
-        <NavProfile />
+      <div className='navbar-container'>
+        <div className="navbar group">
+          <h1>My PinBoard</h1>
+          <NavProfile />
+        </div>
       </div>
     )
   }

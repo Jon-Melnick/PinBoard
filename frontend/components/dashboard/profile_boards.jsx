@@ -57,7 +57,6 @@ const ProfileBoards = React.createClass({
   },
 
   render(){
-    let board = <li className='board-thumb' onClick={this.boardForm}>create new board</li>
     this.getBoards();
     let teamTab = this.state.boardDisplay === 'Team Boards' ? 'profile-boards-tabs tab-selected' : 'profile-boards-tabs';
 
@@ -71,11 +70,13 @@ const ProfileBoards = React.createClass({
           >
           <BoardForm onModalClose={this.onModalClose} user={this.props.user}/>
         </Modal>
-
+        <div className='tabs-container'>
         <div className={teamTab} onClick={this.switchTab} id='teams'><p>Team Boards</p></div>
         <div className={privateTab} onClick={this.switchTab} id='private'><p>Private Boards</p></div>
+        <div className='profile-boards-tabs' onClick={this.boardForm}><p>New Board</p></div>
+        </div>
 
-        <div className='profile-boards-holder'><ul>{board}{this.state.boardDisplay === 'Team Boards' ? this.team_boards : this.boards}</ul></div>
+        <div className='profile-boards-holder'><ul>{this.state.boardDisplay === 'Team Boards' ? this.team_boards : this.boards}</ul></div>
       </div>
     )
   }
