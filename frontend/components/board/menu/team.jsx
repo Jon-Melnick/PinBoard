@@ -53,6 +53,12 @@ const TeamMenu = React.createClass({
     this.props.closeM();
   },
 
+  sortBy(e){
+    e.preventDefault();
+    e.stopPropagation();
+    this.props.sortBy(['user_id', e.target.id])
+  },
+
   render(){
     let invite = <li onClick={this.addMember}>Add Member</li>
     if (this.state.inviting) {
@@ -69,7 +75,7 @@ const TeamMenu = React.createClass({
         <ul className='board-nav-menu' style={{'backgroundColor': this.props.color}} onMouseLeave={this.closeM}>
           <h1>Team Members</h1>
           {this.props.team.map((member => {
-            return <li key={member.id}>{member.name}</li>
+            return <li key={member.id} id={member.id} onClick={this.sortBy}>{member.name}</li>
           }))}
 
           {invite}
