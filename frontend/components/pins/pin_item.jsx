@@ -69,7 +69,7 @@ var React = require('react'),
 			} else {
 				noteStyle = {
 					zIndex: `${this.props.pin.zIndex}`,
-					boxShadow: `5px 5px 5px ${shadow}`
+					boxShadow: `5px 5px 5px rgba(0, 0, 0, 0.5)`
 				}
 			}
 			let pinStyle = {}
