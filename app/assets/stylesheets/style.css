@@ -363,6 +363,19 @@ body {
 	/*position: absolute;*/
 }
 
+.profile-info input {
+	border-style: none;
+	/*background-color: transparent;*/
+	/*border-bottom: 1px solid;*/
+	width: 200px;
+	font-family: 'Indie Flower', cursive;
+	font-size: 15px;
+}
+
+.profile-info button{
+	float: right;
+}
+
 .profile-boards {
 	margin: auto;
 	float: center;
@@ -379,7 +392,7 @@ body {
 	/*border: 1px black solid;*/
 }
 
-.profile-boards-tabs {
+.profile-boards-tabs{
 	cursor: pointer;
 	width: 120px;
 	height: 40px;
@@ -398,6 +411,28 @@ body {
 	align-content: space-around;
 	align-items: center;
 }
+
+.form-tabs-container{
+	margin-left: 10px;
+	margin: 10px 20px;
+	border-bottom: 1px solid black;
+}
+
+.form-tabs{
+	width: 75px;
+	line-height: 20px;
+	margin-left: 20px;
+	display: inline-block;
+	font-family: 'Indie Flower', cursive;
+	font-size: 20px;
+	cursor: pointer;
+	text-align: center;
+}
+
+.form-tabs:hover{
+	background: rgba(255, 255, 255, 0.5);
+}
+
 .tabs-container div{
 	margin-left: 50px;
 }
@@ -436,6 +471,28 @@ body {
 	cursor: pointer;
 }
 
+.thumb-detail {
+	position: absolute;
+	bottom: 85px;
+	left: 0px;
+	font-size: 15px;
+	line-height: 17px;
+	background-color: #C7D0D5;
+	text-align: left;
+	padding: 5px;
+}
+
+.thumb-delete{
+	position: absolute;
+	bottom: 0px;
+	right: 10px;
+}
+
+.thumb-detail span{
+	text-decoration: underline;
+}
+
+
 .board-home{
 	/*padding: 50px;*/
 	margin: auto;
@@ -446,6 +503,7 @@ body {
 	background-position: 0px 0px;
 	min-width: 100%;
 	position: absolute;
+	z-index: 1;
 }
 
 .board-home2{
@@ -503,6 +561,12 @@ body {
 	line-height: 30px;
 }
 
+.board-nav-menu h1 {
+	font-size: 20px;
+	padding-top: 10px;
+	text-decoration: underline;
+}
+
 .board-nav-menu li:hover{
 	background-color: #93b1c6;
 }
@@ -539,45 +603,86 @@ body {
 /*https://openclipart.org/image/800px/svg_to_png/131797/1302375938.png*/
 
 .pin {
-  background-image: url('http://res.cloudinary.com/arkean/image/upload/v1467410718/postitnote_isohbk.png');
+  background-image: url('http://res.cloudinary.com/arkean/image/upload/v1467825754/st-white_kxwyau.png');
   background-size: contain;
 	background-repeat: no-repeat;
   position: absolute;
-  height: 150px;
-  width: 150px;
+  height: 125px;
+  width: 125px;
 	margin: 10px;
 	padding: 10px;
+}
+
+.pin-img {
+  background-size: contain;
+	background-repeat: no-repeat;
+  position: absolute;
+  height: 160px;
+  width: 250px;
+	margin: 10px;
+	padding: 10px;
+}
+
+.pin-title{
+	position: absolute;
+	left: 10px;
+	top: 20px;
 }
 
 .pin-body {
 	position: absolute;
 	left: 15px;
-	top: 50px;
+	top: 40px;
 	width: 70%;
+	max-height: 70px;
+	overflow:visible;
 }
 
 .pin-author{
 	position: absolute;
-	bottom: 28px;
+	bottom: 20px;
 	left: 30px;
 }
 
 .pin-tool{
 	display: inline-flex;
 	position: absolute;
-	bottom: 15px;
-	right: 30px;
+	bottom: 7px;
+	right: 10px;
 	cursor: pointer;
 }
 
-.tack {
-	height: 30px;
-	width: 30px;
-	position: absolute;
-	left: 60px;
+.img-pin-uploading{
+	width: 90px;
+	height: 60px;
+	float: right;
 }
 
-.tack:hover {
+.edit-tool{
+	float: right;
+}
+
+.tack {
+	height: 40px;
+	width: 40px;
+	position: absolute;
+	left: 55px;
+	top: -10px;
+	background-image: url('http://res.cloudinary.com/arkean/image/upload/v1467825733/tack-teal_padg1c.png');
+	background-position: center;
+}
+
+.tack-img {
+	height: 40px;
+	width: 40px;
+	position: absolute;
+	left: 55px;
+	top: -10px;
+	background-image: url('http://res.cloudinary.com/arkean/image/upload/v1467825733/tack-teal_padg1c.png');
+	background-position: center;
+}
+
+.tack:hover, .tack-img:hover {
 	cursor: pointer;
 }
 
@@ -591,4 +696,73 @@ body {
 	margin: 10px;
 	padding: 10px;
 	float: left;
+}
+
+.option-selector-container{
+	float: right;
+	width: 250px;
+
+	/*border: 1px solid black;*/
+}
+
+.option-selector-pin {
+	margin: 2px;
+	float: right;
+	height: 25px;
+	width: 25px;
+	cursor: pointer;
+}
+
+.color-box {
+	float: right;
+	height: 5px;
+	width: 40px;
+	margin-top: 6px;
+}
+
+.note-green-striped{
+	background-image: url('http://res.cloudinary.com/arkean/image/upload/v1467825758/st-green-stripe_iwaoyx.png');
+}
+
+.note-white{
+	background-image: url('http://res.cloudinary.com/arkean/image/upload/v1467825754/st-white_kxwyau.png');
+}
+.note-flowers{
+	background-image: url('http://res.cloudinary.com/arkean/image/upload/v1467825753/st-flowers_k1hjcq.png');
+}
+.note-faded-stripe{
+	background-image: url('http://res.cloudinary.com/arkean/image/upload/v1467825753/st-faded-stripe_iikpya.png');
+}
+.note-purple-checkered{
+	background-image: url('http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-purple-checkered_etg2ah.png');
+}
+.note-purple-striped{
+	background-image: url('http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-purple-stripe_qho3fo.png');
+}
+.note-purple{
+	background-image: url('http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-purple_ixwtyk.png');
+}
+.note-pink-stripe{
+	background-image: url('http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-pink-stripe_bqkv86.png');
+}
+.note-pink-purple-stripe{
+	background-image: url('http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-pink-purple-stripe_zgwzca.png');
+}
+.note-green{
+	background-image: url('http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-green_cle3ps.png');
+}
+.note-burnt-orange{
+	background-image: url('http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-burnt-orange_uuj2zx.png');
+}
+.note-brown-decorated{
+	background-image: url('http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-brown-decorated_zlcljd.png');
+}
+.note-blue{
+	background-image: url('http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-blue_gv4cjs.png');
+}
+.note-fancy{
+	background-image: url('http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-fancy_zeu6ii.png');
+}
+.note-gold{
+	background-image: url('http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-gold_nc2k3g.png');
 }

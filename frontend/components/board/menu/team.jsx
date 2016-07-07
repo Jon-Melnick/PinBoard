@@ -45,11 +45,16 @@ const TeamMenu = React.createClass({
       team: [id]
     }
     BoardAction.updateBoard(formData, team)
+    e.stopPropagation();
     this.setState({inviting: false});
   },
 
+  closeM(){
+    this.props.closeM();
+  },
+
   render(){
-    let invite = <li onClick={this.addMember}><h1>Add Member</h1></li>
+    let invite = <li onClick={this.addMember}>Add Member</li>
     if (this.state.inviting) {
       invite =   <li>
                     <select id='inviting' onClick={this.stopProp}>
@@ -61,12 +66,10 @@ const TeamMenu = React.createClass({
     }
     return(
 
-        <ul className='board-nav-menu' style={{'backgroundColor': this.props.color}}>
-          <li><h1>Team Members</h1></li>
+        <ul className='board-nav-menu' style={{'backgroundColor': this.props.color}} onMouseLeave={this.closeM}>
+          <h1>Team Members</h1>
           {this.props.team.map((member => {
-            return <li key={member.id}
-                       onMouseEnter={this.backgroundColorOn} onMouseLeave={this.backgroundColorOff}
-                    >{member.name}</li>
+            return <li key={member.id}>{member.name}</li>
           }))}
 
           {invite}

@@ -1,4 +1,6 @@
 class Pin < ActiveRecord::Base
+
+
   belongs_to :author, #method_name
     primary_key: :id, #typically id
     foreign_key: :user_id, #column_name_id

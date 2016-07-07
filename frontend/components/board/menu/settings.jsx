@@ -2,10 +2,15 @@ const React = require('react');
 
 
 const Settings = React.createClass({
+
+  closeM(){
+    this.props.closeM();
+  },
+
   render(){
     return(
-      <ul className='board-nav-menu' style={{'background-color': this.props.color}}>
-        <li><h1>Settings</h1></li>
+      <ul className='board-nav-menu' style={{'backgroundColor': this.props.color}} onMouseLeave={this.closeM}>
+        <h1>Settings</h1>
 
       </ul>
     )

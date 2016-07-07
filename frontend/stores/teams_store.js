@@ -10,10 +10,16 @@ let _team = {};
 TeamsStore.all = function (){
   let teams = [];
   Object.keys(_team).forEach(key => {
-    teams.push(_team[key])
+    if (_team[key]){
+      teams.push(_team[key])
+    }
   })
   return teams;
 };
+
+function deleteTeam(team){
+  _team[team.id] = null;
+}
 
 function resetTeams(teams){
   _team = {};
@@ -27,9 +33,14 @@ TeamsStore.find = function(id) {
 };
 
 TeamsStore.__onDispatch = function(payload){
+  debugger
   switch (payload.actionType) {
     case TeamsConstants.TEAM_RECEIVED:
       resetTeams(payload.team);
+      TeamsStore.__emitChange;
+      break;
+    case TeamConstants.TEAM_DESTROYED:
+      deleteTeam(payload.team);
       TeamsStore.__emitChange;
       break;
   };

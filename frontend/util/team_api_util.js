@@ -9,5 +9,16 @@ module.exports = {
          cb(newTeam)
       }
     })
-  }
+  },
+
+  deleteTeam(id, cb){
+    $.ajax({
+      url: `api/teams/` + id,
+      method: "DELETE",
+      data: {id: id},
+      success: function(newTeam){
+         cb(newTeam)
+      }
+    })
+  },
 }

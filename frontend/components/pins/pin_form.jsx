@@ -1,38 +1,36 @@
 const React = require('react'),
+      PinFormImg = require('./pin_form_img'),
+      PinFormText = require('./pin_form_text'),
       PinActions = require('../../actions/pin_actions');
 
 const PinForm = React.createClass({
   getInitialState(){
-    return({title: "", body: ""})
+    return({form: 'text'})
   },
 
-  updateState(e){
-    var state = {};
-    state[e.target.id] = e.target.value;
-    this.setState(state);
+  generateForm(){
+    if (this.state.form === 'text') {
+      return <PinFormText boardId={this.props.boardId} onModalClose={this.props.onModalClose}/>
+    } else {
+      return <PinFormImg boardId={this.props.boardId} onModalClose={this.props.onModalClose}/>
+    }
   },
 
-  handleSubmit(){
-    const formData = {
-			title: this.state.title,
-			body: this.state.body,
-      board_id: this.props.boardId
-		};
-    PinActions.createPin(formData);
-    this.props.onModalClose();
+  switchTabText(){
+    this.setState({form: 'text'})
+  },
+
+  switchTabImg(){
+    this.setState({form: 'img'})
   },
 
   render(){
     return(
-      <form className='new-form'>
-        <label>Title: </label>
-        <input type="text" value={this.state.title} onChange={this.updateState} id='title'/>
-          <br></br><br></br>
-        <label>Body: </label>
-        <input type="text" value={this.state.body} onChange={this.updateState} id='body'/>
-          <br></br><br></br>
-        <button onClick={this.handleSubmit}>Create Pin</button>
-      </form>
+      <div>
+        <div className='form-tabs-container'><div className='form-tabs' onClick={this.switchTabText}>Text</div><div className='form-tabs' onClick={this.switchTabImg}>Picture</div></div>
+        {this.generateForm()}
+      </div>
+
     )
   }
 });

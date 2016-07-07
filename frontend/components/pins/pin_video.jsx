@@ -7,7 +7,7 @@ var React = require('react'),
 
 
 
-  var PinItem = React.createClass({
+  var PinVid = React.createClass({
 		getInitialState(){
 			return({mouseOver: 'none'})
 		},
@@ -59,19 +59,11 @@ var React = require('react'),
 
     render: function () {
 			let shadow = this.rgba(this.props.pin.shadow)
-			let noteStyle = {}
-			if (this.props.pin.note_color.length > 0) {
-				noteStyle = {
-					zIndex: `${this.props.pin.zIndex}`,
-					backgroundImage: 'url(' + this.props.pin.note_color + ')',
-					boxShadow: `5px 5px 5px ${shadow}`
-				}
-			} else {
-				noteStyle = {
-					zIndex: `${this.props.pin.zIndex}`,
-					boxShadow: `5px 5px 5px ${shadow}`
-				}
-			}
+			let img = {
+				zIndex: `${this.props.pin.zIndex}`,
+				backgroundImage: 'url(' + this.props.pin.img_url + ')',
+				boxShadow: `5px 5px 5px ${shadow}`
+			};
 			let pinStyle = {}
 			if (this.props.pin.pin_color.length > 0) {
 				pinStyle ={
@@ -86,11 +78,8 @@ var React = require('react'),
 				bounds='parent'
         onStart={this.handleStart}
         onStop={this.handleStop, this.updatePos}>
-        <div className="pin" onDoubleClick={this.changeZ} onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave} style={noteStyle}>
-          <div className="handle tack" style={pinStyle}></div><br/>
-					<div className='pin-title'>{this.props.pin.title}</div>
-					<div className='pin-body'>{this.cropBody()}</div>
-          <div className='pin-author'>{this.props.pin.author_name}</div>
+        <div className="pin-img" onDoubleClick={this.changeZ} onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave} style={img}>
+          <div className="handle tack-img" style={pinStyle}></div><br/>
 					<ul className='pin-tool'>
 						<li style={{'display': this.state.mouseOver}}><Zoom /></li>
 						<li style={{'display': this.state.mouseOver}} value={this.props.pin.id} onClick={this.handleModal}><Edit/></li>
@@ -101,4 +90,4 @@ var React = require('react'),
     }
   });
 
-  module.exports = PinItem;
+  module.exports = PinVid;

@@ -1,7 +1,8 @@
 const React = require('react'),
       BoardNav = require('./board_nav'),
       PinAction = require('../../actions/pin_actions'),
-      PinItem = require('../pins/pin_item.jsx'),
+      PinText = require('../pins/pin_item.jsx'),
+      PinImg = require('../pins/pin_img.jsx'),
       PinStore = require('../../stores/pin_store'),
       SessionStore = require('../../stores/session_store'),
       BoardAction = require('../../actions/board_actions'),
@@ -15,11 +16,12 @@ const Modal = require('react-modal'),
 const BoardIndex = React.createClass({
   getInitialState(){
     return ({ boardId: this.props.routeParams.boardId,
-              board: {},
+              board: false,
               pins: [],
               z: 0,
               modalOpen: false,
-              browser: ''})
+              browser: '',
+              sort_by: false})
   },
 
   componentDidMount(){
@@ -50,11 +52,45 @@ const BoardIndex = React.createClass({
 
   getPins(){
     this.setState({pins: PinStore.all()});
-    this.setState({z: PinStore.getZ()})
+    if (!this.state.z) {
+      this.setState({z: PinStore.getZ()})
+    }
   },
 
   updateZ(){
     this.setState({z: this.state.z+1})
+  },
+
+  logHi(){
+    console.log('hi board')
+  },
+
+  noSort(){
+    this.setState({sort_by: false})
+  },
+
+  sortPins(search){
+    let pins = [];
+    if (search) {
+      pins = this.state.pins
+    } else {
+      this.state.pins.map(pin => {
+        if (pin[search[0]] === search[1]) {
+          pins.push(pin);
+        }
+      })
+    }
+    let sorted = []
+    this.state.pins.map( pin => {
+      if (pin[search[0]] === search[1]) {
+        if (pin.img_url) {
+          sorted.push(<PinImg key={pin.id} className="pin" pin={pin} updateZ={this.updateZ} currentZ={this.state.z} openModal={this.openModal}></PinImg>)
+        } else {
+          sorted.push(<PinText key={pin.id} className="pin" pin={pin} updateZ={this.updateZ} currentZ={this.state.z} openModal={this.openModal}></PinText>)
+        }
+      }
+    });
+    return sorted;
   },
 
   render(){
@@ -62,7 +98,16 @@ const BoardIndex = React.createClass({
     let pins;
     if (this.state.pins.length > 0) {
       pins = this.state.pins.map((pin)=> {
-        return <PinItem key={pin.id} className="pin" pin={pin} updateZ={this.updateZ} currentZ={this.state.z} openModal={this.openModal}></PinItem>})
+        if (pin.img_url) {
+          return <PinImg key={pin.id} className="pin" pin={pin} updateZ={this.updateZ} currentZ={this.state.z} openModal={this.openModal}></PinImg>
+        } else {
+          return <PinText key={pin.id} className="pin" pin={pin} updateZ={this.updateZ} currentZ={this.state.z} openModal={this.openModal}></PinText>
+        }
+      })
+    }
+    let team;
+    if (this.state.board) {
+      team = this.state.board.team_members;
     }
     return (
       <div className="board-home">
@@ -76,7 +121,7 @@ const BoardIndex = React.createClass({
         {pins}
         <BoardNav boardId={this.state.boardId}
                   board={this.state.board}
-                  team={this.state.board.team_members}/>
+                  team={team}/>
       </div>
 
 

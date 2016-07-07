@@ -24,6 +24,8 @@ class Api::UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
+      prefs = UserPreference.find(@user.id)
+      prefs.update(pref_params)
       render 'api/users/show'
     else
       @errors = @user.errors
@@ -35,5 +37,9 @@ class Api::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :first_name, :last_name, :email_address, :password, :user_pic_url)
+  end
+
+  def pref_params
+    params.require(:user).permit(:user_color)
   end
 end
