@@ -11,7 +11,7 @@ const ProfilePic = React.createClass({
     let settings = Object.assign({}, window.cloudinary_options);
       settings["theme"] = "white";
       settings["thumbnails"] = ".upload-field";
-      settings["thumbnail_transformation"] = "w_250,h_250,c_fill";
+      settings["thumbnail_transformation"] = "w_250,h_250,c_fill,g_face";
     cloudinary.openUploadWidget(
       settings,
       function(error, images){
@@ -26,7 +26,7 @@ const ProfilePic = React.createClass({
     let profilePhoto;
     let emptyImageUrl = "http://res.cloudinary.com/dfqqsmub8/image/upload/w_200,h_200,c_thumb,g_face/empty_image.jpg";
     let url = this.props.user.user_pic_url || emptyImageUrl;
-    let color = this.props.user.preference ? this.props.user.preference.user_color : 'black'
+    let color = this.props.user.preference ? this.props.user.preference.user_color : 'white'
     return(
       <img className="profile-image"
              onClick={this.uploadPhoto}

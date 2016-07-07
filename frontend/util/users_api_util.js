@@ -23,9 +23,9 @@ module.exports = {
     $.ajax({
       method: 'PATCH',
       url: 'api/users/'+ user.id,
-      data: { user: {user_pic_url: user.user_pic_url} },
-      success: (user) => {
-        cb(user);
+      data: { user: user},
+      success: (newUser) => {
+        cb(newUser);
       }
     });
   }

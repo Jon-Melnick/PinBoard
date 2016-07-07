@@ -32,6 +32,6 @@ class Api::PinsController < ApplicationController
 
   private
   def pin_params
-    params.require(:pin).permit(:title, :body, :board_id, :posX, :posY, :zIndex)
+    params.require(:pin).permit(:title, :body, :pin_color, :note_color, :img_url, :board_id, :posX, :posY, :zIndex)
   end
 end

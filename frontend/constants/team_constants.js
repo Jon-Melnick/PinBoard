@@ -1,3 +1,4 @@
 module.exports = {
+  TEAM_DESTROYED: 'TEAM_DESTROYED',
   TEAM_RECEIVED: 'TEAM_RECEIVED'
 }

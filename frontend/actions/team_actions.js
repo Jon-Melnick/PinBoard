@@ -7,9 +7,20 @@ module.exports = {
     TeamApi.createTeam(board_id, member_id, this.receiveTeam)
   },
 
+  deleteTeam(id){
+    TeamApi.deleteTeam(id, this.deletedTeam)
+  },
+
   receiveTeam(team){
     dispatcher.dispatch({
       actionType: TeamConstants.TEAM_RECEIVED,
+      team: team
+    });
+  },
+
+  deletedTeam(team){
+    dispatcher.dispatch({
+      actionType: TeamConstants.TEAM_DESTROYED,
       team: team
     });
   }

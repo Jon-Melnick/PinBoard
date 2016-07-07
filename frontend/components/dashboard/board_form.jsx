@@ -72,6 +72,7 @@ const BoardForm = React.createClass({
           <option value=''> --- </option>
           {options}
         </select>
+
         <button onClick={this.handleInvite}>Invite!</button>
         <br></br><br></br>
         <button onClick={this.handleSubmit}>Create Board</button>

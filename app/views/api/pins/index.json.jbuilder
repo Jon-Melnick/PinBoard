@@ -10,4 +10,8 @@ json.array! @pins do |pin|
   json.author pin.author
   json.author_name pin.author.full_name
   json.board pin.board
+  json.pin_color pin.pin_color
+  json.note_color pin.note_color
+  json.img_url pin.img_url
+  json.shadow pin.author.preference.user_color
 end

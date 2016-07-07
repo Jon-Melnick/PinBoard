@@ -29,6 +29,9 @@ ActiveRecord::Schema.define(version: 20160630232927) do
     t.integer  "board_id",                 null: false
     t.string   "title"
     t.text     "body"
+    t.text     "pin_color"
+    t.text     "note_color"
+    t.text     "img_url"
     t.integer  "posX",       default: 100
     t.integer  "posY",       default: 100
     t.integer  "zIndex",     default: 5

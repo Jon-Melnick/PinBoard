@@ -6,12 +6,12 @@ class Board < ActiveRecord::Base
     primary_key: :id,
     class_name: 'User'
 
-  has_many :team, #method_name, ends with s
-    primary_key: :id, #typically id
-    foreign_key: :board_id, #column_name_id
-    class_name: 'Team' #class_name ex. (String)
+  has_many :team,
+    primary_key: :id,
+    foreign_key: :board_id,
+    class_name: 'Team'
 
-  has_many :team_members, #method name
+  has_many :team_members,
     through: :team,
     source: :member
 
@@ -21,5 +21,9 @@ class Board < ActiveRecord::Base
       team_ids << member.id
     end
     return team_ids
+  end
+
+  def my_team(id)
+    self.team.where(team_member_id: id)
   end
 end
