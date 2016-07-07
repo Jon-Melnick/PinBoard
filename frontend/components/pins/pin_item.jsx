@@ -58,7 +58,7 @@ var React = require('react'),
 	  },
 
     render: function () {
-			let shadow = this.rgba(this.props.pin.shadow)
+
 			let noteStyle = {}
 			if (this.props.pin.note_color.length > 0) {
 				noteStyle = {

@@ -58,7 +58,7 @@ var React = require('react'),
 	  },
 
     render: function () {
-			let shadow = this.rgba(this.props.pin.shadow)
+
 			let img = {
 				zIndex: `${this.props.pin.zIndex}`,
 				backgroundImage: 'url(' + this.props.pin.img_url + ')',
