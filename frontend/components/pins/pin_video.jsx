@@ -62,7 +62,7 @@ var React = require('react'),
 			let img = {
 				zIndex: `${this.props.pin.zIndex}`,
 				backgroundImage: 'url(' + this.props.pin.img_url + ')',
-				boxShadow: `5px 5px 5px ${shadow}`
+				boxShadow: `5px 5px 5px rgba(0, 0, 0, 0.5)`
 			};
 			let pinStyle = {}
 			if (this.props.pin.pin_color.length > 0) {
