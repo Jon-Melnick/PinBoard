@@ -61,43 +61,34 @@ const BoardIndex = React.createClass({
     this.setState({z: this.state.z+1})
   },
 
-  logHi(){
-    console.log('hi board')
-  },
-
   noSort(){
     this.setState({sort_by: false})
   },
 
-  sortPins(search){
+  sortBy(query){
+    this.setState({sort_by: query})
+  },
+
+  sortPins(){
+    let search = this.state.sort_by
     let pins = [];
     if (search) {
-      pins = this.state.pins
-    } else {
       this.state.pins.map(pin => {
         if (pin[search[0]] === search[1]) {
           pins.push(pin);
         }
       })
+    } else {
+      pins = this.state.pins
     }
-    let sorted = []
-    this.state.pins.map( pin => {
-      if (pin[search[0]] === search[1]) {
-        if (pin.img_url) {
-          sorted.push(<PinImg key={pin.id} className="pin" pin={pin} updateZ={this.updateZ} currentZ={this.state.z} openModal={this.openModal}></PinImg>)
-        } else {
-          sorted.push(<PinText key={pin.id} className="pin" pin={pin} updateZ={this.updateZ} currentZ={this.state.z} openModal={this.openModal}></PinText>)
-        }
-      }
-    });
-    return sorted;
+    return pins
   },
 
   render(){
-
     let pins;
     if (this.state.pins.length > 0) {
-      pins = this.state.pins.map((pin)=> {
+      let sortedPins = this.sortPins()
+      pins = sortedPins.map((pin)=> {
         if (pin.img_url) {
           return <PinImg key={pin.id} className="pin" pin={pin} updateZ={this.updateZ} currentZ={this.state.z} openModal={this.openModal}></PinImg>
         } else {
@@ -121,7 +112,8 @@ const BoardIndex = React.createClass({
         {pins}
         <BoardNav boardId={this.state.boardId}
                   board={this.state.board}
-                  team={team}/>
+                  team={team}
+                  sortBy={this.sortBy}/>
       </div>
 
 
