@@ -1,5 +1,8 @@
 var React = require('react'),
 		SessionStore = require('../../stores/session_store'),
+		Modal = require('react-modal'),
+		PinZoom = require('./pin_zoom'),
+		ZoomStyle = require('./zoom_style'),
 		PinAction = require('../../actions/pin_actions');
 		import Draggable, {DraggableCore} from 'react-draggable';
 
@@ -7,10 +10,9 @@ var React = require('react'),
 		import Zoom from 'react-icons/lib/md/zoom-in';
 
 
-
   var PinItem = React.createClass({
 		getInitialState(){
-			return({mouseOver: 'none', currentUser: SessionStore.currentUser()})
+			return({mouseOver: 'none', currentUser: SessionStore.currentUser(), modalOpen: false})
 		},
 
 		updatePos: function(e){
@@ -58,6 +60,14 @@ var React = require('react'),
 	    throw new Error('Bad Hex');
 	  },
 
+		onModalClose(){
+	    this.setState({modalOpen: false})
+	  },
+
+		openModal(){
+			this.setState({modalOpen: true})
+		},
+
     render: function () {
 
 			let noteStyle = {}
@@ -85,23 +95,32 @@ var React = require('react'),
 			}
       return (
 				<Draggable
-        handle=".handle"
-        defaultPosition={{x: this.props.pin.posX, y: this.props.pin.posY}}
-        zIndex={1}
-				bounds='parent'
-        onStart={this.handleStart}
-        onStop={this.handleStop, this.updatePos}>
-        <div className="pin" onDoubleClick={this.changeZ} onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave} style={noteStyle}>
-          <div className="handle tack" style={pinStyle}></div><br/>
-					<div className='pin-title'>{this.props.pin.title}</div>
-					<div className='pin-body'>{this.cropBody()}</div>
-          <div className='pin-author'>{this.props.pin.author_name}</div>
-					<ul className='pin-tool'>
-						<li style={{'display': this.state.mouseOver}}><Zoom /></li>
-						{edit}
-					</ul>
-        </div>
-      </Draggable>
+	        handle=".handle"
+	        defaultPosition={{x: this.props.pin.posX, y: this.props.pin.posY}}
+	        zIndex={1}
+					bounds='parent'
+	        onStart={this.handleStart}
+	        onStop={this.handleStop, this.updatePos}>
+	        <div className="pin" onDoubleClick={this.changeZ} onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave} style={noteStyle}>
+	          <div className="handle tack" style={pinStyle}></div><br/>
+						<div className='pin-title'>{this.props.pin.title}</div>
+						<div className='pin-body'>{this.cropBody()}</div>
+	          <div className='pin-author'>{this.props.pin.author_name}</div>
+						<ul className='pin-tool'>
+							<li style={{'display': this.state.mouseOver}} onClick={this.openModal}><Zoom /></li>
+							{edit}
+						</ul>
+						<Modal
+		          isOpen={this.state.modalOpen}
+		          onRequestClose={this.onModalClose}
+							style={ZoomStyle}
+		          >
+		          <PinZoom onModalClose={this.onModalClose} pin={this.props.pin} />
+		        </Modal>
+					</div>
+
+
+	      </Draggable>
       );
     }
   });

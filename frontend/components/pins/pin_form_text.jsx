@@ -19,7 +19,8 @@ const PinText = React.createClass({
       body: this.state.body,
       pin_color: this.state.pinColor,
       note_color: this.state.noteColor,
-      board_id: this.props.boardId
+      board_id: this.props.boardId,
+      zIndex: this.props.z
     };
     PinActions.createPin(formData);
     this.props.onModalClose();

@@ -5,14 +5,15 @@ const React = require('react'),
 
 const PinForm = React.createClass({
   getInitialState(){
-    return({form: 'text'})
+    return({form: 'text', z: this.props.z})
   },
 
   generateForm(){
+    console.log(this.props.z)
     if (this.state.form === 'text') {
-      return <PinFormText boardId={this.props.boardId} onModalClose={this.props.onModalClose}/>
+      return <PinFormText boardId={this.props.boardId} onModalClose={this.props.onModalClose} z={this.state.z}/>
     } else {
-      return <PinFormImg boardId={this.props.boardId} onModalClose={this.props.onModalClose}/>
+      return <PinFormImg boardId={this.props.boardId} onModalClose={this.props.onModalClose} z={this.state.z}/>
     }
   },
 

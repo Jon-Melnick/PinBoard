@@ -28,7 +28,8 @@ const BoardNav = React.createClass({
              settings: false,
              modalOpen: false,
              browser: null,
-             board: []})
+             board: [],
+             z: 5})
   },
 
   componentDidMount(){
@@ -70,7 +71,7 @@ const BoardNav = React.createClass({
   },
 
   componentWillReceiveProps(props){
-    this.setState({board: props.board})
+    this.setState({board: props.board, z: props.z})
   },
 
   closeAllMenus(){
@@ -96,12 +97,12 @@ const BoardNav = React.createClass({
           onRequestClose={this.onModalClose}
           style={BoardFormModal}
           >
-          <PinForm onModalClose={this.onModalClose} boardId={this.props.boardId}/>
+          <PinForm onModalClose={this.onModalClose} boardId={this.props.boardId} z={this.state.z}/>
         </Modal>
         <ul>
           <li id="team" onClick={this.toggleTeam} closeM={this.closeAllMenus}>{this.state.team ? <TeamMenu team={this.props.team} color={color} users={UserStore.all()} board={board} closeM={this.closeAllMenus} sortBy={this.sortBy}/> : menu}<Team size={40} color={color} /></li>
 
-          <li onClick={this.newPin}><NewNote size={40} color={color}/></li>
+          <li onClick={this.newPin}><NewNote size={40} color={color} /></li>
 
           <li id="search" onClick={this.toggleSearch}>{this.state.search ? <SearchMenu team={this.props.team} color={color} users={UserStore.all()} board={board} closeM={this.closeAllMenus} sortBy={this.sortBy} pins={this.props.pins}/> : menu}<Search size={40} color={color}/></li>
 
