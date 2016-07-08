@@ -1,4 +1,5 @@
 const React = require('react'),
+      hashHistory = require('react-router').hashHistory,
       BoardAction = require('../../../actions/board_actions');
 
 
@@ -56,7 +57,12 @@ const TeamMenu = React.createClass({
   sortBy(e){
     e.preventDefault();
     e.stopPropagation();
-    this.props.sortBy(['user_id', e.target.id])
+    this.props.sortBy(['user_id', parseInt(e.target.id)])
+  },
+
+  goToProfile(e){
+    let id = e.target.id
+    hashHistory.push('/profile/' + id)
   },
 
   render(){
@@ -72,10 +78,10 @@ const TeamMenu = React.createClass({
     }
     return(
 
-        <ul className='board-nav-menu' style={{'backgroundColor': this.props.color}} onMouseLeave={this.closeM}>
+        <ul className='board-nav-menu' style={{'backgroundColor': this.props.color}} >
           <h1>Team Members</h1>
           {this.props.team.map((member => {
-            return <li key={member.id} id={member.id} onClick={this.sortBy}>{member.name}</li>
+            return <li key={member.id} id={member.id} onClick={this.goToProfile}>{member.name}</li>
           }))}
 
           {invite}

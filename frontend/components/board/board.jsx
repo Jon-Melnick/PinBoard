@@ -72,7 +72,26 @@ const BoardIndex = React.createClass({
   sortPins(){
     let search = this.state.sort_by
     let pins = [];
-    if (search) {
+    if (search && search[0] === 'date') {
+
+      this.state.pins.map(pin => {
+        if (pin.date.toString().indexOf(search[1].toString()) >= 0 ) {
+          pins.push(pin);
+        }
+      })
+    } else if (search && search[0] === 'img_url' && search[1] === true) {
+      this.state.pins.map(pin => {
+        if (pin.img_url) {
+          pins.push(pin);
+        }
+      })
+    } else if (search && search[0] === 'img_url' && search[1] === false) {
+      this.state.pins.map(pin => {
+        if (pin.img_url === null) {
+          pins.push(pin);
+        }
+      })
+    } else if (search) {
       this.state.pins.map(pin => {
         if (pin[search[0]] === search[1]) {
           pins.push(pin);
@@ -100,8 +119,12 @@ const BoardIndex = React.createClass({
     if (this.state.board) {
       team = this.state.board.team_members;
     }
+    let boardStyle = {};
+    if (this.state.board) {
+      boardStyle.backgroundImage = 'url(' + this.state.board.board_style + ')'
+    }
     return (
-      <div className="board-home">
+      <div className="board-home" style={boardStyle}>
         <Modal
           isOpen={this.state.modalOpen}
           onRequestClose={this.onModalClose}
@@ -112,6 +135,7 @@ const BoardIndex = React.createClass({
         {pins}
         <BoardNav boardId={this.state.boardId}
                   board={this.state.board}
+                  pins={PinStore.all()}
                   team={team}
                   sortBy={this.sortBy}/>
       </div>

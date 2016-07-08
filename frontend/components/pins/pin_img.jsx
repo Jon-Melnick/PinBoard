@@ -1,4 +1,5 @@
 var React = require('react'),
+		SessionStore = require('../../stores/session_store'),
 		PinAction = require('../../actions/pin_actions');
 		import Draggable, {DraggableCore} from 'react-draggable';
 
@@ -9,7 +10,7 @@ var React = require('react'),
 
   var PinImg = React.createClass({
 		getInitialState(){
-			return({mouseOver: 'none'})
+			return({mouseOver: 'none', currentUser: SessionStore.currentUser()})
 		},
 
 		updatePos: function(e){
@@ -70,6 +71,10 @@ var React = require('react'),
 					backgroundImage: 'url(' + this.props.pin.pin_color + ')'
 				}
 			};
+			let edit = <li></li>
+			if (this.props.pin.user_id && this.props.pin.user_id === this.state.currentUser.id) {
+				edit = <li style={{'display': this.state.mouseOver}} value={this.props.pin.id} onClick={this.handleModal}><Edit/></li>
+			}
       return (
 				<Draggable
         handle=".handle"
@@ -82,7 +87,7 @@ var React = require('react'),
           <div className="handle tack-img" style={pinStyle}></div><br/>
 					<ul className='pin-tool'>
 						<li style={{'display': this.state.mouseOver}}><Zoom /></li>
-						<li style={{'display': this.state.mouseOver}} value={this.props.pin.id} onClick={this.handleModal}><Edit/></li>
+						{edit}
 					</ul>
         </div>
       </Draggable>

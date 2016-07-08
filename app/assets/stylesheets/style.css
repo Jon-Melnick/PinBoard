@@ -53,7 +53,7 @@ table {
 /* other stuff */
 body {
 	background: #f5f5f5;
-	min-width: 700px;
+	min-width: 1500px;
 	font-family: 'Indie Flower', cursive;
 }
 
@@ -348,8 +348,8 @@ body {
 .profile-details{
 	float: left;
 	margin: 20px 0 0 20px;
-	width: 500px;
-	height: 300px;
+	width: 550px;
+	height: 350px;
 	background-image: url('http://res.cloudinary.com/arkean/image/upload/v1467410717/tornPaperSquare_yxtuo5.png');
 	background-size: contain;
 	background-repeat: no-repeat;
@@ -660,6 +660,7 @@ body {
 
 .edit-tool{
 	float: right;
+	cursor: pointer;
 }
 
 .tack {
@@ -765,4 +766,18 @@ body {
 }
 .note-gold{
 	background-image: url('http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-gold_nc2k3g.png');
+}
+
+.indented {
+	padding-left: 20px;
+}
+
+.go-back{
+	float: right;
+	margin-bottom: 5px;
+	cursor: pointer;
+}
+
+.go-back:hover{
+	background-color: #93b1c6;
 }

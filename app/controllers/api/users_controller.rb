@@ -40,6 +40,6 @@ class Api::UsersController < ApplicationController
   end
 
   def pref_params
-    params.require(:user).permit(:user_color)
+    params.require(:user).permit(:user_color, :home_board)
   end
 end

@@ -38,7 +38,7 @@ class Api::BoardsController < ApplicationController
 
   private
   def board_params
-    params.require(:board).permit(:title, :description, :team)
+    params.require(:board).permit(:title, :description, :board_style, :hidden, :team)
   end
   def team_params
     params[:team][:team]

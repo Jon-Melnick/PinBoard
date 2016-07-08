@@ -17,11 +17,13 @@ ActiveRecord::Schema.define(version: 20160630232927) do
   enable_extension "plpgsql"
 
   create_table "boards", force: :cascade do |t|
-    t.integer  "creator_id",                       null: false
+    t.integer  "creator_id",                                                                                             null: false
     t.string   "title",       default: "untitled"
     t.text     "description"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.text     "board_style", default: "http://res.cloudinary.com/arkean/image/upload/v1467679359/corkboard_x2gpyn.jpg"
+    t.boolean  "hidden"
+    t.datetime "created_at",                                                                                             null: false
+    t.datetime "updated_at",                                                                                             null: false
   end
 
   create_table "pins", force: :cascade do |t|
@@ -53,10 +55,11 @@ ActiveRecord::Schema.define(version: 20160630232927) do
   add_index "teams", ["team_member_id"], name: "index_teams_on_team_member_id", using: :btree
 
   create_table "user_preferences", force: :cascade do |t|
-    t.integer  "user_id",    null: false
+    t.integer  "user_id",                                                                                               null: false
     t.string   "user_color"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "home_board", default: "http://res.cloudinary.com/arkean/image/upload/v1467679359/corkboard_x2gpyn.jpg"
+    t.datetime "created_at",                                                                                            null: false
+    t.datetime "updated_at",                                                                                            null: false
   end
 
   add_index "user_preferences", ["user_id"], name: "index_user_preferences_on_user_id", using: :btree

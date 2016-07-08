@@ -9,7 +9,7 @@ const Settings = React.createClass({
 
   render(){
     return(
-      <ul className='board-nav-menu' style={{'backgroundColor': this.props.color}} onMouseLeave={this.closeM}>
+      <ul className='board-nav-menu' style={{'backgroundColor': this.props.color}} >
         <h1>Settings</h1>
 
       </ul>

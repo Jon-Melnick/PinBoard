@@ -14,4 +14,5 @@ json.array! @pins do |pin|
   json.note_color pin.note_color
   json.img_url pin.img_url
   json.shadow pin.author.preference.user_color
+  json.date pin.date
 end

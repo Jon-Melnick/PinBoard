@@ -1,12 +1,18 @@
 const React = require('react'),
       UserStore = require('../../stores/users_store'),
+      Styling = require('../styling'),
       UserActions = require('../../actions/users_actions'),
       TeamActions = require('../../actions/team_actions'),
       BoardActions = require('../../actions/board_actions');
 
 const BoardForm = React.createClass({
   getInitialState(){
-    return({title: "", description: "", invitees: `${this.invitee(this.props.user)}`, inviting: '', team: [this.props.user.id]})
+    return({title: "",
+            description: "",
+            board_style: "http://res.cloudinary.com/arkean/image/upload/v1467679359/corkboard_x2gpyn.jpg",
+            invitees: `${this.invitee(this.props.user)}`,
+            inviting: '',
+            team: [this.props.user.id]})
   },
 
   invitee(user){
@@ -23,7 +29,8 @@ const BoardForm = React.createClass({
     e.preventDefault();
     const formData = {
 			title: this.state.title,
-			description: this.state.description
+			description: this.state.description,
+      board_style: this.state.board_style
 		};
     const team = {
       team: this.state.team
@@ -47,6 +54,10 @@ const BoardForm = React.createClass({
     selected.options[0].selected = true;
   },
 
+  boardSelect(e){
+    this.setState({board_style: e.currentTarget.value})
+  },
+
   render(){
     let options;
     options = UserStore.all().map((user) => {
@@ -67,7 +78,7 @@ const BoardForm = React.createClass({
         <label>Current team: </label>
         <textarea value={this.state.invitees} rows="3" cols="40" disabled/>
         <br></br><br></br><br></br>
-        <label>Invite someone!</label>
+        <label>Invite Someone!</label>
         <select id='inviting'>
           <option value=''> --- </option>
           {options}
@@ -75,6 +86,25 @@ const BoardForm = React.createClass({
 
         <button onClick={this.handleInvite}>Invite!</button>
         <br></br><br></br>
+        <label>Board Style:</label>
+
+        <div className=''>
+          {Object.keys(Styling.home_boards).map(key => {
+            let board = Styling.home_boards[key]
+            let sampleStyle = {
+              backgroundImage: 'url(' + board.board_sample + ')'}
+            if (this.state.board_style === board.board_style) {
+              sampleStyle.border = `2px solid black`
+            }
+            return <div key={key} className='option-selector-pin'
+              value={board.board_style}
+              style={sampleStyle}
+              onClick={this.boardSelect}></div>
+          })}
+        </div>
+        <br></br>
+        <br></br>
+        <br></br>
         <button onClick={this.handleSubmit}>Create Board</button>
       </form>
     )

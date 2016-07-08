@@ -1,14 +1,17 @@
 const React = require('react'),
+      Styling = require('../styling'),
       UserActions = require('../../actions/users_actions');
 
 import { SliderPicker } from 'react-color';
+
 
 const ProfileEdit = React.createClass({
   getInitialState(){
       return({first_name: this.props.user.first_name,
               last_name: this.props.user.last_name,
               full_name: this.props.user.first_name + ' ' + this.props.user.last_name,
-              user_color: this.props.user.preference.user_color})
+              user_color: this.props.user.preference.user_color,
+              home_board: this.props.user.preference.home_board})
   },
 
   handleChange(e){
@@ -18,6 +21,12 @@ const ProfileEdit = React.createClass({
     this.setState({first_name: fname,
                    last_name: lname,
                    full_name: str});
+  },
+
+  handleColorChange(e){
+    let color = e.currentTarget.value;
+    this.setState({user_color: color})
+    this.handleChangeComplete(color);
   },
 
   handleChangeComplete(newColor){
@@ -31,7 +40,8 @@ const ProfileEdit = React.createClass({
       id: this.props.user.id,
       first_name: this.state.first_name,
       last_name: this.state.last_name,
-      user_color: this.state.user_color
+      user_color: this.state.user_color,
+      home_board: this.state.home_board
     };
 
     UserActions.updateUser(user);
@@ -44,6 +54,10 @@ const ProfileEdit = React.createClass({
     this.props.editDetailsClose();
   },
 
+  boardSelect(e){
+    this.setState({home_board: e.currentTarget.value})
+  },
+
   render(){
     return(
       <ul className='profile-info' >
@@ -54,10 +68,29 @@ const ProfileEdit = React.createClass({
             </input>
           </li>
           <br></br>
+          <li>Color   {this.state.user_color}></li>
           <SliderPicker
             color={ this.state.user_color }
             onChangeComplete={ this.handleChangeComplete }/>
           <br></br>
+          <li>Home Board</li>
+            <div className=''>
+              {Object.keys(Styling.home_boards).map(key => {
+                let board = Styling.home_boards[key]
+                let sampleStyle = {
+                  backgroundImage: 'url(' + board.board_sample + ')'}
+                if (this.state.home_board === board.board_style) {
+                  sampleStyle.border = `2px solid ${this.props.user.preference.user_color}`
+                }
+                return <div key={key} className='option-selector-pin'
+                  value={board.board_style}
+                  style={sampleStyle}
+                  onClick={this.boardSelect}></div>
+              })}
+            </div>
+            <br></br>
+              <br></br>
+            <br></br>
           <button onClick={this.clickSubmit}>Save</button>
           <button onClick={this.clickCancel}>Cancel</button>
       </ul>

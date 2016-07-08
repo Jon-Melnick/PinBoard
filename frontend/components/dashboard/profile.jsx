@@ -32,14 +32,18 @@ const Profile = React.createClass({
 
   render(){
     let Boards;
+    let boardStyle = {}
+    if (this.state.user.id) {
+      boardStyle.backgroundImage = 'url(' + this.state.user.preference.home_board + ')'
+    }
     if (this.state.user.id === this.state.currentUser.id) {
       Boards = <ProfileBoards user={this.state.user}/>
     }
     return (
-      <div className='profile profile-bg'>
+      this.state.user.id ? <div className='profile profile-bg' style={boardStyle}>
           <ProfileDetail user={this.state.user} />
           {Boards}
-      </div>
+      </div> : <div></div>
     )
   }
 })
