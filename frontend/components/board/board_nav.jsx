@@ -4,6 +4,7 @@ const React = require('react'),
       UserActions = require('../../actions/users_actions'),
       UserStore = require('../../stores/users_store'),
       SessionStore = require('../../stores/session_store'),
+      SettingsForm = require('./settings'),
       PinForm = require('../pins/pin_form');
 
 import Team from 'react-icons/lib/ti/group';
@@ -29,7 +30,8 @@ const BoardNav = React.createClass({
              modalOpen: false,
              browser: null,
              board: [],
-             z: 5})
+             z: 5,
+             form: null})
   },
 
   componentDidMount(){
@@ -53,11 +55,16 @@ const BoardNav = React.createClass({
 
   newPin(){
     this.setState(closeAll)
-    this.setState({modalOpen: true})
+    this.setState({modalOpen: true, form: 'pin'})
+  },
+
+  settings(){
+    this.setState(closeAll)
+    this.setState({modalOpen: true, form: 'settings'})
   },
 
   onModalClose(){
-    this.setState({modalOpen: false})
+    this.setState({modalOpen: false, form: null})
   },
 
   toggleSearch(){
@@ -84,29 +91,32 @@ const BoardNav = React.createClass({
 
   render(){
     let menu;
-    let color = '#C7D0D5'
+    let navColor = {background: `#C7D0D5`};
+    let color = '#C7D0D5';
     if (this.state.browser) {
+      navColor = {background: `${this.state.browser.preference.nav_color}`}
       color = this.state.browser.preference.user_color
     }
     let board = this.state.board ? this.state.board : {}
     return (
-      <div className='board-nav'>
+      <div className='board-nav' style={navColor}>
         {menu}
         <Modal
           isOpen={this.state.modalOpen}
           onRequestClose={this.onModalClose}
           style={BoardFormModal}
           >
-          <PinForm onModalClose={this.onModalClose} boardId={this.props.boardId} z={this.state.z}/>
+          {this.state.form === 'pin' ? <PinForm onModalClose={this.onModalClose} boardId={this.props.boardId} z={this.state.z} color={color}/> : <SettingsForm onModalClose={this.onModalClose} board={board} team={this.props.team} color={color} users={UserStore.all()}/>}
         </Modal>
         <ul>
-          <li id="team" onClick={this.toggleTeam} closeM={this.closeAllMenus}>{this.state.team ? <TeamMenu team={this.props.team} color={color} users={UserStore.all()} board={board} closeM={this.closeAllMenus} sortBy={this.sortBy}/> : menu}<Team size={40} color={color} /></li>
+          <li id="team" onClick={this.toggleTeam} closeM={this.closeAllMenus}>
+            {this.state.team ? <TeamMenu team={this.props.team} color={color} users={UserStore.all()} board={board} closeM={this.closeAllMenus} sortBy={this.sortBy}/> : menu}<Team size={40} color={color} /></li>
 
           <li onClick={this.newPin}><NewNote size={40} color={color} /></li>
 
           <li id="search" onClick={this.toggleSearch}>{this.state.search ? <SearchMenu team={this.props.team} color={color} users={UserStore.all()} board={board} closeM={this.closeAllMenus} sortBy={this.sortBy} pins={this.props.pins}/> : menu}<Search size={40} color={color}/></li>
 
-          <li id="settings" onClick={this.toggleSettings}>{this.state.settings ? <SettingsMenu team={this.props.team} color={color} users={UserStore.all()} board={board} closeM={this.closeAllMenus} sortBy={this.sortBy}/> : menu}<Settings size={40} color={color}/></li>
+          <li onClick={this.settings}><Settings size={40} color={color}/></li>
         </ul>
       </div>
     )

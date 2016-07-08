@@ -69,9 +69,8 @@ var React = require('react'),
 		},
 
     render: function () {
-
 			let noteStyle = {}
-			if (this.props.pin.note_color.length > 0) {
+			if (this.props.pin.note_color) {
 				noteStyle = {
 					zIndex: `${this.props.pin.zIndex}`,
 					backgroundImage: 'url(' + this.props.pin.note_color + ')',
@@ -99,7 +98,7 @@ var React = require('react'),
 	        defaultPosition={{x: this.props.pin.posX, y: this.props.pin.posY}}
 	        zIndex={1}
 					bounds='parent'
-	        onStart={this.handleStart}
+	        onStart={this.handleStart, this.changeZ}
 	        onStop={this.handleStop, this.updatePos}>
 	        <div className="pin" onDoubleClick={this.changeZ} onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave} style={noteStyle}>
 	          <div className="handle tack" style={pinStyle}></div><br/>

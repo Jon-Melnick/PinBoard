@@ -1,5 +1,6 @@
 const React = require('react'),
       TeamAction = require('../../actions/team_actions'),
+      BoardActions = require('../../actions/board_actions'),
       Modal = require('react-modal'),
       DeleteBoard = require('./delete'),
       BoardDeleteModal = require('./delete_modal'),
@@ -49,6 +50,22 @@ const BoardThumb = React.createClass({
     this.setState({modalOpen: false})
   },
 
+  hideBoard(e){
+    e.preventDefault();
+    e.stopPropagation();
+    let board = {id: this.props.board.id,
+                 hidden: true}
+    BoardActions.updateBoard(board);
+  },
+
+  shortenTitle(){
+    if (this.props.board.title.length > 16) {
+      return this.props.board.title.slice(0,15) + '...'
+    } else {
+      return this.props.board.title
+    }
+  },
+
   render(){
     let details = '';
     let remove = <div></div>;
@@ -76,10 +93,11 @@ const BoardThumb = React.createClass({
           onRequestClose={this.onModalClose}
           style={BoardDeleteModal}
           >
-          <DeleteBoard onModalClose={this.onModalClose} removeBoard={this.removeBoard}/>
+          <DeleteBoard onModalClose={this.onModalClose} removeBoard={this.removeBoard}
+          hideBoard={this.hideBoard}/>
         </Modal>
       {details}
-      <li>{this.props.board.title}</li>
+      <li>{this.shortenTitle()}</li>
       {remove}
     </div>
     )

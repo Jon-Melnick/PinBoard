@@ -1,5 +1,8 @@
 var React = require('react'),
 		SessionStore = require('../../stores/session_store'),
+		Modal = require('react-modal'),
+		ZoomImg = require('./zoom_img'),
+		ZoomImgStyle = require('./zoom_img_style'),
 		PinAction = require('../../actions/pin_actions');
 		import Draggable, {DraggableCore} from 'react-draggable';
 
@@ -10,7 +13,7 @@ var React = require('react'),
 
   var PinImg = React.createClass({
 		getInitialState(){
-			return({mouseOver: 'none', currentUser: SessionStore.currentUser()})
+			return({mouseOver: 'none', currentUser: SessionStore.currentUser(), modalOpen: false})
 		},
 
 		updatePos: function(e){
@@ -58,6 +61,15 @@ var React = require('react'),
 	    throw new Error('Bad Hex');
 	  },
 
+
+		onModalClose(){
+	    this.setState({modalOpen: false})
+	  },
+
+		openModal(){
+			this.setState({modalOpen: true})
+		},
+
     render: function () {
 
 			let img = {
@@ -75,20 +87,31 @@ var React = require('react'),
 			if (this.props.pin.user_id && this.props.pin.user_id === this.state.currentUser.id) {
 				edit = <li style={{'display': this.state.mouseOver}} value={this.props.pin.id} onClick={this.handleModal}><Edit/></li>
 			}
+			let klass = 'pin-img-horz'
+			if (this.props.pin.img_url.indexOf('w_166') >= 0) {
+				klass = 'pin-img-vert'
+			}
       return (
 				<Draggable
         handle=".handle"
         defaultPosition={{x: this.props.pin.posX, y: this.props.pin.posY}}
         zIndex={1}
 				bounds='parent'
-        onStart={this.handleStart}
+        onStart={this.handleStart, this.changeZ}
         onStop={this.handleStop, this.updatePos}>
-        <div className="pin-img" onDoubleClick={this.changeZ} onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave} style={img}>
+        <div className={klass} onDoubleClick={this.changeZ} onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave} style={img}>
           <div className="handle tack-img" style={pinStyle}></div><br/>
 					<ul className='pin-tool'>
-						<li style={{'display': this.state.mouseOver}}><Zoom /></li>
+						<li style={{'display': this.state.mouseOver}} onClick={this.openModal}><Zoom /></li>
 						{edit}
 					</ul>
+					<Modal
+						isOpen={this.state.modalOpen}
+						onRequestClose={this.onModalClose}
+						style={ZoomImgStyle}
+						>
+						<ZoomImg onModalClose={this.onModalClose} pin={this.props.pin} />
+					</Modal>
         </div>
       </Draggable>
       );

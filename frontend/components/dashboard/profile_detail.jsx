@@ -37,16 +37,20 @@ const ProfileDetail = React.createClass({
         let colorStyle = {
           background: `${this.props.user.preference.user_color}`
         };
+        let navColor = {
+          background: `${this.props.user.preference.nav_color}`
+        }
         let homeStyle ={
           backgroundImage: `url(${this.props.user.preference.home_board})`
         }
         preferences =
         <div>
           <li>Preferences</li>
-          <li>Color: <div className='color-box' style={colorStyle}></div></li>
+          <li>Nav Color: <div className='color-box' style={navColor}></div></li>
+          <li>User Color: <div className='color-box' style={colorStyle}></div></li>
           <li>Background: <div className='color-box' style={homeStyle}></div></li>
           <span className='edit-tool'>
-            <li style={{'display': this.state.mouseOver}} onClick={this.editDetails}><Edit/></li>
+            <li onClick={this.editDetails}><Edit/> edit</li>
           </span>
         </div>
       };

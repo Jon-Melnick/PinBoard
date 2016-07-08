@@ -23,8 +23,7 @@ module.exports = {
     $.ajax({
       url: `api/boards`,
       method: "POST",
-      data: {board: board,
-             team},
+      data: {board: board, team},
       success: function(newBoard){
          cb(newBoard)
       }

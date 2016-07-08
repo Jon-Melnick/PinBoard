@@ -26,8 +26,10 @@ class Api::BoardsController < ApplicationController
     @board = Board.find(params[:id])
     if @board
       @board.update(board_params)
-      team_params.each do |member_id|
-        Team.create!(board_id: @board.id, team_member_id: member_id)
+      if team_params
+        team_params.each do |member_id|
+          Team.create!(board_id: @board.id, team_member_id: member_id)
+        end
       end
       render :show
     else
@@ -41,6 +43,10 @@ class Api::BoardsController < ApplicationController
     params.require(:board).permit(:title, :description, :board_style, :hidden, :team)
   end
   def team_params
-    params[:team][:team]
+    if params[:team]
+      return params[:team][:team]
+    else
+      return nil
+    end
   end
 end

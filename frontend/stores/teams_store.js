@@ -33,7 +33,6 @@ TeamsStore.find = function(id) {
 };
 
 TeamsStore.__onDispatch = function(payload){
-  debugger
   switch (payload.actionType) {
     case TeamsConstants.TEAM_RECEIVED:
       resetTeams(payload.team);

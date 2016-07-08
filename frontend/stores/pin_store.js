@@ -16,6 +16,10 @@ PinsStore.all = function (){
   return pins;
 };
 
+function emptyPins(){
+  _pins = {};
+};
+
 function resetPins (pins){
   _pins = {};
   _z = 0;

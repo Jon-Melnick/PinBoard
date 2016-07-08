@@ -10,8 +10,10 @@ const ProfileEdit = React.createClass({
       return({first_name: this.props.user.first_name,
               last_name: this.props.user.last_name,
               full_name: this.props.user.first_name + ' ' + this.props.user.last_name,
+              nav_color: this.props.user.preference.nav_color,
               user_color: this.props.user.preference.user_color,
-              home_board: this.props.user.preference.home_board})
+              home_board: this.props.user.preference.home_board,
+              color_picker: false})
   },
 
   handleChange(e){
@@ -29,7 +31,11 @@ const ProfileEdit = React.createClass({
     this.handleChangeComplete(color);
   },
 
-  handleChangeComplete(newColor){
+  handleChangeCompleteNav(newColor){
+    this.setState({nav_color: newColor.hex})
+  },
+
+  handleChangeCompleteUser(newColor){
     this.setState({user_color: newColor.hex})
   },
 
@@ -40,6 +46,7 @@ const ProfileEdit = React.createClass({
       id: this.props.user.id,
       first_name: this.state.first_name,
       last_name: this.state.last_name,
+      nav_color: this.state.nav_color,
       user_color: this.state.user_color,
       home_board: this.state.home_board
     };
@@ -58,7 +65,50 @@ const ProfileEdit = React.createClass({
     this.setState({home_board: e.currentTarget.value})
   },
 
+  navColor(e){
+    e.preventDefault();
+    e.stopPropagation();
+    this.setState({color_picker: this.state.color_picker === 'nav' ? false : 'nav'})
+  },
+
+  userColor(e){
+    e.preventDefault();
+    e.stopPropagation();
+    this.setState({color_picker: this.state.color_picker === 'user' ? false : 'user'})
+  },
+
   render(){
+    let colorStyle = {
+      background: `${this.state.user_color}`
+    };
+    let navColor = {
+      background: `${this.state.nav_color}`
+    }
+
+    let colors;
+    if (!this.state.color_picker) {
+      colors = <div style={{'cursor': 'pointer'}}>
+        <li onClick={this.navColor}> Change Nav Color: <div className='color-box' style={navColor}></div></li>
+        <li onClick={this.userColor}> Change User Color: <div className='color-box' style={colorStyle}></div></li>
+      </div>
+    } else if (this.state.color_picker === 'nav') {
+      colors = <div style={{'cursor': 'pointer'}}><li onClick={this.navColor}>Nav Color: <div className='color-box' style={navColor}></div>
+      </li>
+      <SliderPicker
+        color={ this.state.nav_color }
+        onChangeComplete={ this.handleChangeCompleteNav } style={{'padding': '5px'}}/>
+
+      <li onClick={this.userColor}> Change User Color: <div className='color-box' style={colorStyle}></div></li>
+        </div>
+    } else {
+      colors = <div style={{'cursor': 'pointer'}}>
+        <li onClick={this.navColor}>Change Nav Color: <div className='color-box' style={navColor}></div></li>
+        <li onClick={this.userColor}>User Color: <div className='color-box' style={colorStyle}></div></li>
+      <SliderPicker
+        color={ this.state.user_color }
+        onChangeComplete={ this.handleChangeCompleteUser }/>
+      </div>
+    }
     return(
       <ul className='profile-info' >
           <li>{this.props.user.email_address}</li>
@@ -68,10 +118,7 @@ const ProfileEdit = React.createClass({
             </input>
           </li>
           <br></br>
-          <li>Color   {this.state.user_color}></li>
-          <SliderPicker
-            color={ this.state.user_color }
-            onChangeComplete={ this.handleChangeComplete }/>
+          {colors}
           <br></br>
           <li>Home Board</li>
             <div className=''>

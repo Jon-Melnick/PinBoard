@@ -6,7 +6,8 @@ class Api::SessionsController < ApplicationController
       login(@user)
       render json: @user
     else
-      render json: {message: 'Invalid Username and/or Password'}, status: 422
+      @errors = ["Invalid username and/or password"]
+      render 'api/shared/errors', status: 404
     end
   end
 

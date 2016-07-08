@@ -11,6 +11,11 @@ class Pin < ActiveRecord::Base
     foreign_key: :board_id, #column_name_id
     class_name: 'Board' #class_name ex. (String)
 
+  has_many :taggings
+  has_many :tags,
+      through: :taggings,
+      source: :tag
+
   def date
     self.created_at.strftime("%d %m %Y")
   end
