@@ -781,3 +781,62 @@ body {
 .go-back:hover{
 	background-color: #93b1c6;
 }
+
+.pin-zoom{
+	width: 300px;
+	height: 300px;
+}
+
+.pin-zoom-title{
+	position: absolute;
+	top: 30px;
+	left: 30px;
+	font-size: 20px;
+}
+
+.pin-zoom-date{
+	position: absolute;
+	top: 10px;
+	right: 30px;
+	font-size: 20px;
+}
+
+.pin-zoom-body{
+	position: absolute;
+	top: 60px;
+	left: 30px;
+	width: 240px;
+	height: 170px;
+	overflow-y: auto;
+	font-size: 20px;
+}
+
+/*.pin-zoom-body::-webkit-scrollbar{
+width:6px;
+background-color:#cccccc;
+}
+
+.pin-zoom-body::-webkit-scrollbar-thumb{
+background-color:#B03C3F;
+border-radius:10px;
+}
+.pin-zoom-body::-webkit-scrollbar-thumb:hover{
+background-color:#BF4649;
+border:1px solid #333333;
+}
+.pin-zoom-body::-webkit-scrollbar-thumb:active{
+background-color:#A6393D;
+border:1px solid #333333;
+}
+.pin-zoom-body::-webkit-scrollbar-track{
+border:1px gray solid;
+border-radius:10px;
+-webkit-box-shadow:0 0 6px gray inset;
+}*/
+
+.pin-zoom-author{
+	position: absolute;
+	bottom: 30px;
+	left: 120px;
+	font-size: 20px;
+}

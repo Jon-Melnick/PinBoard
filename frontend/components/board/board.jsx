@@ -137,7 +137,8 @@ const BoardIndex = React.createClass({
                   board={this.state.board}
                   pins={PinStore.all()}
                   team={team}
-                  sortBy={this.sortBy}/>
+                  sortBy={this.sortBy}
+                  z={this.state.z}/>
       </div>
 
 
