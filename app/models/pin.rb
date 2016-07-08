@@ -10,4 +10,9 @@ class Pin < ActiveRecord::Base
     primary_key: :id, #typically id
     foreign_key: :board_id, #column_name_id
     class_name: 'Board' #class_name ex. (String)
+
+  def date
+    self.created_at.strftime("%d %m %Y")
+  end
+
 end

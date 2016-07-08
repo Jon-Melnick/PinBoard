@@ -5,6 +5,8 @@ json.array! @boards do |board|
   json.creator_id board.creator_id
   json.team_ids board.team_ids
   json.team board.team
+  json.hidden board.hidden
+  json.board_style board.board_style
 
   json.team_members board.team_members do |member|
     json.id member.id
