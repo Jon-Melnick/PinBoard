@@ -15,6 +15,15 @@ class Board < ActiveRecord::Base
     through: :team,
     source: :member
 
+  has_many :pins,
+    primary_key: :id,
+    foreign_key: :board_id,
+    class_name: 'Pin'
+
+  has_many :tags, #method name
+    through: :pins,
+    source: :tags
+
   def team_ids
     team_ids = []
     self.team_members.each do |member|

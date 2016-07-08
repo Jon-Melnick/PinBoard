@@ -1,17 +1,28 @@
 const React = require('react');
+const Styles = require('../styling');
+
 const PinActions = require('../../actions/pin_actions');
 
 const PinText = React.createClass({
   getInitialState(){
-    return({title: "", body: "", pinColor: "", imgUrl: ""})
+    return({title: "",
+            body: "",
+            pinColor: 'http://res.cloudinary.com/arkean/image/upload/v1467825733/tack-teal_padg1c.png',
+            imgUrl: "",
+            vertical: false,
+            tags: []})
   },
 
   uploadPhoto (event){
     event.preventDefault();
+    let layout = "w_250,h_166,c_fill,g_face";
+    if (this.state.vertical) {
+      layout = "w_166,h_250,c_fill,g_face"
+    }
     let settings = Object.assign({}, window.cloudinary_options);
       settings["theme"] = "white";
       settings["thumbnails"] = ".upload-field";
-      settings["thumbnail_transformation"] = "w_250,h_166,c_fill,g_face";
+      settings["thumbnail_transformation"] = layout;
     cloudinary.openUploadWidget(
       settings,
       function(error, images){
@@ -38,7 +49,10 @@ const PinText = React.createClass({
       img_url: this.state.imgUrl,
       board_id: this.props.boardId
     };
-    PinActions.createPin(formData);
+    const tags = {
+      tags: this.state.tags
+    }
+    PinActions.createPin(formData, tags);
     this.props.onModalClose();
   },
 
@@ -48,6 +62,14 @@ const PinText = React.createClass({
     this.setState({pinColor: e.currentTarget.value})
   },
 
+  horizontal(){
+    this.setState({vertical: false})
+  },
+
+  vertical(){
+    this.setState({vertical: true})
+  },
+
   noteSelect(e){
     e.preventDefault();
     e.stopPropagation();
@@ -55,6 +77,21 @@ const PinText = React.createClass({
   },
 
   render(){
+    console.log(this.state.vertical)
+    let vert = <div className='option-selector-container group'>
+                  <div className='image-vertical'
+                    onClick={this.vertical}></div>
+                  <div className='image-horizontal img-selected'
+                    onClick={this.horizontal}></div>
+                </div>
+    if (this.state.vertical) {
+      vert = <div className='option-selector-container group'>
+              <div className='image-vertical img-selected'
+                   onClick={this.vertical}></div>
+              <div className='image-horizontal'
+                   onClick={this.horizontal}></div>
+              </div>
+    }
     return(<form className='new-form'>
       <label>Title: </label>
       <input type="text" value={this.state.title} onChange={this.updateState} id='title'/>
@@ -64,38 +101,26 @@ const PinText = React.createClass({
         <br></br><br></br>
       <label>Pin Color: </label>
         <div className='option-selector-container group'>
-          <div className='option-selector-pin'
-            value='http://res.cloudinary.com/arkean/image/upload/v1467825733/tack-teal_padg1c.png'
-            style={{'backgroundColor': 'teal'}}
-            onClick={this.pinSelect}></div>
-          <div className='option-selector-pin'
-            value='http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-gold_x1xesf.png'
-            style={{'backgroundColor': 'gold'}}
-            onClick={this.pinSelect}></div>
-          <div className='option-selector-pin'
-            value='http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-green_vkb5ve.png'
-            style={{'backgroundColor': 'green'}}
-            onClick={this.pinSelect}></div>
-          <div className='option-selector-pin'
-            value='http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-red_jjgvcx.png'
-            style={{'backgroundColor': 'red'}}
-            onClick={this.pinSelect}></div>
-          <div className='option-selector-pin'
-            value='http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-purple_wndk5t.png'
-            style={{'backgroundColor': 'purple'}}
-            onClick={this.pinSelect}></div>
-          <div className='option-selector-pin'
-            value='http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-blue_gyqktr.png'
-            style={{'backgroundColor': 'blue'}}
-            onClick={this.pinSelect}></div>
-          <div className='option-selector-pin'
-            value='http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-black_l5ztxz.png'
-            style={{'backgroundColor': 'black'}}
-            onClick={this.pinSelect}></div>
+          {Object.keys(Styles.pin_styles).map(key => {
+            let styleType = Styles.pin_styles[key]
+            let klass = 'option-selector-pin';
+            if (this.state.pinColor === styleType.value) {
+              klass += ' pin-selected'
+            }
+            return <div className={klass}
+              value={styleType.value}
+              style={styleType.style}
+              key={key}
+              onClick={this.pinSelect}></div>
+          })}
         </div>
         <br></br><br></br><br></br>
 
-      <label>Image: </label>
+      <label>Image layout: </label>
+      {vert}
+        <br></br><br></br><br></br>
+
+    <label>Image:</label>
       {this.state.imgUrl === "" ? <button onClick={this.uploadPhoto}>Upload Photo</button> : <img className='img-pin-uploading' src={this.state.imgUrl}></img>}
 
         <br></br><br></br>

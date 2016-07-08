@@ -7,11 +7,15 @@ json.array! @boards do |board|
   json.team board.team
   json.hidden board.hidden
   json.board_style board.board_style
+  json.pins board.pins
+  json.tags board.tags
 
   json.team_members board.team_members do |member|
     json.id member.id
     json.name member.full_name
     json.email member.email_address
   end
+
+
 
 end

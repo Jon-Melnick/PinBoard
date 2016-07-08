@@ -15,4 +15,8 @@ json.array! @pins do |pin|
   json.img_url pin.img_url
   json.shadow pin.author.preference.user_color
   json.date pin.date
+
+  json.tags do
+    json.array! pin.tags
+  end
 end

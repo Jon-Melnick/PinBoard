@@ -29,6 +29,7 @@ gem 'cloudinary'
 gem 'dragonfly'
 gem 'carrierwave'
 gem 'rmagick'
+gem 'seed_dump'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

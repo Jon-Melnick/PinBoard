@@ -37,21 +37,34 @@ const ProfileBoards = React.createClass({
     this.setState({modalOpen: false})
   },
 
-  getBoards(){
+  getBoards(display){
     if (this.state.boards.length > 0) {
-      this.boards = this.state.boards.map((board) => {
-        if (board.team_members.length === 1) {
-          return <BoardThumb key={board.id} board={board} user={this.state.user}/>
+        if (display === 'Hidden') {
+          let board = this.state.boards.map((board) => {
+            if (board.hidden) {
+              return <BoardThumb key={board.id} board={board} user={this.state.user}/>
+            }
+          })
+          return board;
+        } else if (display === 'Private Boards') {
+          let board = this.state.boards.map(board =>{
+            if (board.team_members.length === 1 && board.hidden === null) {
+              return <BoardThumb key={board.id} board={board} user={this.state.user}/>
+            }
+          })
+          return board;
+        } else if (display === 'Team Boards'){
+          let board = this.state.boards.map((board) => {
+            if (board.team_members.length > 1 && board.hidden === null) {
+              return <BoardThumb key={board.id} board={board} user={this.state.user}/>
+            }
+          })
+          return board;
         }
-      })
-      this.team_boards = this.state.boards.map((board) => {
-        if (board.team_members.length > 1) {
-          return <BoardThumb key={board.id} board={board} user={this.state.user}/>
-        }
-      })
+
     } else {
-      this.team_boards = <div style={{'fontSize': '60px'}}> you currently have no boards </div>
-      this.boards = <div style={{'fontSize': '60px'}}> you currently have no boards </div>
+      let boards = <div style={{'fontSize': '60px'}}> you currently have no boards </div>
+      return boards
     }
   },
 
@@ -60,10 +73,13 @@ const ProfileBoards = React.createClass({
   },
 
   render(){
-    this.getBoards();
-    let teamTab = this.state.boardDisplay === 'Team Boards' ? 'profile-boards-tabs tab-selected' : 'profile-boards-tabs';
+    let boards = this.getBoards(this.state.boardDisplay);
+    let teamTab = this.state.boardDisplay === 'Team Boards' ? {color: `${this.state.user.preference.user_color}`} : {};
 
-    let privateTab = this.state.boardDisplay === 'Private Boards' ? 'profile-boards-tabs tab-selected' : 'profile-boards-tabs'
+    let privateTab = this.state.boardDisplay === 'Private Boards' ? {color: `${this.state.user.preference.user_color}`} : {};
+
+    let hiddenTab = this.state.boardDisplay === 'Hidden' ? {color: `${this.state.user.preference.user_color}`} : {};
+
     return(
       <div className='profile-boards group'>
         <Modal
@@ -74,12 +90,13 @@ const ProfileBoards = React.createClass({
           <BoardForm onModalClose={this.onModalClose} user={this.props.user}/>
         </Modal>
         <div className='tabs-container'>
-        <div className={teamTab} onClick={this.switchTab} id='teams'><p>Team Boards</p></div>
-        <div className={privateTab} onClick={this.switchTab} id='private'><p>Private Boards</p></div>
+        <div className='profile-boards-tabs' onClick={this.switchTab} id='teams' style={teamTab}><p>Team Boards</p></div>
+        <div className='profile-boards-tabs' onClick={this.switchTab} id='private' style={privateTab}><p>Private Boards</p></div>
         <div className='profile-boards-tabs' onClick={this.boardForm}><p>New Board</p></div>
+        <div className='profile-hidden-tab' onClick={this.switchTab} id='hidden' style={hiddenTab}><p>Hidden</p></div>
         </div>
 
-        <div className='profile-boards-holder'><ul>{this.state.boardDisplay === 'Team Boards' ? this.team_boards : this.boards}</ul></div>
+        <div className='profile-boards-holder'><ul>{boards}</ul></div>
       </div>
     )
   }

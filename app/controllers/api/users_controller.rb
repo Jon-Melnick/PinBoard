@@ -10,14 +10,16 @@ class Api::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.user_initials = @user.first_name[0] + @user.last_name[0]
+    if @user.first_name[0] && @user.last_name[0]
+      @user.user_initials = @user.first_name[0] + @user.last_name[0]
+    end
     if @user.save
       login(@user)
       UserPreference.create!(user_id: @user.id, user_color: UserPreference.color)
       render 'api/users/show'
     else
-      @errors = @user.errors
-      render json: @errors, status: 422
+      @errors = @user.errors.full_messages
+      render 'api/shared/errors', status: 422
     end
   end
 
@@ -40,6 +42,6 @@ class Api::UsersController < ApplicationController
   end
 
   def pref_params
-    params.require(:user).permit(:user_color, :home_board)
+    params.require(:user).permit(:user_color, :home_board, :nav_color)
   end
 end

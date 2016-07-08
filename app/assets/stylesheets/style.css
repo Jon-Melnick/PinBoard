@@ -47,13 +47,14 @@ table {
 }
 
 .small-text{
+	margin: 4px 0;
 	font-size: small;
 }
 
 /* other stuff */
 body {
 	background: #f5f5f5;
-	min-width: 1500px;
+	min-width: 100%;
 	font-family: 'Indie Flower', cursive;
 }
 
@@ -88,6 +89,7 @@ body {
 }
 
 .login-box{
+	position: relative;
   width: 250px;
   text-align: center;
 	justify-content: flex-end;
@@ -97,11 +99,11 @@ body {
 .login-box h1 {
   font-family: 'Indie Flower', cursive;
   font-size: 45px;
-  margin: 20px 0px;
+  margin: 10px 0px;
 }
 
 .login-box input {
-  margin-top: 10px;
+  margin-top: 5px;
 	border-style: none;
 	background-color: transparent;
 	border-bottom: 1px solid;
@@ -126,7 +128,7 @@ body {
 	width: 100%;
 	min-width: 800px;
 	position: absolute;
-	background-image: url("http://ieslaorden.es/wp-content/uploads/2011/07/corcho.jpg");
+	background-image: url("http://res.cloudinary.com/arkean/image/upload/c_scale,h_800/v1467679360/corcho_xujrf2.jpg");
 	background-position: top;
 	display: flex;
 	/*align-items: center;*/
@@ -135,7 +137,8 @@ body {
 
 
 .signup-form-bg{
-	background-image: url('http://orig05.deviantart.net/36fd/f/2012/128/b/5/i_made_a_piece_of_paper__lol__by_derbywind213-d4yyjt0.png');
+	position: relative;
+	background-image: url('http://res.cloudinary.com/arkean/image/upload/v1467679355/i_made_a_piece_of_paper__lol__by_derbywind213-d4yyjt0_egv3zs.png');
 	background-repeat: no-repeat;
 	background-size: cover;
 	min-width: 550px;
@@ -181,9 +184,7 @@ body {
 
 }
 
-.button {
-	float: right;
-	margin-top: 31px;
+button {
    border-top: 1px solid #96d1f8;
    background: #65a9d7;
    background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7));
@@ -191,34 +192,32 @@ body {
    background: -moz-linear-gradient(top, #3e779d, #65a9d7);
    background: -ms-linear-gradient(top, #3e779d, #65a9d7);
    background: -o-linear-gradient(top, #3e779d, #65a9d7);
-   padding: 9px 18px;
-   -webkit-border-radius: 12px;
-   -moz-border-radius: 12px;
-   border-radius: 12px;
-   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   padding: 2px 18px;
    text-shadow: rgba(0,0,0,.4) 0 1px 0;
    color: white;
-   font-size: 13px;
-   font-family: Georgia, Serif;
+   font-size: 16px;
+	 font-family: 'Indie Flower', cursive;
    text-decoration: none;
    vertical-align: middle;
+	 cursor: pointer;
    }
 
-.button:active {
+button:active {
    border-top-color: #1b435e;
    background: #1b435e;
    }
 
-.button:focus { outline: none; }
+button:focus { outline: none; }
 
 
 
 /* NavBar */
 .navbar-container{
+	position: fixed;
+	height: auto;
 	width: 100%;
 	background: #C7D0D5;
+	z-index: 9997;
 }
 .navbar {
  display:block;
@@ -255,7 +254,7 @@ body {
 	width: 150px;
 	border: 1px solid black;
 	position: absolute;
-	right: 0px;
+	right: -49px;
 	top: 40px;
 	z-index: 9997;
 }
@@ -314,10 +313,13 @@ body {
 }
 
 .profile-bg{
+	position: absolute;
+	margin: 0 auto;
+	top: 50px;
 	background-image: url("http://res.cloudinary.com/arkean/image/upload/v1467679359/corkboard_x2gpyn.jpg");
 	background-position: left;
-	background-size: cover;
-	height: 1000px;
+	height: 800px;
+	min-width: 1350px;
 	width: 100%;
 }
 
@@ -341,6 +343,9 @@ body {
 	vertical-align: middle;
 	line-height: 150px;
 	font-size: 50px;
+}
+
+.hover{
 	cursor: pointer;
 }
 
@@ -357,10 +362,15 @@ body {
 }
 
 .profile-info {
+	padding: 5px;
 	float: left;
 	height: 100px;
 	margin: 50px 0;
 	/*position: absolute;*/
+}
+
+.profile-info li{
+	padding: 3px;
 }
 
 .profile-info input {
@@ -370,6 +380,7 @@ body {
 	width: 200px;
 	font-family: 'Indie Flower', cursive;
 	font-size: 15px;
+	border-bottom: 1px solid black;
 }
 
 .profile-info button{
@@ -397,6 +408,15 @@ body {
 	width: 120px;
 	height: 40px;
 	position: relative;
+}
+
+.profile-hidden-tab {
+	position: absolute;
+	top: 60px;
+	left: 1000px;
+	cursor: pointer;
+	font-size: 15px;
+	color: #C7d0d5;
 }
 
 .tabs-container {
@@ -429,9 +449,6 @@ body {
 	text-align: center;
 }
 
-.form-tabs:hover{
-	background: rgba(255, 255, 255, 0.5);
-}
 
 .tabs-container div{
 	margin-left: 50px;
@@ -465,6 +482,7 @@ body {
 	text-decoration: underline;
 	line-height: 40px;
 	position: relative;
+	word-break: break-all;
 }
 
 .board-thumb:hover{
@@ -479,7 +497,12 @@ body {
 	line-height: 17px;
 	background-color: #C7D0D5;
 	text-align: left;
-	padding: 5px;
+	padding: 10px;
+}
+.thumb-detail p{
+	padding: 3px;
+	word-break: keep-all;
+	font-size: 16px;
 }
 
 .thumb-delete{
@@ -492,46 +515,45 @@ body {
 	text-decoration: underline;
 }
 
+.member-invite-container {
+	width: 260px;
+	height: 80px;
+	overflow-y: auto;
+	float: right;
+}
+.member-invite{
+	width: 100px;
+	height: 15px;
+	border: outset;
+	float: right;
+	line-height: 15px;
+	padding: 3px;
+	margin: 3px;
+}
+
 
 .board-home{
 	/*padding: 50px;*/
 	margin: auto;
+	margin-top: 50px;
 	height: 800px;
-	width: 1000px;
+	width: 1500px;
 	background-image: url('http://ieslaorden.es/wp-content/uploads/2011/07/corcho.jpg');
-	background-size: contain;
 	background-position: 0px 0px;
 	min-width: 100%;
 	position: absolute;
 	z-index: 1;
+	overflow-x: auto;
 }
-
-.board-home2{
-	margin: auto;
-	height: 800px;
-	width: 1000px;
-	background-image: url('http://ieslaorden.es/wp-content/uploads/2011/07/corcho.jpg');
-	background-size: contain;
-	background-position: 0px 0px;
-	min-width: 100%;
-	position: relative;
-	overflow: auto;
-}
-
-.innerboard {
-	height: 1000px;
-	width: 1000px;
-}
-
 
 .board-nav{
 	height: 400px;
 	width: 50px;
 	background-color: #C7D0D5;
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	border-bottom-left-radius: 20px;
+	position: fixed;
+	top: 50px;
+	float: right;
+	border-bottom-right-radius: 20px;
 	display: flex;
 	flex-flow: column;
 	align-items: center;
@@ -549,7 +571,7 @@ body {
 	position: absolute;
 	/*height: 100%;*/
 	width: 200px;
-	right: 45px;
+	left: 45px;
 	background-color: orange;
 	white-space: nowrap;
 	/*padding: 10px;*/
@@ -593,10 +615,12 @@ body {
 
 .new-form input {
 	width: 255px;
+	padding: 5px;
 }
 
 .new-form textarea {
     resize: none;
+		padding: 5px;
 }
 
 
@@ -613,12 +637,22 @@ body {
 	padding: 10px;
 }
 
-.pin-img {
+.pin-img-horz {
   background-size: contain;
 	background-repeat: no-repeat;
   position: absolute;
   height: 160px;
   width: 250px;
+	margin: 10px;
+	padding: 10px;
+}
+
+.pin-img-vert {
+  background-size: contain;
+	background-repeat: no-repeat;
+  position: absolute;
+  height: 250px;
+  width: 160px;
 	margin: 10px;
 	padding: 10px;
 }
@@ -635,7 +669,7 @@ body {
 	top: 40px;
 	width: 70%;
 	max-height: 70px;
-	overflow:visible;
+	word-break:break-all;
 }
 
 .pin-author{
@@ -714,11 +748,20 @@ body {
 	cursor: pointer;
 }
 
+.pin-selected{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+	border: 2px solid black;
+}
+
 .color-box {
 	float: right;
 	height: 5px;
 	width: 40px;
 	margin-top: 6px;
+	margin-left: 10px;
 }
 
 .note-green-striped{
@@ -782,6 +825,16 @@ body {
 	background-color: #93b1c6;
 }
 
+.pin-zoom-hor{
+	height: 400px;
+	width: 600px;
+}
+
+.pin-zoom-vert{
+	height: 600px;
+	width: 400px;
+}
+
 .pin-zoom{
 	width: 300px;
 	height: 300px;
@@ -808,6 +861,7 @@ body {
 	width: 240px;
 	height: 170px;
 	overflow-y: auto;
+	word-break: break-all;
 	font-size: 20px;
 }
 
@@ -839,4 +893,46 @@ border-radius:10px;
 	bottom: 30px;
 	left: 120px;
 	font-size: 20px;
+}
+.image-shape-container{
+	float: right;
+	position: relative;
+	height: 80px;
+	width: 100px;
+}
+
+.image-horizontal {
+	margin-top: 12px;
+	float: right;
+	height: 20px;
+	width: 30px;
+	cursor: pointer;
+	border: 1px solid black;
+}
+
+.image-vertical {
+	margin: 2px;
+	float: right;
+	height: 30px;
+	width: 20px;
+	cursor: pointer;
+	border: 1px solid black
+}
+
+.img-selected{
+ background: #f5f5f5;
+}
+
+.errors-signin{
+	color: red;
+	position: absolute;
+	top: 130px;
+	left: 12px;
+}
+
+.errors-signup{
+	color: red;
+	position: absolute;
+	bottom: 160px;
+	left: 150px;
 }

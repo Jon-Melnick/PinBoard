@@ -20,11 +20,11 @@ module.exports = {
     });
   },
 
-  createPin(pin, cb){
+  createPin(pin, tags, cb){
     $.ajax({
       url: `api/pins`,
       method: "POST",
-      data: {pin: pin},
+      data: {pin: pin, tags},
       success: function(newPin){
          cb(newPin)
       }

@@ -13,16 +13,23 @@ const SignupForm = React.createClass({
       password: "",
       first_name: "",
       last_name: "",
+      authErrors: SessionStore.errors()
     };
   },
 
   componentDidMount() {
     this.sessionListener = SessionStore.addListener(this.redirectIfLoggedIn);
+    this.errorListener = SessionStore.addListener(this.getErrors)
     this.redirectIfLoggedIn();
   },
 
   componentWillUnmount() {
     this.sessionListener.remove();
+    this.errorListener.remove();
+  },
+
+  getErrors(){
+    this.setState({authErrors: SessionStore.errors()})
   },
 
   redirectIfLoggedIn() {
@@ -47,14 +54,28 @@ const SignupForm = React.createClass({
     return (e) => this.setState({[property]: e.target.value});
   },
 
+  errors() {
+    return (
+      <div className="errors-signup">
+        {this.state.authErrors.map(function(error){
+          return <div key={error}>{error}</div>;
+        })}
+      </div>
+    );
+  },
+
 	render() {
+    let errors;
+    if (this.state.authErrors.length > 0) {
+      errors = this.errors();
+    }
 		return (
 
         <div className="signup-page">
           <div className='signup-form-bg'>
 
           <form className='signup-form'>
-
+            {errors}
             <h1>Sign Up</h1>
               <label>Email: </label>
                 <input type="text"

@@ -6,9 +6,22 @@ const Store = require('flux/utils').Store,
 const SessionsStore = new Store(dispatcher);
 
 let _currentUser = {};
+let _errors = [];
 
 const _login = function(currentUser){
   _currentUser = currentUser;
+  SessionsStore.__emitChange();
+};
+
+SessionsStore.errors = function() {
+  let errors = _errors;
+  _errors = [];
+  return errors;
+};
+
+
+const _updateErrors = function(errors) {
+  _errors = errors;
   SessionsStore.__emitChange();
 };
 
@@ -29,6 +42,9 @@ SessionsStore.__onDispatch = function(payload){
   switch (payload.actionType) {
     case SessionConstants.LOGIN:
       _login(payload.currentUser);
+      break;
+    case SessionConstants.ERRORS:
+      _updateErrors(payload.errors);
       break;
     case SessionConstants.LOGOUT:
       _logout();

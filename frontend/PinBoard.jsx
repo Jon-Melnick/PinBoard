@@ -50,6 +50,7 @@ function _ensureLoggedIn(nextState, replace) {
     }
 }
 
+
 document.addEventListener('DOMContentLoaded', () => {
   if (window.currentUser) {
     SessionsActions.receiveCurrentUser(window.currentUser);

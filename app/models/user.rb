@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   validates :email_address, presence: true, uniqueness: true
+  validates :password, length: {minimum: 6, allow_nil: true}
   validates :first_name, :last_name, presence: true
   validates :session_token, presence: true
-  validates :password, length: {minimum: 6, allow_nil: true}
 
   after_initialize :ensure_session_token
 
@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
     foreign_key: :team_member_id,
     class_name: 'Team'
 
-  has_many :boards, 
+  has_many :boards,
     through: :team_boards,
     source: :board
 

@@ -78,7 +78,7 @@ const TeamMenu = React.createClass({
     }
     return(
 
-        <ul className='board-nav-menu' style={{'backgroundColor': this.props.color}} >
+        <ul className='board-nav-menu' style={{'backgroundColor': this.props.color}}>
           <h1>Team Members</h1>
           {this.props.team.map((member => {
             return <li key={member.id} id={member.id} onClick={this.goToProfile}>{member.name}</li>

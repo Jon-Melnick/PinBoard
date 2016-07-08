@@ -9,7 +9,7 @@ const BoardForm = React.createClass({
   getInitialState(){
     return({title: "",
             description: "",
-            board_style: "http://res.cloudinary.com/arkean/image/upload/v1467679359/corkboard_x2gpyn.jpg",
+            board_style: 'http://res.cloudinary.com/arkean/image/upload/c_scale,h_800/v1467679359/corkboard_x2gpyn.jpg',
             invitees: `${this.invitee(this.props.user)}`,
             inviting: '',
             team: [this.props.user.id]})

@@ -9,7 +9,6 @@ const PinForm = React.createClass({
   },
 
   generateForm(){
-    console.log(this.props.z)
     if (this.state.form === 'text') {
       return <PinFormText boardId={this.props.boardId} onModalClose={this.props.onModalClose} z={this.state.z}/>
     } else {
@@ -26,9 +25,20 @@ const PinForm = React.createClass({
   },
 
   render(){
+    let color = {color: `${this.props.color}`}
+    let tabs = <div className='form-tabs-container'>
+      <div className='form-tabs' onClick={this.switchTabText}>Text</div>
+      <div className='form-tabs' style={color} onClick={this.switchTabImg}>Picture</div>
+    </div>
+    if (this.state.form === 'text') {
+      tabs = <div className='form-tabs-container'>
+        <div className='form-tabs' style={color} onClick={this.switchTabText}>Text</div>
+        <div className='form-tabs' onClick={this.switchTabImg}>Picture</div>
+      </div>
+    }
     return(
       <div>
-        <div className='form-tabs-container'><div className='form-tabs' onClick={this.switchTabText}>Text</div><div className='form-tabs' onClick={this.switchTabImg}>Picture</div></div>
+        {tabs}
         {this.generateForm()}
       </div>
 

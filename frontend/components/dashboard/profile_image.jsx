@@ -27,12 +27,17 @@ const ProfilePic = React.createClass({
     let emptyImageUrl = "http://res.cloudinary.com/dfqqsmub8/image/upload/w_200,h_200,c_thumb,g_face/empty_image.jpg";
     let url = this.props.user.user_pic_url || emptyImageUrl;
     let color = this.props.user.preference ? this.props.user.preference.user_color : 'white'
+    let klass = 'profile-image'
+    if (this.props.user.id === SessionStore.currentUser().id){
+      klass += ' hover'
+    }
     return(
-      <img className="profile-image"
-             onClick={this.uploadPhoto}
-             src={url}
-             style={{'border': `5px ${color} solid`}}>
-        </img>
+      <img className={klass}
+           onClick={this.props.user.id === SessionStore.currentUser().id ? this.uploadPhoto : ''}
+           src={url}
+           style={{'border': `5px ${color} solid`}}>
+      </img>
+
     )
   }
 })

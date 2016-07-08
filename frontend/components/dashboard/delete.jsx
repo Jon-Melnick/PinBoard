@@ -1,6 +1,7 @@
 const React = require('react');
 
 const DeleteBoard = React.createClass({
+
   render(){
     return(
       <div className="new-form">
@@ -12,11 +13,11 @@ const DeleteBoard = React.createClass({
           <br></br>
         <label>... Or you can just hide me and find me later. This allows you to only show the boards you are currently interested in. To find me again just look really hard.</label>
           <br></br>
-        <button style={{'width': '75px'}}>Hide</button>
+        <button style={{'width': '75px'}} onClick={this.props.hideBoard}>Hide</button>
           <br></br>
             <br></br>
           <br></br>
-        <label>Or you can just cancel and we can just pretend you never came here, this time...</label>
+        <label>Or you can just hit cancel and we can pretend you never came here... this time.</label>
           <br></br>
         <button style={{'width': '75px'}} onClick={this.props.onModalClose}>Cancel</button>
           <br></br>
