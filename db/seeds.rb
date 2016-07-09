@@ -81,24 +81,24 @@ Tag.create!([
   {tag: "sample"}
 ])
 Tagging.create!([
-  {tag_id: 1, pin_id: 66},
-  {tag_id: 2, pin_id: 67},
-  {tag_id: 3, pin_id: 67},
-  {tag_id: 2, pin_id: 68},
-  {tag_id: 4, pin_id: 68},
-  {tag_id: 5, pin_id: 68},
-  {tag_id: 6, pin_id: 69},
-  {tag_id: 7, pin_id: 69},
-  {tag_id: 8, pin_id: 69},
-  {tag_id: 9, pin_id: 69},
-  {tag_id: 10, pin_id: 69},
-  {tag_id: 11, pin_id: 70},
-  {tag_id: 12, pin_id: 70},
-  {tag_id: 2, pin_id: 70},
-  {tag_id: 13, pin_id: 70},
-  {tag_id: 12, pin_id: 71},
-  {tag_id: 7, pin_id: 71},
-  {tag_id: 10, pin_id: 71}
+  {tag_id: 1, pin_id: 54},
+  {tag_id: 2, pin_id: 55},
+  {tag_id: 3, pin_id: 55},
+  {tag_id: 2, pin_id: 55},
+  {tag_id: 4, pin_id: 55},
+  {tag_id: 5, pin_id: 55},
+  {tag_id: 6, pin_id: 56},
+  {tag_id: 7, pin_id: 56},
+  {tag_id: 8, pin_id: 56},
+  {tag_id: 9, pin_id: 56},
+  {tag_id: 10, pin_id: 56},
+  {tag_id: 11, pin_id: 57},
+  {tag_id: 12, pin_id: 57},
+  {tag_id: 2, pin_id: 57},
+  {tag_id: 13, pin_id: 57},
+  {tag_id: 12, pin_id: 58},
+  {tag_id: 7, pin_id: 58},
+  {tag_id: 10, pin_id: 58}
 ])
 Team.create!([
   {team_member_id: 4, board_id: 1},
