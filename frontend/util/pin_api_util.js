@@ -64,12 +64,12 @@ module.exports = {
     });
   },
 
-  deletePin(pin, cb){
+  deletePin(id, cb){
     $.ajax({
-      url: `api/pins/${pin.id}`,
+      url: `api/pins/${id}`,
       method: "DELETE",
-      success: function(){
-         console.log()
+      success: function(pin){
+         cb(pin);
       }
     })
   }

@@ -1,33 +1,134 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
-user1 = {first_name: "Demo",
-         last_name: "User",
-         password: 'password',
-         email_address: "Demo",
-         user_initials: 'DU'}
-
- user2 = {first_name: "Jon",
-          last_name: "Melnick",
-          password: 'password',
-          email_address: "jonmelnick@hotmail.com",
-          user_initials: 'JM'}
-
-
-user3 = {first_name: "Jayson",
-         last_name: "Young",
-         password: 'password',
-         email_address: "JayYoung@fake.com",
-         user_initials: 'JY'}
-
-User.create!(user1)
-User.create!(user2)
-User.create!(user3)
-UserPreference.create!(user_id: 1, user_color: 'red')
-UserPreference.create!(user_id: 2, user_color: 'blue')
-UserPreference.create!(user_id: 3, user_color: 'green')
+Board.create!([
+  {creator_id: 4, title: "Love Notes", description: "Sending a love message", board_style: "http://res.cloudinary.com/arkean/image/upload/c_scale,h_800/v1467909599/corkboard-purple_v4vmlu.jpg", hidden: nil},
+  {creator_id: 1, title: "All the pins", description: "Variations of all the pin backgrounds", board_style: "http://res.cloudinary.com/arkean/image/upload/c_scale,h_800/v1467679359/corkboard_x2gpyn.jpg", hidden: nil},
+  {creator_id: 1, title: "Dreams of traveling", description: "Places we should go!!", board_style: "http://res.cloudinary.com/arkean/image/upload/c_scale,h_800/v1467909589/corkboard-green_jby46h.jpg", hidden: nil},
+  {creator_id: 1, title: "", description: "", board_style: "http://res.cloudinary.com/arkean/image/upload/c_scale,h_800/v1467679359/corkboard_x2gpyn.jpg", hidden: true},
+  {creator_id: 1, title: "Try out the sorts", description: "Add a few pics, text notes and tags and try out the sorting!", board_style: "http://res.cloudinary.com/arkean/image/upload/c_scale,h_800/v1467909950/Quatrefoil-Corkboard_eqq8kn.jpg", hidden: nil}
+])
+Pin.create!([
+  {user_id: 4, board_id: 1, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-black_l5ztxz.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-purple_ixwtyk.png", img_url: nil, posX: 521, posY: 482, zIndex: 43},
+  {user_id: 4, board_id: 1, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-blue_gyqktr.png", note_color: nil, img_url: "http://res.cloudinary.com/arkean/image/upload/w_250,h_166,c_fill,g_face/v1468009517/xb3z8nibvt9quiecknq6.jpg", posX: 526, posY: 348, zIndex: 60},
+  {user_id: 4, board_id: 1, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825733/tack-teal_padg1c.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-brown-decorated_zlcljd.png", img_url: nil, posX: 583, posY: 524, zIndex: 44},
+  {user_id: 4, board_id: 1, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-gold_x1xesf.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-green_cle3ps.png", img_url: nil, posX: 357, posY: 299, zIndex: 37},
+  {user_id: 4, board_id: 1, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-blue_gyqktr.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-burnt-orange_uuj2zx.png", img_url: nil, posX: 665, posY: 479, zIndex: 45},
+  {user_id: 4, board_id: 1, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-red_jjgvcx.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-pink-stripe_bqkv86.png", img_url: nil, posX: 575, posY: 130, zIndex: 4},
+  {user_id: 4, board_id: 1, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-purple_wndk5t.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/st-flowers_k1hjcq.png", img_url: nil, posX: 484, posY: 88, zIndex: 6},
+  {user_id: 4, board_id: 1, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-blue_gyqktr.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-purple-stripe_qho3fo.png", img_url: nil, posX: 382, posY: 46, zIndex: 7},
+  {user_id: 4, board_id: 1, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-blue_gyqktr.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-fancy_zeu6ii.png", img_url: nil, posX: 754, posY: 431, zIndex: 46},
+  {user_id: 4, board_id: 1, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-blue_gyqktr.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-burnt-orange_uuj2zx.png", img_url: nil, posX: 314, posY: 101, zIndex: 8},
+  {user_id: 4, board_id: 1, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-purple_wndk5t.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-burnt-orange_uuj2zx.png", img_url: nil, posX: 900, posY: 242, zIndex: 50},
+  {user_id: 4, board_id: 1, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-black_l5ztxz.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-purple-checkered_etg2ah.png", img_url: nil, posX: 285, posY: 150, zIndex: 38},
+  {user_id: 4, board_id: 1, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-blue_gyqktr.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-green_cle3ps.png", img_url: nil, posX: 796, posY: 367, zIndex: 47},
+  {user_id: 4, board_id: 1, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-gold_x1xesf.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825758/st-green-stripe_iwaoyx.png", img_url: nil, posX: 917, posY: 146, zIndex: 52},
+  {user_id: 4, board_id: 1, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-red_jjgvcx.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/st-faded-stripe_iikpya.png", img_url: nil, posX: 858, posY: 96, zIndex: 53},
+  {user_id: 1, board_id: 2, title: "SO MANY PLACES!", body: "which to choose?", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-red_jjgvcx.png", note_color: nil, img_url: "http://res.cloudinary.com/arkean/image/upload/w_250,h_166,c_fill,g_face/v1468009652/b1w1ugw00j8qgsw1ztic.jpg", posX: 570, posY: 0, zIndex: 92},
+  {user_id: 4, board_id: 1, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-black_l5ztxz.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-pink-purple-stripe_zgwzca.png", img_url: nil, posX: 761, posY: 47, zIndex: 54},
+  {user_id: 4, board_id: 1, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-red_jjgvcx.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-blue_gv4cjs.png", img_url: nil, posX: 306, posY: 235, zIndex: 39},
+  {user_id: 4, board_id: 1, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825733/tack-teal_padg1c.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-gold_nc2k3g.png", img_url: nil, posX: 399, posY: 378, zIndex: 40},
+  {user_id: 4, board_id: 1, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-red_jjgvcx.png", note_color: nil, img_url: "http://res.cloudinary.com/arkean/image/upload/w_250,h_166,c_fill,g_face/v1468008010/liqzickv7jjpnknqn8u2.jpg", posX: 450, posY: 193, zIndex: 58},
+  {user_id: 4, board_id: 1, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-green_vkb5ve.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825754/st-white_kxwyau.png", img_url: nil, posX: 858, posY: 301, zIndex: 48},
+  {user_id: 4, board_id: 1, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-red_jjgvcx.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-blue_gv4cjs.png", img_url: nil, posX: 664, posY: 93, zIndex: 55},
+  {user_id: 4, board_id: 1, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825733/tack-teal_padg1c.png", note_color: nil, img_url: "http://res.cloudinary.com/arkean/image/upload/w_166,h_250,c_fill,g_face/v1468009447/hifhyf27aln4m0bnh5mi.jpg", posX: 721, posY: 159, zIndex: 59},
+  {user_id: 1, board_id: 2, title: "Manarola, Italy", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-purple_wndk5t.png", note_color: nil, img_url: "http://res.cloudinary.com/arkean/image/upload/w_250,h_166,c_fill,g_face/v1468013782/ldqvh68u8du3dx3qnnlf.jpg", posX: 1182, posY: 46, zIndex: 99},
+  {user_id: 4, board_id: 1, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-purple_wndk5t.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/st-faded-stripe_iikpya.png", img_url: nil, posX: 462, posY: 434, zIndex: 42},
+  {user_id: 1, board_id: 2, title: "Pisa, Italy", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-red_jjgvcx.png", note_color: nil, img_url: "http://res.cloudinary.com/arkean/image/upload/w_250,h_166,c_fill,g_face/v1468013811/tfzjwgum59xq034sie8e.jpg", posX: 1018, posY: 211, zIndex: 68},
+  {user_id: 1, board_id: 2, title: "Vernazza Cinque Terre, Italy", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-gold_x1xesf.png", note_color: nil, img_url: "http://res.cloudinary.com/arkean/image/upload/w_166,h_250,c_fill,g_face/v1468013861/ougqnzlippwbi9opy9i4.jpg", posX: 1070, posY: 3, zIndex: 67},
+  {user_id: 1, board_id: 2, title: "Coliseum Rome, Italy", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825733/tack-teal_padg1c.png", note_color: nil, img_url: "http://res.cloudinary.com/arkean/image/upload/w_166,h_250,c_fill,g_face/v1468013905/mak2saljq0ucoiatokke.jpg", posX: 1289, posY: 160, zIndex: 69},
+  {user_id: 1, board_id: 2, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825733/tack-teal_padg1c.png", note_color: nil, img_url: "http://res.cloudinary.com/arkean/image/upload/w_166,h_250,c_fill,g_face/v1468014112/jhotldz3bkvkktuzapob.jpg", posX: 163, posY: 339, zIndex: 103},
+  {user_id: 1, board_id: 2, title: "Amazon Rainforest", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-black_l5ztxz.png", note_color: nil, img_url: "http://res.cloudinary.com/arkean/image/upload/w_250,h_166,c_fill,g_face/v1468014295/muh1uwmclhyluf15wsvh.jpg", posX: 728, posY: 365, zIndex: 64},
+  {user_id: 4, board_id: 3, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825733/tack-teal_padg1c.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825758/st-green-stripe_iwaoyx.png", img_url: nil, posX: 674, posY: 177, zIndex: 16},
+  {user_id: 1, board_id: 2, title: "Amazon Rainforest", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-blue_gyqktr.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-blue_gv4cjs.png", img_url: nil, posX: 803, posY: 500, zIndex: 106},
+  {user_id: 1, board_id: 2, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-green_vkb5ve.png", note_color: nil, img_url: "http://res.cloudinary.com/arkean/image/upload/w_166,h_250,c_fill,g_face/v1468014035/u7eg1ljbjcwaikfxxcjl.jpg", posX: 342, posY: 495, zIndex: 78},
+  {user_id: 1, board_id: 3, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825733/tack-teal_padg1c.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-green_cle3ps.png", img_url: nil, posX: 431, posY: 4, zIndex: 9},
+  {user_id: 1, board_id: 3, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825733/tack-teal_padg1c.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-burnt-orange_uuj2zx.png", img_url: nil, posX: 595, posY: 5, zIndex: 10},
+  {user_id: 1, board_id: 2, title: "Japan", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-red_jjgvcx.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-purple-stripe_qho3fo.png", img_url: nil, posX: 305, posY: 374, zIndex: 104},
+  {user_id: 3, board_id: 3, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825733/tack-teal_padg1c.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-purple_ixwtyk.png", img_url: nil, posX: 411, posY: 349, zIndex: 23},
+  {user_id: 1, board_id: 2, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-red_jjgvcx.png", note_color: nil, img_url: "http://res.cloudinary.com/arkean/image/upload/w_250,h_166,c_fill,g_face/v1468014071/yddivdgucgainquiidcb.jpg", posX: 93, posY: 524, zIndex: 86},
+  {user_id: 1, board_id: 3, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825733/tack-teal_padg1c.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-brown-decorated_zlcljd.png", img_url: nil, posX: 772, posY: 5, zIndex: 11},
+  {user_id: 1, board_id: 2, title: "Amazon Rainforest", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825733/tack-teal_padg1c.png", note_color: nil, img_url: "http://res.cloudinary.com/arkean/image/upload/w_250,h_166,c_fill,g_face/v1468014218/zwh5a2qgfwoijdqzht1y.jpg", posX: 703, posY: 199, zIndex: 66},
+  {user_id: 1, board_id: 5, title: "pin", body: "Just some text", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-blue_gyqktr.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-purple-stripe_qho3fo.png", img_url: nil, posX: 545, posY: 333, zIndex: 118},
+  {user_id: 4, board_id: 3, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825733/tack-teal_padg1c.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825754/st-white_kxwyau.png", img_url: nil, posX: 496, posY: 177, zIndex: 17},
+  {user_id: 1, board_id: 3, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825733/tack-teal_padg1c.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-blue_gv4cjs.png", img_url: nil, posX: 946, posY: 4, zIndex: 12},
+  {user_id: 1, board_id: 3, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825733/tack-teal_padg1c.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-pink-stripe_bqkv86.png", img_url: nil, posX: 1121, posY: 7, zIndex: 13},
+  {user_id: 4, board_id: 3, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825733/tack-teal_padg1c.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/st-flowers_k1hjcq.png", img_url: nil, posX: 326, posY: 174, zIndex: 18},
+  {user_id: 4, board_id: 3, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825733/tack-teal_padg1c.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-fancy_zeu6ii.png", img_url: nil, posX: 1035, posY: 177, zIndex: 14},
+  {user_id: 3, board_id: 3, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825733/tack-teal_padg1c.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/st-faded-stripe_iikpya.png", img_url: nil, posX: 953, posY: 352, zIndex: 19},
+  {user_id: 4, board_id: 3, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825733/tack-teal_padg1c.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-gold_nc2k3g.png", img_url: nil, posX: 862, posY: 176, zIndex: 15},
+  {user_id: 3, board_id: 3, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825733/tack-teal_padg1c.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-purple-checkered_etg2ah.png", img_url: nil, posX: 772, posY: 351, zIndex: 21},
+  {user_id: 1, board_id: 2, title: "Italy", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-black_l5ztxz.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-brown-decorated_zlcljd.png", img_url: nil, posX: 1174, posY: 379, zIndex: 107},
+  {user_id: 3, board_id: 3, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825733/tack-teal_padg1c.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-purple-stripe_qho3fo.png", img_url: nil, posX: 592, posY: 350, zIndex: 22},
+  {user_id: 1, board_id: 2, title: "Amazon Rainforest", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-purple_wndk5t.png", note_color: nil, img_url: "http://res.cloudinary.com/arkean/image/upload/w_250,h_166,c_fill,g_face/v1468014332/jylrvu6esvantox4ndci.jpg", posX: 574, posY: 456, zIndex: 105},
+  {user_id: 3, board_id: 3, title: "", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825733/tack-teal_padg1c.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-pink-stripe_bqkv86.png", img_url: nil, posX: 232, posY: 346, zIndex: 25},
+  {user_id: 1, board_id: 2, title: "Amazon Rainforest", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-green_vkb5ve.png", note_color: nil, img_url: "http://res.cloudinary.com/arkean/image/upload/w_166,h_250,c_fill,g_face/v1468014268/iuvdmz0nn9fal24a7h90.jpg", posX: 560, posY: 224, zIndex: 63},
+  {user_id: 1, board_id: 5, title: "pin 2", body: "doing just some random stuff", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-green_vkb5ve.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825754/st-white_kxwyau.png", img_url: nil, posX: 159, posY: 194, zIndex: 114},
+  {user_id: 4, board_id: 5, title: "Some Pin", body: "Try out the sort!", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-blue_gyqktr.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-purple_ixwtyk.png", img_url: nil, posX: 376, posY: 245, zIndex: 116},
+  {user_id: 1, board_id: 5, title: "Corsica", body: "", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-purple_wndk5t.png", note_color: "", img_url: "http://res.cloudinary.com/arkean/image/upload/w_250,h_166,c_fill,g_face/v1468024024/szcosa5jmnbkmndv885t.jpg", posX: 532, posY: 130, zIndex: 117},
+  {user_id: 4, board_id: 5, title: "i want to go to...", body: "ITALY!", pin_color: "http://res.cloudinary.com/arkean/image/upload/v1467825732/tack-blue_gyqktr.png", note_color: "http://res.cloudinary.com/arkean/image/upload/v1467825753/sn-purple-stripe_qho3fo.png", img_url: nil, posX: 281, posY: 120, zIndex: 115}
+])
+Tag.create!([
+  {tag: "Italy"},
+  {tag: "Random"},
+  {tag: "things"},
+  {tag: "Demo"},
+  {tag: "Trial"},
+  {tag: "pretty"},
+  {tag: "vacation"},
+  {tag: "fun"},
+  {tag: "water"},
+  {tag: "italy"},
+  {tag: "sort"},
+  {tag: "pin"},
+  {tag: "sample"}
+])
+Tagging.create!([
+  {tag_id: 1, pin_id: 66},
+  {tag_id: 2, pin_id: 67},
+  {tag_id: 3, pin_id: 67},
+  {tag_id: 2, pin_id: 68},
+  {tag_id: 4, pin_id: 68},
+  {tag_id: 5, pin_id: 68},
+  {tag_id: 6, pin_id: 69},
+  {tag_id: 7, pin_id: 69},
+  {tag_id: 8, pin_id: 69},
+  {tag_id: 9, pin_id: 69},
+  {tag_id: 10, pin_id: 69},
+  {tag_id: 11, pin_id: 70},
+  {tag_id: 12, pin_id: 70},
+  {tag_id: 2, pin_id: 70},
+  {tag_id: 13, pin_id: 70},
+  {tag_id: 12, pin_id: 71},
+  {tag_id: 7, pin_id: 71},
+  {tag_id: 10, pin_id: 71}
+])
+Team.create!([
+  {team_member_id: 4, board_id: 1},
+  {team_member_id: 3, board_id: 1},
+  {team_member_id: 1, board_id: 1},
+  {team_member_id: 1, board_id: 2},
+  {team_member_id: 2, board_id: 2},
+  {team_member_id: 3, board_id: 2},
+  {team_member_id: 4, board_id: 2},
+  {team_member_id: 5, board_id: 2},
+  {team_member_id: 1, board_id: 3},
+  {team_member_id: 4, board_id: 3},
+  {team_member_id: 3, board_id: 3},
+  {team_member_id: 1, board_id: 4},
+  {team_member_id: 1, board_id: 5},
+  {team_member_id: 2, board_id: 5},
+  {team_member_id: 4, board_id: 5},
+  {team_member_id: 3, board_id: 5}
+])
+User.create!([
+  {first_name: "Jayson", last_name: "Young", session_token: "ZrfwKIOOrMFBy5VWq8G76Q", password_digest: "$2a$10$vWtC6iiCh87DpYUN2EI2ieVfneMJjwAHQZ2rfdnFzIbeM/n1./Gma", email_address: "jaysonyoung@fake.com", user_pic_url: "http://res.cloudinary.com/arkean/image/upload/w_250,h_250,c_fill,g_face/v1468007617/xwp6ccbbfdircisgu0a2.png", user_initials: "JY"},
+  {first_name: "Just Another", last_name: "User", session_token: "MAkQYlbkuGCNg8dgv4T6ag", password_digest: "$2a$10$PIYrwMHyDRm8a8eAeh1yM.bSASHQn0PIbn.2oUrynGizmemdgY0mq", email_address: "anotherUser@fake.com", user_pic_url: "http://res.cloudinary.com/arkean/image/upload/w_250,h_250,c_fill,g_face/v1468007903/m7anwjshnyylvftwpm3e.jpg", user_initials: "JU"},
+  {first_name: "Caitlin", last_name: "R.", session_token: "20RkyWFgzaqXBx2z_GPkyg", password_digest: "$2a$10$YR6jQTJBwOxH3EimS9B.De1C3eQja6NwyCaHo0GfGziw3NxsS7lxO", email_address: "caitlin@fake.com", user_pic_url: "http://res.cloudinary.com/arkean/image/upload/w_250,h_250,c_fill,g_face/v1468007766/xc0envljvkbgofuwytv1.png", user_initials: "CR"},
+  {first_name: "Demo", last_name: "User", session_token: "LLizXJGFUyIndb7YsHYTuA", password_digest: "$2a$10$e7rltEcGUsYe4Zi4Khz6feSukx5iEFhHkUOQNc5Hjgp28LnqzseXO", email_address: "Demo", user_pic_url: "http://res.cloudinary.com/arkean/image/upload/w_250,h_250,c_fill,g_face/v1468007521/oo0iyilbibua2lmqqpqt.png", user_initials: "DU"},
+  {first_name: "Jon", last_name: "M.", session_token: "EiM1vnfPv_ThL9aTPCrRQw", password_digest: "$2a$10$H2ymZy4WeLmYipLfCEPbO.YvYWFVmYGN1fTQUc5qN2wuqNvJJbyy.", email_address: "jonm@fake.com", user_pic_url: "http://res.cloudinary.com/arkean/image/upload/w_250,h_250,c_fill,g_face/v1468007818/llc305fxyhmea41phzne.png", user_initials: "JM"}
+])
+UserPreference.create!([
+  {user_id: 2, user_color: "#40b8bf", nav_color: "#2d8653", home_board: "http://res.cloudinary.com/arkean/image/upload/c_scale,h_800/v1467909597/corkboard-teal_pjjw5e.jpg"},
+  {user_id: 3, user_color: "#b3bbe6", nav_color: "#772d86", home_board: "http://res.cloudinary.com/arkean/image/upload/c_scale,h_800/v1467909599/corkboard-purple_v4vmlu.jpg"},
+  {user_id: 5, user_color: "yellow", nav_color: "#89bf40", home_board: "http://res.cloudinary.com/arkean/image/upload/c_scale,h_800/v1467909589/corkboard-green_jby46h.jpg"},
+  {user_id: 1, user_color: "#79d28d", nav_color: "#5540bf", home_board: "http://res.cloudinary.com/arkean/image/upload/c_scale,h_800/v1467909599/corkboard-purple_v4vmlu.jpg"},
+  {user_id: 4, user_color: "blue", nav_color: "#4092bf", home_board: "http://res.cloudinary.com/arkean/image/upload/c_scale,h_800/v1467679359/corkboard_x2gpyn.jpg"}
+])

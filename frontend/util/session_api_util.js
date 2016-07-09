@@ -22,7 +22,6 @@ module.exports = {
       method: "POST",
       data: {email_address: user.email_address, password: user.password},
       success: function(user){
-        console.log('success')
          callback(user)
       },
       error: function(error) {

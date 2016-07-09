@@ -16,7 +16,7 @@ PinsStore.all = function (){
   return pins;
 };
 
-function emptyPins(){
+PinsStore.emptyPins = function(){
   _pins = {};
 };
 
@@ -39,6 +39,10 @@ PinsStore.getZ = function (){
   _pins[pin.id] = pin;
 };
 
+function removePin (pin) {
+ delete _pins[pin.id]
+};
+
 PinsStore.find = function (id){
   return _pins[id]
 }
@@ -50,6 +54,9 @@ PinsStore.__onDispatch = function(payload){
       break;
     case PinConstants.PIN_RECEIVED:
       setPin(payload.pin)
+      break;
+    case PinConstants.PIN_DELETED:
+      removePin(payload.pin)
       break;
   };
   PinsStore.__emitChange();

@@ -21,7 +21,8 @@ const BoardIndex = React.createClass({
               z: 0,
               modalOpen: false,
               browser: '',
-              sort_by: false})
+              sort_by: false,
+              tags: []})
   },
 
   componentDidMount(){
@@ -88,6 +89,16 @@ const BoardIndex = React.createClass({
     } else if (search && search[0] === 'img_url' && search[1] === false) {
       this.state.pins.map(pin => {
         if (pin.img_url === null) {
+          pins.push(pin);
+        }
+      })
+    } else if (search && search[0] === 'tag') {
+      this.state.pins.map(pin => {
+        let tags = [];
+        Object.keys(pin.tags).map(key => {
+          tags.push(pin.tags[key].tag)
+        })
+        if (tags.indexOf(`${search[1]}`) > -1 ) {
           pins.push(pin);
         }
       })

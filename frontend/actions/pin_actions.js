@@ -28,6 +28,10 @@ module.exports = {
     PinApi.updateZ(pin, z, this.receivePin)
   },
 
+  deletePin(id){
+    PinApi.deletePin(id, this.deletedPin)
+  },
+
   receiveAllPins(pins){
     dispatcher.dispatch({
       actionType: PinConstants.PINS_RECEIVED,
@@ -38,6 +42,13 @@ module.exports = {
   receivePin(pin){
     dispatcher.dispatch({
       actionType: PinConstants.PIN_RECEIVED,
+      pin: pin
+    });
+  },
+
+  deletedPin(pin){
+    dispatcher.dispatch({
+      actionType: PinConstants.PIN_DELETED,
       pin: pin
     });
   }

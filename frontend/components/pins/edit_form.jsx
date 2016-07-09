@@ -39,6 +39,13 @@ const PinEdit = React.createClass({
     this.setState({noteColor: e.currentTarget.value})
   },
 
+  handleDelete(e){
+    e.preventDefault();
+    e.stopPropagation();
+    PinActions.deletePin(this.props.pin.id)
+    this.props.onModalClose();
+  },
+
   render(){
     return(
       <form className='new-form'>
@@ -83,6 +90,7 @@ const PinEdit = React.createClass({
             }
               <br></br><br></br>
               <br></br><br></br>
+        <button onClick={this.handleDelete}>Delete Pin</button>
         <button onClick={this.handleSubmit}>Edit Pin</button>
       </form>
     )

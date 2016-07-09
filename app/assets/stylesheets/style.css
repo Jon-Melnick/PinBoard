@@ -611,6 +611,33 @@ button:focus { outline: none; }
 
 .new-form > input, .new-form > select, .new-form > textarea, .new-form > button, .new-form > p{
 	float: right;
+	margin-top: 5px;
+}
+
+.new-form input {
+	border: 1px solid black;
+}
+
+.new-form select, .new-form textarea:first-child {
+	width: 200px;
+}
+
+.disabled-input{
+	border: none;
+	background: transparent;
+}
+
+.team-textarea{
+	background: transparent;
+	border: none;
+	font-size: 16px;
+	line-height: 20px;
+	width: 250px;
+}
+
+.clear {
+	clear: both;
+	margin-top: 7px;
 }
 
 .new-form input {
@@ -669,7 +696,7 @@ button:focus { outline: none; }
 	top: 40px;
 	width: 70%;
 	max-height: 70px;
-	word-break:break-all;
+	word-break:keep-all;
 }
 
 .pin-author{
@@ -736,9 +763,10 @@ button:focus { outline: none; }
 .option-selector-container{
 	float: right;
 	width: 250px;
-
 	/*border: 1px solid black;*/
 }
+
+
 
 .option-selector-pin {
 	margin: 2px;
@@ -864,29 +892,6 @@ button:focus { outline: none; }
 	word-break: break-all;
 	font-size: 20px;
 }
-
-/*.pin-zoom-body::-webkit-scrollbar{
-width:6px;
-background-color:#cccccc;
-}
-
-.pin-zoom-body::-webkit-scrollbar-thumb{
-background-color:#B03C3F;
-border-radius:10px;
-}
-.pin-zoom-body::-webkit-scrollbar-thumb:hover{
-background-color:#BF4649;
-border:1px solid #333333;
-}
-.pin-zoom-body::-webkit-scrollbar-thumb:active{
-background-color:#A6393D;
-border:1px solid #333333;
-}
-.pin-zoom-body::-webkit-scrollbar-track{
-border:1px gray solid;
-border-radius:10px;
--webkit-box-shadow:0 0 6px gray inset;
-}*/
 
 .pin-zoom-author{
 	position: absolute;

@@ -69,6 +69,10 @@ const PinText = React.createClass({
   vertical(){
     this.setState({vertical: true})
   },
+  
+  updateTags(e){
+    this.setState({tags: e.target.value})
+  },
 
   noteSelect(e){
     e.preventDefault();
@@ -115,6 +119,10 @@ const PinText = React.createClass({
           })}
         </div>
         <br></br><br></br><br></br>
+          <label>Tags: </label>
+            <input type="text" value={this.state.tags} onChange={this.updateTags}></input>
+          <br></br><br></br>
+          <br></br><br></br>
 
       <label>Image layout: </label>
       {vert}

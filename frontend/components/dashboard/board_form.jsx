@@ -76,19 +76,20 @@ const BoardForm = React.createClass({
         <textarea value={this.state.description} onChange={this.updateState} rows="3" cols="40" id='description'/>
         <br></br><br></br><br></br><br></br>
         <label>Current team: </label>
-        <textarea value={this.state.invitees} rows="3" cols="40" disabled/>
+        <textarea className='team-textarea' value={this.state.invitees} rows="3" cols="40" disabled/>
         <br></br><br></br><br></br>
-        <label>Invite Someone!</label>
-        <select id='inviting'>
+        <label className='clear'>Invite Someone!</label>
+        <select id='inviting' className='group'>
           <option value=''> --- </option>
           {options}
         </select>
 
-        <button onClick={this.handleInvite}>Invite!</button>
+        <button onClick={this.handleInvite} className='group'>Invite!</button>
+          <br></br><br></br>
         <br></br><br></br>
-        <label>Board Style:</label>
+        <label className='clear'>Board Style:</label>
 
-        <div className=''>
+        <div className='clear'>
           {Object.keys(Styling.home_boards).map(key => {
             let board = Styling.home_boards[key]
             let sampleStyle = {
