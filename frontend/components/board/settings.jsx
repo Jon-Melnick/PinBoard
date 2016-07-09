@@ -75,6 +75,14 @@ const Settings = React.createClass({
   },
 
   render(){
+    let uninvited;
+    uninvited = Object.keys(this.props.users).map(key => {
+      let user = this.props.users[key]
+      if (this.state.team.indexOf(user.id) < 0) {
+        return <option key={user.id}>{user.full_name}</option>
+      }
+    })
+    console.log(uninvited)
     return (
       <div>
         <form className='new-form'>
@@ -83,26 +91,23 @@ const Settings = React.createClass({
           <br></br><br></br>
           <label>Description: </label>
           <textarea value={this.state.description} onChange={this.updateState} rows="3" cols="40" id='description'/>
+
           <br></br><br></br><br></br><br></br>
           <label>Current team: </label>
-          <div className='member-invite-container group'>
-            {Object.keys(this.props.team).map(key => {
-              let member = this.props.team[key]
-              return <div key={member.id} className='member-invite'>{member.name}</div>
-            })}
-          </div>
+          <textarea className='team-textarea' value={this.state.invitees} rows="3" cols="40" disabled/>
           <br></br><br></br><br></br>
-          <label>Invite Someone!</label>
-          <select id='inviting'>
+          <label className='clear'>Invite Someone!</label>
+          <select id='inviting' className='group'>
             <option value=''> --- </option>
-
+            {uninvited}
           </select>
 
-          <button onClick={this.handleInvite}>Invite!</button>
+          <button onClick={this.handleInvite} className='group'>Invite!</button>
+            <br></br><br></br>
           <br></br><br></br>
-          <label>Board Style:</label>
+          <label className='clear'>Board Style:</label>
 
-          <div className=''>
+          <div className='clear'>
             {Object.keys(Styling.home_boards).map(key => {
               let board = Styling.home_boards[key]
               let sampleStyle = {
@@ -121,31 +126,6 @@ const Settings = React.createClass({
           <br></br>
           <button onClick={this.handleSubmit}>Edit Board</button>
         </form>
-
-
-
-
-        memebers:
-        {Object.keys(this.props.team).map(key => {
-          let member = this.props.team[key]
-          return <div key={member.id}>{member.name}</div>
-        })}
-
-        users:
-        {Object.keys(this.props.users).map(key => {
-          let user = this.props.users[key]
-          return <div key={user.id}>{user.full_name}</div>
-        })}
-
-        board style:
-        <div>{this.props.board.board_style}</div>
-
-        board title:
-        <div>{this.props.board.title}</div>
-
-        board description:
-        <div>{this.props.board.description}</div>
-
       </div>
     )
   }

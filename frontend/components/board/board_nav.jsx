@@ -114,7 +114,7 @@ const BoardNav = React.createClass({
 
           <li onClick={this.newPin}><NewNote size={40} color={color} /></li>
 
-          <li id="search" onClick={this.toggleSearch}>{this.state.search ? <SearchMenu team={this.props.team} color={color} users={UserStore.all()} board={board} closeM={this.closeAllMenus} sortBy={this.sortBy} pins={this.props.pins}/> : menu}<Search size={40} color={color}/></li>
+          <li id="search" onClick={this.toggleSearch}>{this.state.search ? <SearchMenu team={this.props.team} color={color} navColor={navColor} users={UserStore.all()} board={board} closeM={this.closeAllMenus} sortBy={this.sortBy} pins={this.props.pins}/> : menu}<Search size={40} color={color}/></li>
 
           <li onClick={this.settings}><Settings size={40} color={color}/></li>
         </ul>

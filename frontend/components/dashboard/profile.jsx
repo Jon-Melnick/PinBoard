@@ -2,6 +2,7 @@ const React = require('react'),
       ProfileDetail = require('./profile_detail'),
       ProfileBoards = require('./profile_boards'),
       ProfileTabs = require('./profile_tabs'),
+      PinStore = require('../../stores/pin_store'),
       UserStore = require('../../stores/users_store'),
       UserActions = require('../../actions/users_actions'),
       SessionStore = require('../../stores/session_store');
@@ -16,6 +17,7 @@ const Profile = React.createClass({
   componentDidMount(){
     this.listener = UserStore.addListener(this.onChange);
     UserActions.fetchAllUsers();
+    PinStore.emptyPins();
   },
 
   componentWillUnmount(){

@@ -1,6 +1,7 @@
 const React = require('react'),
       TypeSort = require('./type_sort'),
       TeamSort = require('./team_sort'),
+      TagSort = require('./tag_sort'),
       DateSort = require('./date_sort');
 
 const Search = React.createClass({
@@ -30,6 +31,7 @@ const Search = React.createClass({
         <li onClick={this.renderSearch} >Team</li>
         <li onClick={this.renderSearch} >Date</li>
         <li onClick={this.renderSearch} >Type</li>
+        <li onClick={this.renderSearch} >Tag</li>
     </div>
     if (this.state.search === 'Team') {
       menu =  <div>
@@ -49,9 +51,13 @@ const Search = React.createClass({
               <TypeSort sortBy={this.props.sortBy}/>
               <h4 className='go-back' onClick={this.menuOff}>go back</h4>
             </div>
+    } else if (this.state.search === 'Tag') {
+      menu = <div>
+              <h1>Sort by tag: </h1>
+              <TagSort sortBy={this.props.sortBy} board={this.props.board} navColor={this.props.navColor.background} color={this.props.color}/>
+              <h4 className='go-back' onClick={this.menuOff}>go back</h4>
+            </div>
     }
-
-
     return(
       <ul className='board-nav-menu' style={{'backgroundColor': this.props.color}} >
         {menu}

@@ -1,1 +1,1 @@
-json.extract! tag, :tag
+json.extract! tag, :tag, :id

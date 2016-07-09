@@ -15,7 +15,7 @@ module.exports = {
     right                      : '140px',
     bottom                     : '140px',
     width                      : '400px',
-    height                     : '300px',
+    height                     : '350px',
     border                     : '1px solid #ccc',
     background                 : '#C7D0D5',
     color                      : 'black',
