@@ -40,6 +40,7 @@ const Profile = React.createClass({
     }
     if (this.state.user.id === this.state.currentUser.id) {
       Boards = <ProfileBoards user={this.state.user}/>
+      console.log(this.state.user.preference.home_board)
     }
     return (
       this.state.user.id ? <div className='profile profile-bg' style={boardStyle}>

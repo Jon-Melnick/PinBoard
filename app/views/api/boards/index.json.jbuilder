@@ -8,7 +8,7 @@ json.array! @boards do |board|
   json.hidden board.hidden
   json.board_style board.board_style
   json.pins board.pins
-  json.tags board.tags.uniq
+  json.tags board.tags
 
   json.team_members board.team_members do |member|
     json.id member.id

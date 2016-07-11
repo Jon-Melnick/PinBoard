@@ -26,7 +26,7 @@ class Api::UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-      prefs = UserPreference.find(@user.id)
+      prefs = UserPreference.find_by(user_id: @user.id)
       prefs.update(pref_params)
       render 'api/users/show'
     else
