@@ -26,18 +26,25 @@ const NavBar = React.createClass({
     this.setState({user: UserStore.find(SessionStore.currentUser().id)})
   },
 
+  _resetUser(){
+    this.setState({user: null})
+  },
+
   render(){
     let style = {};
+    let navBar = <div></div>
     if (this.state.user) {
       style = {color: `${this.state.user.preference.user_color}`,
                background: `${this.state.user.preference.nav_color}`}
-    }
+
+     navBar = <div className="navbar group" style={style}>
+       <h1>My PinBoard</h1>
+       <NavProfile style={style} resetUser={this._resetUser}/>
+     </div>
+   }
     return (
       <div className='navbar-container' style={style}>
-        <div className="navbar group" style={style}>
-          <h1>My PinBoard</h1>
-          <NavProfile style={style}/>
-        </div>
+        {navBar}
       </div>
     )
   }
