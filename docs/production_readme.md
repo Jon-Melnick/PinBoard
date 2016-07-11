@@ -1,74 +1,47 @@
-# FresherNote
+# My PinBoard
 
-[FresherNote live][heroku] **NB:** This should be a link to your production site
+[My Pinboard live][mypinboard]
 
-[heroku]: http://www.herokuapp.com
+[mypinboard]: http://www.mypinboard.site
 
-FresherNote is a full-stack web application inspired by Evernote.  It utilizes Ruby on Rails on the backend, a PostgreSQL database, and React.js with a Flux architectural framework on the frontend.  
+My PinBoard is a web application that allows you to create reminders, notes, ideas, quotes, collaborations, share pictures and much more all on a cork board interface. It has been developed using Ruby on Rails as the backend and with React and Flux framework on the front.
 
 ## Features & Implementation
 
- **NB**: don't copy and paste any of this.  Many folks will implement similar features, and many employers will see the READMEs of a lot of a/A grads.  You must write in a way that distinguishes your README from that of other students', but use this as a guide for what topics to cover.  
 
 ### Single-Page App
 
-FresherNote is truly a single-page; all content is delivered on one static page.  The root page listens to a `SessionStore` and renders content based on a call to `SessionStore.currentUser()`.  Sensitive information is kept out of the frontend of the app by making an API call to `SessionsController#get_user`.
+My Pinboard app has been created to be a single page app with hashhistory pushes and using ajax calls to the db and storing the information in stores on the front end for quicker interface reactions. This allows the app to be more responsive as any further requests for information is done so in a compact json data request, making the site generally faster.
 
-```ruby
-class Api::SessionsController < ApplicationController
-    def get_user
-      if current_user
-        render :current_user
-      else
-        render json: errors.full_messages
-      end
-    end
- end
-  ```
 
-### Note Rendering and Editing
+### Profile Page
 
-  On the database side, the notes are stored in one table in the database, which contains columns for `id`, `user_id`, `content`, and `updated_at`.  Upon login, an API call is made to the database which joins the user table and the note table on `user_id` and filters by the current user's `id`.  These notes are held in the `NoteStore` until the user's session is destroyed.  
+  The dashboard allows you to update your user color preferences, choose the cork board background of your profile page, upload a user image, create private or team boards, get quick details of your current active boards, and delete them or hide them to clean up your dash.
 
-  Notes are rendered in two different components: the `CondensedNote` components, which show the title and first few words of the note content, and the `ExpandedNote` components, which are editable and show all note text.  The `NoteIndex` renders all of the `CondensedNote`s as subcomponents, as well as one `ExpandedNote` component, which renders based on `NoteStore.selectedNote()`. The UI of the `NoteIndex` is taken directly from Evernote for a professional, clean look:  
+  Browsing your active boards are done seamlessly and when you're ready to start another project or collaboration its as easy as filling out the form that appears when you click 'New Board'. If you don't invite anyone else you will be able to see it in your private board section, otherwise it will be with the Team board. Hovering over any of the board pop up a quick detail pain for a breif overview of its members, the tile, and the description of the board.
 
-![image of notebook index](https://github.com/appacademy/sample-project-proposal/blob/master/docs/noteIndex.png)
+  Using the power of react and flux, any creation of boards or altering of your preferences are done quickly and little rendering is required to make the changes.
 
-Note editing is implemented using the Quill.js library, allowing for a Word-processor-like user experience.
+  When a user is created and put into the User table they also create a linked user preference row in the appropiate table. User nav color and board are automatically set but the user color is randomly generated.
+  Boards can be but not required to be created with a title and a body. They too are set at a default background but you can choose your preference before its created. Its linked to the creator but any member you add, along with the creator, are put into a team members table to create association to the board.
 
-### Notebooks
 
-Implementing Notebooks started with a notebook table in the database.  The `Notebook` table contains two columns: `title` and `id`.  Additionally, a `notebook_id` column was added to the `Note` table.  
+### Boards and the pins
 
-The React component structure for notebooks mirrored that of notes: the `NotebookIndex` component renders a list of `CondensedNotebook`s as subcomponents, along with one `ExpandedNotebook`, kept track of by `NotebookStore.selectedNotebook()`.  
+  From within the board interface you are greeted with a sidebar that allows you to see members and invite more on the fly, create a new pin, search/filter the pins, and change the settings of the board (such as title, description, add members, and change the color of the background). Clicking on the the members name just takes you to their profile page where you only see their profile details and picture, nothing more.
 
-`NotebookIndex` render method:
+  Pins come currenlty in two forms; text and pictures. When choosing either one you can write a title, body, pick a color for the tack, and add tags. The difference from their is that with a text pin you get to choose between 15 background images. For the image pins you can choose to either upload a portrait or landscape format and then using cloudinary you can pin the picture to the board. The pins have a few functions themselves. You can drag and drop them anywhere within the border of the corkboard, as long as you hold it by the tack. double clicking the pin itself will bring it to the front, you can zoom into any pin incase the body was too long or if you want a close up of a picture. Lastly you may edit the details of any pin that is yours, or delete it.
 
-```javascript
-render: function () {
-  return ({this.state.notebooks.map(function (notebook) {
-    return <CondensedNotebook notebook={notebook} />
-  }
-  <ExpandedNotebook notebook={this.state.selectedNotebook} />)
-}
-```
+  The search function allows you to search the pins by team member, date of creation, type (text or picture), and lastly by tags.
 
-### Tags
+  In the database boards have all their preferences already, and they have an association to each pin that has a foreign key with their id. This allows quick and easy grabbing of the boards pins. When a pin is created it has a default position, and its zIndex is the current highest one. After letting the pin go it updates its position and zIndex in the db allowing it to persist if you need to refresh the page or come back. When the pin is created, all the tags are created in the pins controller class so it uses only one ajax request to the database instead of two.
 
-As with notebooks, tags are stored in the database through a `tag` table and a join table.  The `tag` table contains the columns `id` and `tag_name`.  The `tagged_notes` table is the associated join table, which contains three columns: `id`, `tag_id`, and `note_id`.  
 
-Tags are maintained on the frontend in the `TagStore`.  Because creating, editing, and destroying notes can potentially affect `Tag` objects, the `NoteIndex` and the `NotebookIndex` both listen to the `TagStore`.  It was not necessary to create a `Tag` component, as tags are simply rendered as part of the individual `Note` components.  
-
-![tag screenshot](https://github.com/appacademy/sample-project-proposal/blob/master/docs/tagScreenshot.png)
 
 ## Future Directions for the Project
 
-In addition to the features already implemented, I plan to continue work on this project.  The next steps for FresherNote are outlined below.
+I feel as there is always more to do and more features that some people would like to have. I m=plane to implement a comments section soon and shortly after that allowing boards to be public so anyone can see them and contribute to them.
 
-### Search
+Few other features I plan to implement is to allow people to friend and be able to quickly add them to your board, see notifications of what is new on the boards such as a quick note on your dashboard in the details pane of the board and also in the team members section of the board navbar.
 
-Searching notes is a standard feature of Evernote.  I plan to utilize the Fuse.js library to create a fuzzy search of notes and notebooks.  This search will look go through tags, note titles, notebook titles, and note content.  
-
-### Direct Messaging
-
-Although this is less essential functionality, I also plan to implement messaging between FresherNote users.  To do this, I will use WebRTC so that notifications of messages happens seamlessly.  
+Also more customizations, specifically the collection of boards on your profile. Would be nice to be able to choose their order and the graphic for the board thumbnail graphic.

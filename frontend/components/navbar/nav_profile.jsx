@@ -15,7 +15,8 @@ const NavProfile = React.createClass({
   },
 
   _signOut(){
-    SessionActions.logout(this.signOut)
+    SessionActions.logout(this.signOut);
+    this.props.resetUser();
   },
 
   _toggleMenu(){

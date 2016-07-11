@@ -31,13 +31,13 @@ const App = React.createClass({
 
 const routes = (
   <Router history={ hashHistory }>
-    <Route path="login" component={ Login } />
-    <Route path="/signup" component={ Signup } />
     <Route path="/" component={ App }>
+      <Route path="login" component={ Login } />
+      <Route path="/signup" component={ Signup } />
       <IndexRoute component={ Profile } onEnter={ _ensureLoggedIn }/>
       <Route path="/profile/:userId" component={ Profile } onEnter={ _ensureLoggedIn }>
       </Route>
-      <Route path="/boards/:boardId" component={ BoardIndex } />
+      <Route path="/boards/:boardId" component={ BoardIndex } onEnter={ _ensureLoggedIn }/>
 
     </Route>
   </Router>
