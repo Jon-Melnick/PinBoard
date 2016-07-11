@@ -1,149 +1,47 @@
-# PinBoard
+# My PinBoard
 
-[Heroku link][heroku] **Note:** This should be a link to your production site
+[My Pinboard live][mypinboard]
 
-[heroku]: http://www.herokuapp.com
+[mypinboard]: http://www.mypinboard.site
 
-## Minimum Viable Product
+My PinBoard is a web application that allows you to create reminders, notes, ideas, quotes, collaborations, share pictures and much more all on a cork board interface. It has been developed using Ruby on Rails as the backend and with React and Flux framework on the front.
 
-PinBoard is a web application that allows teams to build a board that has an interactive element with it to be able to pin notes/comments/ideas/pictures and has a drag and drop interaction. This project is built using Ruby on Rails and React.
+## Features & Implementation
 
-By the end of Week 9, this app will, at a minimum, satisfy the following criteria:
 
-- [ ] Hosting on Heroku
-- [ ] New account creation, login, and guest/demo login
-- [ ] A production README, replacing this README
-- [ ] Pins
-  - [ ] Multiple styles
-  - [ ] Interactive drag/drop/bring to front
-  - [ ] Range from text to pictures and videos
-  - [ ] Adequate seed data to demonstrate the site's features
-- [ ] PinBoards for organizing pins
-  - [ ] Teams invites and creation
-  - [ ] Creation of new pins by clicking a black spot of the board
-  - [ ] Can see team members and interact with each others pins
-  - [ ] Smooth, bug-free interaction
-  - [ ] Adequate CSS styling
-  - [ ] Adequate seed data to demonstrate the site's features
-- [ ] Tags for pins
-  - [ ] Allows sorting of the board to see the pins you want
-  - [ ] Can update tags as needed
-- [ ] Users interaction and interface
-  - [ ] Have a settings page and a profile pic upload
-  - [ ] Can interact with users and build friends and teams
+### Single-Page App
 
-## Design Docs
-* [View Wireframes][views]
-* [React Components][components]
-* [Flux Cycles][flux-cycles]
-* [API endpoints][api-endpoints]
-* [DB schema][schema]
+My Pinboard app has been created to be a single page app with hashhistory pushes and using ajax calls to the db and storing the information in stores on the front end for quicker interface reactions. This allows the app to be more responsive as any further requests for information is done so in a compact json data request, making the site generally faster.
 
-[views]: docs/views.md
-[components]: docs/components.md
-[flux-cycles]: docs/flux-cycles.md
-[api-endpoints]: docs/api-endpoints.md
-[schema]: docs/schema.md
 
-## Implementation Timeline
+### Profile Page
 
-### Phase 1: Backend setup and Front End User Authentication (1 day, W1 Tu 6pm)
+  The dashboard allows you to update your user color preferences, choose the cork board background of your profile page, upload a user image, create private or team boards, get quick details of your current active boards, and delete them or hide them to clean up your dash.
 
-**Objective:** Functioning rails project with Authentication
+  Browsing your active boards are done seamlessly and when you're ready to start another project or collaboration its as easy as filling out the form that appears when you click 'New Board'. If you don't invite anyone else you will be able to see it in your private board section, otherwise it will be with the Team board. Hovering over any of the board pop up a quick detail pain for a breif overview of its members, the tile, and the description of the board.
 
-- [ ] create new project
-- [ ] create `User` model
-- [ ] authentication
-- [ ] user signup/signin pages
-- [ ] user profile page after signin
-- [ ] add to heroku
+  Using the power of react and flux, any creation of boards or altering of your preferences are done quickly and little rendering is required to make the changes.
 
-### Phase 2: Pins Model (text based), API, and basic APIUtil (1.5 days, W1 Th 12pm)
+  When a user is created and put into the User table they also create a linked user preference row in the appropiate table. User nav color and board are automatically set but the user color is randomly generated.
+  Boards can be but not required to be created with a title and a body. They too are set at a default background but you can choose your preference before its created. Its linked to the creator but any member you add, along with the creator, are put into a team members table to create association to the board.
 
-**Objective:** Pins can be created, read, edited and destroyed through
-the API.
 
-- [ ] create `Pin` model
-- [ ] seed the database with a small amount of test data
-- [ ] CRUD API for pins (`PinsController`)
-- [ ] jBuilder views for pins
-- [ ] setup Webpack & Flux scaffold
-- [ ] setup `APIUtil` to interact with the API
-- [ ] test out API interaction in the console.
+### Boards and the pins
 
-### Phase 3: Flux Architecture and Router (1.5 days, W1 F 6pm)
+  From within the board interface you are greeted with a sidebar that allows you to see members and invite more on the fly, create a new pin, search/filter the pins, and change the settings of the board (such as title, description, add members, and change the color of the background). Clicking on the the members name just takes you to their profile page where you only see their profile details and picture, nothing more.
 
-**Objective:** Pins can be created, read, edited and destroyed with the
-user interface.
+  Pins come currenlty in two forms; text and pictures. When choosing either one you can write a title, body, pick a color for the tack, and add tags. The difference from their is that with a text pin you get to choose between 15 background images. For the image pins you can choose to either upload a portrait or landscape format and then using cloudinary you can pin the picture to the board. The pins have a few functions themselves. You can drag and drop them anywhere within the border of the corkboard, as long as you hold it by the tack. double clicking the pin itself will bring it to the front, you can zoom into any pin incase the body was too long or if you want a close up of a picture. Lastly you may edit the details of any pin that is yours, or delete it.
 
-- [ ] setup the flux loop with skeleton files
-- [ ] setup React Router
-- implement each pin component, building out the flux loop as needed.
-  - [ ] `PinsIndex`
-  - [ ] `PinIndexItem`
-  - [ ] `PinForm`
-- [ ] save Pins to the DB
+  The search function allows you to search the pins by team member, date of creation, type (text or picture), and lastly by tags.
 
-### Phase 4: Start Styling (0.5 days, W2 M 12pm)
+  In the database boards have all their preferences already, and they have an association to each pin that has a foreign key with their id. This allows quick and easy grabbing of the boards pins. When a pin is created it has a default position, and its zIndex is the current highest one. After letting the pin go it updates its position and zIndex in the db allowing it to persist if you need to refresh the page or come back. When the pin is created, all the tags are created in the pins controller class so it uses only one ajax request to the database instead of two.
 
-**Objective:** Existing pages (including signup/signin) will get styled, along with a home splash page for new users or returning users.
 
-- [ ] create a splash home page to signup/signin
-- [ ] create a basic style guide
-- [ ] position elements on the page
-- [ ] add basic colors & styles
 
-### Phase 5: Board (1 day, W2 Tu 12pm)
+## Future Directions for the Project
 
-**Objective:** Pins belong to Board, and can be viewed by board.
+I feel as there is always more to do and more features that some people would like to have. I m=plane to implement a comments section soon and shortly after that allowing boards to be public so anyone can see them and contribute to them.
 
-- [ ] create `Board` model
-- build out API, Flux loop, and components for:
-  - [ ] Board CRUD
-  - [ ] adding pins requires a board
-  - [ ] moving pins to a different location on the board will persist with a refresh or the next login
-  - [ ] viewing pins by board
-- Use CSS to style new views
+Few other features I plan to implement is to allow people to friend and be able to quickly add them to your board, see notifications of what is new on the boards such as a quick note on your dashboard in the details pane of the board and also in the team members section of the board navbar.
 
-Phase 3 adds organization to the Pins. Pins belong to a Board,
-which has its own `Index` view.
-
-### Phase 6: Tags (1 days, W2 Th 12pm)
-
-**Objective:** Pins can be tagged with multiple tags, and tags are searchable.
-
-- [ ] create `Tag` model and join table
-- build out API, Flux loop, and components for:
-  - [ ] fetching tags for pins
-  - [ ] adding tags to pins
-  - [ ] creating tags while adding pins to boards
-  - [ ] searching notebooks for pin(s) by tag
-- [ ] Style new elements
-
-### Phase 7: Create a friends and a team atmosphere (0.5 days, W2 Th 6pm)
-
-**objective:** Enable teams to create a board and all have access to it.
-
-- [ ] Integrate team boards
-- [ ] Allow some users to have team manager abilities
-- [ ] Each team member will have a different color/avatar
-
-### Phase 8: Styling Cleanup and Seeding (1 day, W2 F 6pm)
-
-**objective:** Make the site feel more cohesive and awesome.
-
-- [ ] Get feedback on my UI from others
-- [ ] Refactor HTML classes & CSS rules
-- [ ] Add modals, transitions, and other styling flourishes.
-
-### Bonus Features (TBD)
-- [ ] Members can have private boards for themselves
-- [ ] increased searching on pins
-- [ ] advanced notification setting
-- [ ] Better user preferences
-
-[phase-one]: docs/phases/phase1.md
-[phase-two]: docs/phases/phase2.md
-[phase-three]: docs/phases/phase3.md
-[phase-four]: docs/phases/phase4.md
-[phase-five]: docs/phases/phase5.md
+Also more customizations, specifically the collection of boards on your profile. Would be nice to be able to choose their order and the graphic for the board thumbnail graphic.
