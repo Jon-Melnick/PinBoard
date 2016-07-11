@@ -25,17 +25,17 @@ const TypeMenu = React.createClass({
 
   render(){
     let selectedStyle = {
-      background: `#C7D0D5`,
-      color: `${this.props.navColor}`
+      color: `${this.props.navColor}`,
+      fontSize: `20px`
     }
     let tags = <div></div>;
     if (this.props.board.tags.length > 0) {
       tags = this.props.board.tags.map(aTag => {
-        return <li key={aTag.id} onClick={this.sortBy} style={this.state.search === `${aTag.tag}` ? selectedStyle : {}}>{aTag.tag}</li>
+        return <div className='tag-cloud' key={aTag.id} onClick={this.sortBy} style={this.state.search === `${aTag.tag}` ? selectedStyle : {}}>{aTag.tag}</div>
       })
     }
     return(
-        <div className='tag-cloud'>
+        <div className='tag-cloud-container group'>
           {tags}
         </div>
     )

@@ -4,7 +4,7 @@ const React = require('react'),
 
 const PinEdit = React.createClass({
   getInitialState(){
-    return({title: this.props.pin.title, body: this.props.pin.body, pinColor: this.props.pin.pin_color, noteColor: this.props.pin.note_color})
+    return({title: this.props.pin.title, body: this.props.pin.body, pinColor: this.props.pin.pin_color, noteColor: this.props.pin.note_color, tags: []})
   },
 
   updateState(e){
@@ -23,7 +23,10 @@ const PinEdit = React.createClass({
       note_color: this.state.noteColor,
       board_id: this.props.boardId
 		};
-    PinActions.updatePin(formData);
+    const tags = {
+      tags: this.state.tags
+    }
+    PinActions.updatePin(formData, tags);
     this.props.onModalClose();
   },
 
@@ -44,6 +47,10 @@ const PinEdit = React.createClass({
     e.stopPropagation();
     PinActions.deletePin(this.props.pin.id)
     this.props.onModalClose();
+  },
+
+  updateTags(e){
+    this.setState({tags: e.target.value})
   },
 
   render(){
@@ -88,6 +95,10 @@ const PinEdit = React.createClass({
               </div>
               </div>
             }
+              <br></br><br></br>
+              <br></br><br></br>
+              <label>Add More Tags: </label>
+                <input type="text" value={this.state.tags} onChange={this.updateTags}></input>
               <br></br><br></br>
               <br></br><br></br>
         <button onClick={this.handleDelete}>Delete Pin</button>

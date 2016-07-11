@@ -82,7 +82,6 @@ const Settings = React.createClass({
         return <option key={user.id}>{user.full_name}</option>
       }
     })
-    console.log(uninvited)
     return (
       <div>
         <form className='new-form'>

@@ -466,7 +466,6 @@ button:focus { outline: none; }
 	color: #C7d0d5;
 }
 
-
 .board-thumb {
 	width: 155px;
 	height: 80px;
@@ -695,7 +694,8 @@ button:focus { outline: none; }
 	left: 15px;
 	top: 40px;
 	width: 70%;
-	max-height: 70px;
+	max-height: 65px;
+	overflow: hidden;
 	word-break:keep-all;
 }
 
@@ -722,6 +722,18 @@ button:focus { outline: none; }
 .edit-tool{
 	float: right;
 	cursor: pointer;
+}
+
+.tag-cloud-container {
+	width: 200px;
+}
+
+.tag-cloud{
+	float: left;
+	padding: 3px;
+	margin: 1px;
+	text-align: justify;
+	line-height: 20px;
 }
 
 .tack {

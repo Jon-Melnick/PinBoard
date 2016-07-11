@@ -20,10 +20,15 @@ class Board < ActiveRecord::Base
     foreign_key: :board_id,
     class_name: 'Pin'
 
-  has_many :tags, #method name
+  has_many :taggings, #method name
     through: :pins,
     source: :tags
 
+
+  def tags
+    self.taggings.uniq
+  end
+  
   def team_ids
     team_ids = []
     self.team_members.each do |member|

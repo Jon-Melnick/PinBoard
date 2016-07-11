@@ -42,11 +42,11 @@ module.exports = {
     });
   },
 
-  updatePin(pin, cb) {
+  updatePin(pin, tags, cb) {
     $.ajax({
       method: 'PATCH',
       url: 'api/pins/'+ pin.id,
-      data: { pin: pin},
+      data: { pin: pin, tags},
       success: (newPin) => {
         cb(newPin);
       }
