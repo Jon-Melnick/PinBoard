@@ -1,6 +1,6 @@
 # My PinBoard
 
-[My Pinboard live][mypinboard]
+[My Pinboard][mypinboard]
 
 [mypinboard]: http://www.mypinboard.site
 
