@@ -8,11 +8,13 @@ My PinBoard is a web application that allows you to create reminders, notes, ide
 
 ## Features & Implementation
 
-
 ### Single-Page App
 
 My Pinboard app has been created to be a single page app with hashhistory pushes and using ajax calls to the db and storing the information in stores on the front end for quicker interface reactions. This allows the app to be more responsive as any further requests for information is done so in a compact json data request, making the site generally faster.
 
+![PinBoard-home]
+
+[PinBoard-home]: ./docs/imgs/Pinboard-home.png
 
 ### Profile Page
 
@@ -25,6 +27,9 @@ My Pinboard app has been created to be a single page app with hashhistory pushes
   When a user is created and put into the User table they also create a linked user preference row in the appropiate table. User nav color and board are automatically set but the user color is randomly generated.
   Boards can be but not required to be created with a title and a body. They too are set at a default background but you can choose your preference before its created. Its linked to the creator but any member you add, along with the creator, are put into a team members table to create association to the board.
 
+  ![PinBoard-user]
+
+  [PinBoard-user]: ./docs/imgs/Pinboard-user.png
 
 ### Boards and the pins
 
@@ -36,7 +41,17 @@ My Pinboard app has been created to be a single page app with hashhistory pushes
 
   In the database boards have all their preferences already, and they have an association to each pin that has a foreign key with their id. This allows quick and easy grabbing of the boards pins. When a pin is created it has a default position, and its zIndex is the current highest one. After letting the pin go it updates its position and zIndex in the db allowing it to persist if you need to refresh the page or come back. When the pin is created, all the tags are created in the pins controller class so it uses only one ajax request to the database instead of two.
 
+  ![PinBoard-board]
 
+  [PinBoard-board]: ./docs/imgs/Pinboard-board.png
+
+  ![PinBoard-pin-text]
+
+  [PinBoard-pin-text]: ./docs/imgs/Pinboard-pin-text.png
+
+  ![PinBoard-pin-img]
+
+  [PinBoard-pin-img]: ./docs/imgs/Pinboard-pin-img.png
 
 ## Future Directions for the Project
 
